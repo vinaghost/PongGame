@@ -1,0 +1,14 @@
+#pragma once
+
+#include <iostream>
+#include <time.h>
+#include <conio.h>
+#include <SFML/Graphics.hpp>
+
+using namespace std;
+
+/////////////////////////////////////////////////////////////
+///
+///Header nay include tat ca header dung ben ngoai
+///
+/////////////////////////////////////////////////////////////
