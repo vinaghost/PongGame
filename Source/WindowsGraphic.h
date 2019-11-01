@@ -11,4 +11,8 @@ protected:
     sf::RenderWindow renderWindow;
     sf::Event event;
     sf::Clock clock;
+public:
+    virtual void Draw() = 0;
+    virtual void Run() = 0;
 };
+

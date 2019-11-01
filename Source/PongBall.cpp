@@ -29,16 +29,16 @@ void Ball::randomDirection()
 	switch (rand() % 4)
 	{
 	case 0:
-		v = sf::Vector2f(1.0,1.0);
+		v = sf::Vector2f(1.0,1.0)*(float)initspeed;
 		break;
 	case 1:
-		v = sf::Vector2f(-1.0,1.0);
+		v = sf::Vector2f(-1.0,1.0)*(float)initspeed;
 		break;
 	case 2:
-		v = sf::Vector2f(1.0,-1.0);
+		v = sf::Vector2f(1.0,-1.0)*(float)initspeed;
 		break;
 	case 3:
-		v = sf::Vector2f(-1.0,-1.0);
+		v = sf::Vector2f(-1.0,-1.0)*(float)initspeed;
 		break;
 	}
 }

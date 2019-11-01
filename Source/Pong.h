@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Default.h"
+
 enum eDir { LEFT = 1, UP = 2, DOWN = 3, RIGHT = 4 };
 class Ball
 {
@@ -11,7 +12,7 @@ private:
 	
 public:
 	bool idle = true;
-	static int const initspeed = 1; //Pixel per frame
+	static int const initspeed = 2; //Pixel per frame
 	static int const r = 10;
 	sf::CircleShape shape;
 	Ball(int screenX, int screenY);
@@ -31,10 +32,10 @@ private:
 	
 public:
 	static int const speed = 10;
-	static int const w = 10, h = 60;
+	static int const w = 10, h = 100;
 	sf::RectangleShape shape;
 	Paddle(int screenY);
-	inline void Reset() {y = originalY; }
+	inline void reset() {y = originalY; }
 	inline int getY() { return y; }
 	inline void moveUp(int timeInterval) { y-=(speed*timeInterval/mSPF); }
 	inline void moveDown(int timeInterval) { y+=(speed*timeInterval/mSPF); }
@@ -44,20 +45,26 @@ public:
 class GamePong:public Window
 {
 private:
-	int score1, score2;
 	bool endGame;
 	Ball* ball;
 	Paddle* player1;
 	Paddle* player2;
 	sf::RectangleShape midLine;
+	int nPlayer; //Số người chơi
+	string nameP1 = "PLAYER 1";
 	
 public:
 	int timeInterval = 0;
-	GamePong(int w, int h);
+	GamePong(int w, int h, int n);
 	~GamePong();
-	void ScoreUp(Paddle* player);
+	bool isOpenWindow(){
+		return renderWindow.isOpen();
+	}
+	void Winner(Paddle* player);
 	void Draw();
 	void Input();
 	void Logic();
 	void Run();
+	void reset();
+	void BotControl(Paddle*);
 };

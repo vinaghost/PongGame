@@ -2,7 +2,10 @@
 
 int main()
 {
-	GamePong game(640,480);
-	game.Run();
+	GamePong game(800,600,1);
+	while (game.isOpenWindow()) {
+		game.Run();
+		game.reset();
+	}
 	return 0;
 }

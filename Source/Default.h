@@ -3,8 +3,11 @@
 #include <iostream>
 #include <time.h>
 #include <conio.h>
+#include <string>
 #include <SFML/Graphics.hpp>
 #include "WindowsGraphic.h"
+
+static bool closeFlag = 0;
 
 using namespace std;
 
