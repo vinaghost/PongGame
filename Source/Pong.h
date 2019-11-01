@@ -36,8 +36,8 @@ public:
 	Paddle(int screenY);
 	inline void Reset() {y = originalY; }
 	inline int getY() { return y; }
-	inline void moveUp(int timeInterval) { y-=(speed*timeInterval/(1000000.0/FPS)); }
-	inline void moveDown(int timeInterval) { y+=(speed*timeInterval/(1000000.0/FPS)); }
+	inline void moveUp(int timeInterval) { y-=(speed*timeInterval/mSPF); }
+	inline void moveDown(int timeInterval) { y+=(speed*timeInterval/mSPF); }
 	
 };
 
@@ -49,6 +49,7 @@ private:
 	Ball* ball;
 	Paddle* player1;
 	Paddle* player2;
+	sf::RectangleShape midLine;
 	
 public:
 	int timeInterval = 0;

@@ -10,6 +10,10 @@ GamePong::GamePong(int w, int h)
 	ball = new Ball(w, h);
 	player1 = new Paddle(h);
 	player2 = new Paddle(h);
+	midLine.setSize(sf::Vector2f(2,h));
+	midLine.setOrigin(midLine.getSize()/2.f);
+	midLine.setPosition(sf::Vector2f(w/2,h/2));
+	midLine.setFillColor(sf::Color(255,255,255,255/2));
 }
 
 GamePong::~GamePong()
@@ -100,26 +104,28 @@ void GamePong:: Logic()
  }
  void GamePong::Run()
  {
-	 while(renderWindow.isOpen()){
-    	//Kiểm tra toàn bộ event từ vòng lặp trước
-    	while (renderWindow.pollEvent(event)){
-    		//Xử lý khi người dùng nhấn X để thoát
-      		if (event.type == sf::Event::EventType::Closed)
-        	renderWindow.close();
-			//Xử lý người dùng nhấn phím bất kỳ để chạy paddle
-			if (event.type == sf::Event::EventType::KeyPressed && ball->idle)
-				ball->randomDirection();
-    	}
+	while(renderWindow.isOpen()){
+    	
+			//Kiểm tra toàn bộ event từ vòng lặp trước
+    		while (renderWindow.pollEvent(event)){
+    			//Xử lý khi người dùng nhấn X để thoát
+      			if (event.type == sf::Event::EventType::Closed)
+        		renderWindow.close();
+				//Xử lý người dùng nhấn phím bất kỳ để chạy paddle
+				if (event.type == sf::Event::EventType::KeyPressed && ball->idle)
+					ball->randomDirection();
+    		}
 
-    	Draw();
+		if (!endGame){
+    		Draw();
 
-		//Tính khoảng thời gian render giữa 2 frame
-		timeInterval = clock.getElapsedTime().asMicroseconds();
-		clock.restart();
+			//Tính khoảng thời gian render giữa 2 frame
+			timeInterval = clock.getElapsedTime().asMicroseconds();
+			clock.restart();
 
-		Input();
-		Logic();
-		
+			Input();
+			Logic();
+		}
   	}
 		 
  }

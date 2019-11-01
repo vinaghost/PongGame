@@ -44,8 +44,8 @@ void Ball::randomDirection()
 }
 void Ball::Move(int microsec)
 {
-	x += v.x*microsec/(1000000/FPS);
-	y += v.y*microsec/(1000000/FPS);
+	x += v.x*microsec/mSPF;
+	y += v.y*microsec/mSPF;
 }
 
 void Ball::speedUp(float p){
