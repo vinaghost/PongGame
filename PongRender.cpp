@@ -1,4 +1,4 @@
-#include "Pong.h"
+#include "PongProcess.h"
 
 void GamePong::Draw()
 {

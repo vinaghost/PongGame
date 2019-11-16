@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Default.h"
-#include "Pong.h"
+#include "PongProcess.h"
 #include "WindowsGraphic.h"
 
 /////////////////////////////////////////////////////////////

@@ -69,7 +69,14 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <IncludePath>D:\PongGame\SFML-2.5.1\include;$(IncludePath)</IncludePath>
+    <LibraryPath>D:\PongGame\SFML-2.5.1\lib;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <IncludePath>D:\PongGame\SFML-2.5.1\include;$(IncludePath)</IncludePath>
+    <LibraryPath>D:\PongGame\SFML-2.5.1\lib;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -135,6 +142,9 @@
   <ItemGroup>
     <ClInclude Include="Default.h" />
     <ClInclude Include="Pong.h" />
+    <ClInclude Include="PongBall.h" />
+    <ClInclude Include="PongPaddle.h" />
+    <ClInclude Include="PongProcess.h" />
     <ClInclude Include="WindowPong.h" />
     <ClInclude Include="WindowsGraphic.h" />
   </ItemGroup>

@@ -47,5 +47,14 @@
     <ClInclude Include="WindowsGraphic.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="PongBall.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PongPaddle.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PongProcess.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -1,15 +1,12 @@
-#pragma once
-
-/*#include "PongBall.h"
+﻿#pragma once
+#include "PongBall.h"
 #include "PongPaddle.h"
 
 
 #include <string>
 using namespace std;
 
-
-
-class GamePong:public Window
+class GamePong :public Window
 {
 private:
 	bool endGame;
@@ -24,9 +21,7 @@ public:
 	int timeInterval = 0;
 	GamePong(int w, int h, int n);
 	~GamePong();
-   bool isOpenWindow(){
-		return renderWindow.isOpen();
-	}
+	bool isOpenWindow();
 	void Winner(Paddle* player);
 	void Draw();
 	void Input();
@@ -34,4 +29,5 @@ public:
 	void Run();
 	void reset();
 	void BotControl(Paddle*);
-};*/
+	bool isMid(int a, int b, int c);
+};
