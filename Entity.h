@@ -2,10 +2,14 @@
 
 #include "WindowsGraphic.h"
 
+#include <string>
+using namespace std;
+
 class Entity
 {
 private:
 	float x, y;
+	int color, color_background;
 public:
 	Entity(int screenX, int screenY);
 
@@ -45,5 +49,56 @@ public:
 	* @return (int) y
 	**/
 	float getY();
+
+	/**
+	* Trả lại tên class
+	*
+	* @note
+	*
+	*
+	* @noreturn (string) tên Class
+	**/
+	virtual string getNameClass() = 0;
+
+	/**
+	* Gán màu của Entity
+	*
+	* @note
+	*
+	*
+	* @noreturn
+	**/
+	void setColor(int color);
+
+	/**
+	* Gán màu nền của Entity
+	*
+	* @note
+	*
+	*
+	* @noreturn
+	**/
+	void setBackgroundColor(int color_background);
+
+	/**
+	* Trả lại màu của Entity
+	*
+	* @note
+	*
+	*
+	* @return (int) color
+	**/
+	int getColor();
+
+	/**
+	* Trả lại màu nền của Entity
+	*
+	* @note
+	*
+	*
+	* @return (int) color_background
+	**/
+	int getBackgroundColor();
+
 };
 
