@@ -132,21 +132,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="IndieFunction.cpp" />
     <ClCompile Include="Main.cpp" />
-    <ClCompile Include="PongBall.cpp" />
-    <ClCompile Include="PongPaddle.cpp" />
-    <ClCompile Include="PongProcess.cpp" />
-    <ClCompile Include="PongRender.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="Default.h" />
-    <ClInclude Include="Pong.h" />
-    <ClInclude Include="PongBall.h" />
-    <ClInclude Include="PongPaddle.h" />
-    <ClInclude Include="PongProcess.h" />
-    <ClInclude Include="WindowPong.h" />
-    <ClInclude Include="WindowsGraphic.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

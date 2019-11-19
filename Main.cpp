@@ -1,11 +1,14 @@
-#include "WindowPong.h"
+﻿//include Thư viện
 
-int main()
-{
-	GamePong game(800,600,2);
-	while (game.isOpenWindow()) {
-		game.Run();
-		game.reset();
-	}
+
+//include Thư viện
+
+int main() {
+	//Code test
+
+
+
+
+	//Code test
 	return 0;
 }
