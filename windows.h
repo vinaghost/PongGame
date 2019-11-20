@@ -3,7 +3,7 @@
 
 #define FPS 60.0
 
-float const mSPF = 1000000.0 / FPS;
+double const mSPF = 1000000.0 / FPS;
 
 class Windows {
 protected:
