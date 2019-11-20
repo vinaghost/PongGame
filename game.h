@@ -10,7 +10,7 @@ private:
 	/*Ball* ball;
 	Paddle* player1;
 	Paddle* player2;*/
-	sf::RectangleShape midLine;
+	RectangleShape midLine;
 	/*int nPlayer; //Số người chơi
 	string nameP1 = "PLAYER 1";*/
 
