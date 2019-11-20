@@ -7,10 +7,13 @@
 int main() {
 	//Code test
 
-	Game g(20, 20);
+	Game g(800, 600);
 
 
-
+	while (g.isOpenWindow()) {
+		g.run();
+		g.reset();
+	}
 
 	//Code test
 	return 0;

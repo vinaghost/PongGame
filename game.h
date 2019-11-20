@@ -1,4 +1,7 @@
-﻿#pragma once
+﻿#ifndef  _GAME_H
+
+#define _GAME_H
+
 #include "windows.h"
 
 class Game : public Windows {
@@ -28,3 +31,5 @@ public:
 	//bool isMid(int a, int b, int c);
 };
 
+
+#endif // ! _GAME_H

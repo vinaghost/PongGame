@@ -1,4 +1,7 @@
-#pragma once
+#ifndef _WINDOWS_H
+
+#define _WINDOWS_H
+
 #include <SFML/Graphics.hpp>
 
 #define FPS 60.0
@@ -19,6 +22,5 @@ public:
 	virtual void run() = 0;
 };
 
-Windows::Windows(int width, int height) : width(width), height(height) {}
 
-Windows::~Windows() {}
+#endif
