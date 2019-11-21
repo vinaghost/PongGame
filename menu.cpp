@@ -1,100 +1,116 @@
 ﻿#include "Menu.h"
 
-#include "SFML/Graphics/Text.hpp"
-
 #include "Utils.h"
+
+#include "SFML/Graphics.hpp"
+#include "SFML/Graphics/Text.hpp"
+#include "SFML/Window/Event.hpp"
+#include "SFML/Window/Mouse.hpp"
 
 #include <iostream>
 #include <conio.h>
-
-using std::cout;
-
-Menu::Menu() : choice(0), command(0), itemCoord(0, 0) {
-}
+#include <cstdio>
+using namespace std;
+using namespace sf;
 
 
-Menu::~Menu() {
-}
 
-void Menu::setCoordItem(int x, int y) {
-	this->itemCoord = std::make_pair(x, y);
-}
-void Menu::setCoordTitle(int x, int y) {
-	this->titleCoord = std::make_pair(x, y);
-}
-void Menu::setTitle(string title) {
-	this->title = title;
-}
-int Menu::getChoice() {
-	return choice;
-}
-
-char Menu::getCommand() {
-	command = toupper(_getch());
-	return command;
-}
-
-void Menu::addItem(string itemName) {
-	this->itemName.push_back(itemName);
-}
-
-void Menu::show() {
-
-	// Đến vị trí in tiêu đề
-	Utils::gotoXY(this->titleCoord.first, this->titleCoord.second);
-	// In tiêu đề
-	cout << this->title;
-
-	// In tên sự lựa chọn
-	for (int item = 0; item < itemName.size(); item++) {
-		Utils::gotoXY(this->itemCoord.first, this->itemCoord.second + item * 2);
-
-		cout << "\b[ ] " << this->itemName[item];
-	}
-
-	this->choice = 0;
-	// Di chuyển đến vị trí lựa chọn đầu tiên
-	Utils::gotoXY(this->itemCoord.first, this->itemCoord.second);
-
-
-	while (true) {
-		switch (getCommand()) {
-		case 'W':
-			moveUp();
-			break;
-		case 'S':
-			moveDown();
-			break;
-		case 13:
-			return;
-		}
-	}
-	
-}
-
-
-void Menu::moveUp() {
-	if (choice > 0) {
-		choice--;
-		Utils::gotoXY(this->itemCoord.first, this->itemCoord.second + choice * 2);
-	}
-}
-
-void Menu::moveDown() {
-	if (choice < this->itemName.size() - 1) {
-		choice++;
-		Utils::gotoXY(this->itemCoord.first, this->itemCoord.second + choice * 2);
-	}
-}
-
-void Menu::moveLeft() {}
-
-void Menu::moveRight() {}
-
-void Menu::setWindow(sf::RenderWindow* RenderWindow)
+Menu::Menu(double x, double y)
 {
-	if (RenderWindow != NULL)
+	sf::Text text;
+	font.loadFromFile("Resources/Montserrat-BlackItalic.ttf");
+	text.setFont(font);
+	text.setPosition(x, y);
+	//text.setCharacterSize(24); // in pixels, not points!                         
+	//text.setColor(sf::Color::White);   // set the color  
+	//text.setStyle(sf::Text::Bold); // set the text style
+
+	//set positions of things
+	for (int i = 0; i < NUM_BUTTONS; i++)
 	{
-		this->RenderWindow = RenderWindow;
+		buttons.push_back(text);
+		buttons[i].setPosition(text.getPosition().x, text.getPosition().y + i * 100);
+	}
+
+	//Since it's only 3 text its fine to just manually set each...
+	buttons[0].setString("Play Game");
+	buttons[1].setString("Options");
+	buttons[2].setString("Quit");
+}
+
+
+Menu::~Menu()
+{
+}
+
+void Menu::draw(sf::RenderWindow &window)
+{
+	//draw text
+	for (auto x : buttons)
+		window.draw(x);
+}
+
+bool Menu::isTextClicked(sf::Text text, sf::RenderWindow &window)
+{
+	sf::IntRect rect(text.getPosition().x, text.getPosition().y, text.getGlobalBounds().width, text.getGlobalBounds().height);
+
+	//If mouse position is in the rectangle do whatever
+	if (rect.contains(sf::Mouse::getPosition(window)))
+		return true;
+
+
+	//Otherwise, don't do anything
+	return false;
+}
+
+void Menu::handleInput(sf::RenderWindow &window)
+{
+	sf::Event event;
+
+	while (window.pollEvent(event))
+	{
+		switch (event.type)
+		{
+			/* Close the window */
+		case sf::Event::Closed:
+			window.close();
+			break;
+
+			//check if text is hovered over
+		/*case sf::Event::MouseMoved:
+			if (isTextClicked(buttons[0],window))
+				buttons[0].setColor(sf::Color::Red);
+			else
+				buttons[0].setColor(sf::Color::White);
+			if (isTextClicked(buttons[1], window))
+				buttons[1].setColor(sf::Color::Red);
+			else
+				buttons[1].setColor(sf::Color::White);
+			if (isTextClicked(buttons[2], window))
+				buttons[2].setColor(sf::Color::Red);
+			else
+				buttons[2].setColor(sf::Color::White);
+			break;
+		}*/
+		}
+		//check if text is clicked.
+		if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+		{
+			if (isTextClicked(buttons[0], window))
+			{
+				Text text;
+				text.setString("hello");
+				sf::Font font;
+				font.loadFromFile("Resources/Montserrat-BlackItalic.ttf");
+				window.create(VideoMode(800, 600), "hello");
+				window.draw(text);
+				window.display();
+			}
+
+			else if (isTextClicked(buttons[2], window))
+				window.close();
+
+
+		}
 	}
 }

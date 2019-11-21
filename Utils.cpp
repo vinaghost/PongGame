@@ -1,4 +1,5 @@
-﻿#include "Utils.h"
+﻿#pragma comment(lib, "winmm.lib")
+#include "utils.h"
 
 #include <Windows.h>
 #include <mmsystem.h>
@@ -60,11 +61,54 @@ void Utils::fixConsoleWindow() {
 	SetCurrentConsoleFontEx(handle, FALSE, &cfi);
 
 }
+void Utils::showConsoleCursor(bool show) {
+	HANDLE out = GetStdHandle(STD_OUTPUT_HANDLE);
 
+	CONSOLE_CURSOR_INFO     cursorInfo;
+
+	// Lấy thông tin con trỏ tại giao diện điều khiển
+	GetConsoleCursorInfo(out, &cursorInfo);
+	cursorInfo.bVisible = show;
+	// Cung cấp thông tin mới cho con trỏ
+	SetConsoleCursorInfo(out, &cursorInfo);
+}
 void Utils::gotoXY(int pX, int pY) {
 	COORD coord;
 	coord.X = pX;
 	coord.Y = pY;
 	// Di chuyển con trỏ tới vị trí coord 
 	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
+}
+
+COORD Utils::getCursor() {
+	CONSOLE_SCREEN_BUFFER_INFO cbsi;
+	// Lấy thông tin con trỏ tại bộ đệm
+	if (GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &cbsi)) {
+		// Trả lại vị trí con trỏ hiện tại
+		return cbsi.dwCursorPosition;
+	}
+	else {
+		// Khai bao vị trí mặc định (0,0)
+		COORD invalid = { 0, 0 };
+		return invalid;
+	}
+}
+/*https://www.daniweb.com/programming/software-development/code/216345/add-a-little-color-to-your-console-text*/
+void Utils::setColorText(int color, int colorBackground) {
+
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), color + colorBackground * 16);
+
+}
+void Utils::clearScreen() {
+
+	for (int i = 0; i < 80; i++) {
+		printf("\n");
+	}
+	gotoXY(0, 0);
+}
+
+void Utils::playSound(const char fileName[], bool loop) {
+	int flag = SND_FILENAME | SND_ASYNC;
+	if (loop) flag |= SND_LOOP;
+	PlaySound(fileName, NULL, flag);
 }
