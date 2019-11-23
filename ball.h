@@ -1,32 +1,34 @@
 #pragma once
 #include "entity.h"
 
-enum eDir
-{
+using namespace sf;
+
+enum eDir {
 	LEFT = 1,
 	UP = 2,
 	DOWN = 3,
 	RIGHT = 4
 };
 
-
-class Ball : public Entity
-{
+class Ball : public Entity {
 private:
-	sf::Vector2f v;
-	float x, y;
+	Vector2f v;
 	eDir direction;
+	CircleShape shape;
+
+	bool idle;
+	int initspeed = 2; //Pixel per frame
+	float radius;
 
 public:
-	bool idle = true;
-	static int const initspeed = 2; //Pixel per frame
-	static int const r = 10;
-	sf::CircleShape shape;
-	Ball(int screenX, int screenY);
-	void speedUp(float);
-	void reflect(eDir);
-	inline float getX();
-	inline float getY();
+	Ball(RenderWindow* window);
+	void setup(float x, float y);
+
+	void reflect(eDir dir);
+
 	void randomDirection();
-	void Move(int microsec);
+
+	void speedUp(float percent);
+
+	void update(int microsec);
 };

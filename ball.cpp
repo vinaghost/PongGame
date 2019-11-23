@@ -1,28 +1,16 @@
 #include "ball.h"
 
-Ball::Ball(int screenX, int screenY)
-{
-	shape.setRadius(r);
-	shape.setOrigin(shape.getRadius(), shape.getRadius());
-	x = screenX / 2;
-	y = screenY / 2;
-	v = sf::Vector2f();
+Ball::Ball(RenderWindow* window) : Entity(window), radius(10), idle(true) {}
+
+void Ball::setup(float x, float y) {
+	shape.setRadius(radius);
+	this->x = x;
+	this->y = y;
+	shape.setOrigin(x, y);
 }
 
-inline float Ball::getX()
-{
-	return this->x;
-}
-
-inline float Ball::getY()
-{
-	return this->y;
-}
-
-void Ball::reflect(eDir dir)
-{
-	switch (dir)
-	{
+void Ball::reflect(eDir dir) {
+	switch (dir) {
 	case LEFT:
 	case RIGHT:
 		v.x *= -1.0;
@@ -33,11 +21,9 @@ void Ball::reflect(eDir dir)
 		break;
 	}
 }
-void Ball::randomDirection()
-{
+void Ball::randomDirection() {
 	idle = false;
-	switch (rand() % 4)
-	{
+	switch (rand() % 4) {
 	case 0:
 		v = sf::Vector2f(1.0, 1.0)*(float)initspeed;
 		break;
@@ -52,12 +38,11 @@ void Ball::randomDirection()
 		break;
 	}
 }
-void Ball::Move(int microsec)
-{
-	x += v.x * (microsec / mSPF);
-	y += v.y * (microsec / mSPF);
+void Ball::update(int microsec) {
+	//setX(getX() + v.x * (microsec / mSPF));
+	//setY(getY() + v.y * (microsec / mSPF));
 }
 
-void Ball::speedUp(float p) {
-	v *= (1 + p);
+void Ball::speedUp(float percent) {
+	this->v *= (1 + percent);
 }

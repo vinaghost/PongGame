@@ -1,44 +1,65 @@
 #include "Entity.h"
 
+Entity::Entity(RenderWindow* window) : x(0), y(0), shape(NULL), window(window) {}
 
+Entity::~Entity() {
+	delete shape;
+}
 
-Entity::Entity(int x, int y) : x(x), y(y) {}
-
-void Entity::setX(double x) {
+void Entity::setX(float x) {
 	this->x = x;
 }
-
-void Entity::setY(double y)
-{
+void Entity::setY(float y) {
 	this->y = y;
 }
+void Entity::setColor(int red, int green, int blue, int alpha) {
+	if (red < 0) red = 0;
+	else if (red > 255) red = 255;
+	else this->color.r = red;
 
-double Entity::getX()
-{
+	if (green < 0) green = 0;
+	else if (green > 255) green = 255;
+	else this->color.g = green;
+
+	if (blue < 0) blue = 0;
+	else if (blue > 255) blue = 255;
+	else this->color.b = blue;
+
+	if (alpha < 0) alpha = 0;
+	else if (alpha > 255) alpha = 255;
+	else this->color.a = alpha;
+}
+void Entity::setBackgroundColor(int red, int green, int blue, int alpha) {
+	if (red < 0) red = 0;
+	else if (red > 255) red = 255;
+	else this->color.r = red;
+
+	if (green < 0) green = 0;
+	else if (green > 255) green = 255;
+	else this->color.g = green;
+
+	if (blue < 0) blue = 0;
+	else if (blue > 255) blue = 255;
+	else this->color.b = blue;
+
+	if (alpha < 0) alpha = 0;
+	else if (alpha > 255) alpha = 255;
+	else this->color.a = alpha;
+}
+
+float Entity::getX() {
 	return this->x;
 }
-
-double Entity::getY()
-{
+float Entity::getY() {
 	return this->y;
 }
-
-void Entity::setColor(int color) {
-	if (color >= 0 && color <= 15) {
-		this->color = color;
-	}
-}
-
-void Entity::setBackgroundColor(int color_background) {
-	if (color_background >= 0 && color_background <= 15) {
-		this->color_background = color_background;
-	}
-}
-
-int Entity::getColor() {
+Color Entity::getColor() {
 	return this->color;
 }
-
-int Entity::getBackgroundColor() {
+Color Entity::getBackgroundColor() {
 	return this->color_background;
+}
+
+void Entity::draw() {
+	window->draw(*shape);
 }
