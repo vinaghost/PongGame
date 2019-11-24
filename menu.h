@@ -9,16 +9,18 @@ using namespace std;
 
 class Menu
 {
+private:
+	vector<sf::Text> buttons;
+	sf::Font font;
 public:
-	Menu(double x, double y);
+	Menu(double x, double y, sf::RenderWindow &window);
 	~Menu();
 
+	void setMenu(double x, double y);
 	void draw(sf::RenderWindow &window);
 	bool isTextClicked(sf::Text text, sf::RenderWindow &window);
 	void handleInput(sf::RenderWindow &window);
 	
 
-private:
-	vector<sf::Text> buttons;
-	sf::Font font;
+
 };

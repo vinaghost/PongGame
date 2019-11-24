@@ -14,8 +14,12 @@ using namespace std;
 using namespace sf;
 
 
+Menu::Menu(double x, double y, sf::RenderWindow &window)
+{
+	window.create(sf::VideoMode(x,y), "Pong", sf::Style::Titlebar | sf::Style::Close);
+}
 
-Menu::Menu(double x, double y)
+void Menu::setMenu(double x, double y)
 {
 	sf::Text text;
 	font.loadFromFile("Resources/Montserrat-BlackItalic.ttf");
