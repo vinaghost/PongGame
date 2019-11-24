@@ -1,28 +1,26 @@
 #pragma once
-#include "entity.h"
-
-using namespace sf;
+#include "movingentity.h"
 
 enum eDir {
-	LEFT = 1,
-	UP = 2,
-	DOWN = 3,
-	RIGHT = 4
+	NONE,
+	LEFT,
+	UP,
+	DOWN,
+	RIGHT
 };
 
-class Ball : public Entity {
+class Ball : public MovingEntity {
 private:
-	Vector2f v;
-	eDir direction;
-	CircleShape shape;
-
 	bool idle;
-	int initspeed = 2; //Pixel per frame
-	float radius;
+	const int initspeed = 2; //Pixel per frame
 
 public:
-	Ball(RenderWindow* window);
-	void setup(float x, float y);
+	Ball(RenderWindow* window, Board* b);
+	string getNameClass();
+
+	void setup(float x, float y, float radius);
+
+	bool getIdle();
 
 	void reflect(eDir dir);
 
@@ -30,5 +28,6 @@ public:
 
 	void speedUp(float percent);
 
-	void update(int microsec);
+	eDir getWall();
+	void update(Int64 elapsedTime);
 };

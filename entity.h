@@ -7,10 +7,9 @@ using std::string;
 
 class Entity {
 protected:
-	float x, y;
 	Shape* shape;
-	Color color, color_background;
 	RenderWindow* window;
+
 public:
 	Entity(RenderWindow* window);
 
