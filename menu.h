@@ -4,21 +4,23 @@
 
 #include <vector>
 using namespace std;
+using namespace sf;
 
 #define NUM_BUTTONS 3
 
 class Menu
 {
 private:
-	vector<sf::Text> buttons;
-	sf::Font font;
+	vector<Text> buttons;
+	Font font;
+	double x, y;
+	RenderWindow window;
 public:
-	Menu(double x, double y, sf::RenderWindow &window);
+	Menu(double x, double y);
 	~Menu();
 
-	void setMenu(double x, double y);
-	void draw(sf::RenderWindow &window);
-	bool isTextClicked(sf::Text text, sf::RenderWindow &window);
+	void draw(RenderWindow &window);
+	bool isTextClicked(Text text, RenderWindow &window);
 	void handleInput(sf::RenderWindow &window);
 	
 

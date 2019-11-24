@@ -5,21 +5,12 @@
 #include "SFML/Graphics.hpp"
 #include "SFML/Graphics/Text.hpp"
 #include "SFML/Window/Event.hpp"
-#include "SFML/Window/Mouse.hpp"
 
 #include <iostream>
-#include <conio.h>
-#include <cstdio>
-using namespace std;
-using namespace sf;
 
 
-Menu::Menu(double x, double y, sf::RenderWindow &window)
-{
-	window.create(sf::VideoMode(x,y), "Pong", sf::Style::Titlebar | sf::Style::Close);
-}
 
-void Menu::setMenu(double x, double y)
+Menu::Menu(double x, double y)
 {
 	sf::Text text;
 	font.loadFromFile("Resources/Montserrat-BlackItalic.ttf");
