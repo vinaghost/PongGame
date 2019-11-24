@@ -17,16 +17,8 @@ using namespace sf;
 int main() {
 	const int screenX = 800;
 	const int screenY = 600;
-	sf::RenderWindow window(sf::VideoMode(screenX, screenY), "Pong", sf::Style::Titlebar | sf::Style::Close);
-	Menu menu(100, 100);
 	
-	window.clear(sf::Color::Black);
-	menu.draw(window);
-	window.display();
-	while (window.isOpen())
-	{
-		menu.handleInput(window);
-	}
+	
 	
 	return EXIT_SUCCESS;
 }

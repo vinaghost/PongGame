@@ -8,9 +8,31 @@
 
 #include <iostream>
 
+Menu::Menu() {};
 
+Menu::~Menu() {};
 
-Menu::Menu(double x, double y)
+void Menu::setX(float x)
+{
+	this->x = x;
+}
+
+void Menu::setY(float y)
+{
+	this->y = y;
+}
+
+float Menu::getX()
+{
+	return this->x;
+}
+
+float Menu::getY()
+{
+	return this->y;
+}
+
+void Menu::setMenu(float x, float y)
 {
 	sf::Text text;
 	font.loadFromFile("Resources/Montserrat-BlackItalic.ttf");
@@ -33,24 +55,44 @@ Menu::Menu(double x, double y)
 	buttons[2].setString("Quit");
 }
 
-
-Menu::~Menu()
+void Menu::setScreenX(float screenX)
 {
+	this->screenX = screenX;
 }
 
-void Menu::draw(sf::RenderWindow &window)
+void Menu::setScreenY(float screenY)
+{
+	this->screenY = screenY;
+}
+
+float Menu::getScreenX()
+{
+	return this->screenX;
+}
+
+float Menu::getScreenY()
+{
+	return this->screenY;
+}
+
+void Menu::setRenderWindow(RenderWindow &window)
+{
+	window.create(VideoMode(screenX, screenY), "Pong", sf::Style::Titlebar | sf::Style::Close);
+}
+
+void Menu::draw(RenderWindow &window)
 {
 	//draw text
 	for (auto x : buttons)
 		window.draw(x);
 }
 
-bool Menu::isTextClicked(sf::Text text, sf::RenderWindow &window)
+bool Menu::isTextClicked(Text text, RenderWindow &window)
 {
 	sf::IntRect rect(text.getPosition().x, text.getPosition().y, text.getGlobalBounds().width, text.getGlobalBounds().height);
 
 	//If mouse position is in the rectangle do whatever
-	if (rect.contains(sf::Mouse::getPosition(window)))
+	if (rect.contains(Mouse::getPosition(window)))
 		return true;
 
 
@@ -58,16 +100,16 @@ bool Menu::isTextClicked(sf::Text text, sf::RenderWindow &window)
 	return false;
 }
 
-void Menu::handleInput(sf::RenderWindow &window)
+void Menu::handleInput(RenderWindow &window)
 {
-	sf::Event event;
+	Event event;
 
 	while (window.pollEvent(event))
 	{
 		switch (event.type)
 		{
 			/* Close the window */
-		case sf::Event::Closed:
+		case Event::Closed:
 			window.close();
 			break;
 
@@ -89,13 +131,13 @@ void Menu::handleInput(sf::RenderWindow &window)
 		}*/
 		}
 		//check if text is clicked.
-		if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+		if (Mouse::isButtonPressed(sf::Mouse::Left))
 		{
 			if (isTextClicked(buttons[0], window))
 			{
 				Text text;
 				text.setString("hello");
-				sf::Font font;
+				Font font;
 				font.loadFromFile("Resources/Montserrat-BlackItalic.ttf");
 				window.create(VideoMode(800, 600), "hello");
 				window.draw(text);
@@ -108,4 +150,9 @@ void Menu::handleInput(sf::RenderWindow &window)
 
 		}
 	}
+}
+
+void Menu::windowDisplay(RenderWindow &window)
+{
+	window.display();
 }
