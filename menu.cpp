@@ -32,7 +32,12 @@ float Menu::getY()
 	return this->y;
 }
 
-void Menu::setMenu(float x, float y)
+void Menu::setButtons(string a)
+{
+	S.push_back(a);
+}
+
+void Menu::setMenu()
 {
 	sf::Text text;
 	font.loadFromFile("Resources/Montserrat-BlackItalic.ttf");
@@ -43,16 +48,17 @@ void Menu::setMenu(float x, float y)
 	//text.setStyle(sf::Text::Bold); // set the text style
 
 	//set positions of things
-	for (int i = 0; i < NUM_BUTTONS; i++)
+	for (int i = 0; i < S.size(); i++)
 	{
 		buttons.push_back(text);
 		buttons[i].setPosition(text.getPosition().x, text.getPosition().y + i * 100);
+		buttons[i].setString(S[i]);
 	}
 
 	//Since it's only 3 text its fine to just manually set each...
-	buttons[0].setString("Play Game");
-	buttons[1].setString("Options");
-	buttons[2].setString("Quit");
+	//buttons[0].setString("Play Game");
+	//buttons[1].setString("Options");
+	//buttons[2].setString("Quit");
 }
 
 void Menu::setScreenX(float screenX)
@@ -75,19 +81,19 @@ float Menu::getScreenY()
 	return this->screenY;
 }
 
-void Menu::setRenderWindow(RenderWindow &window)
+void Menu::setRenderWindow()
 {
 	window.create(VideoMode(screenX, screenY), "Pong", sf::Style::Titlebar | sf::Style::Close);
 }
 
-void Menu::draw(RenderWindow &window)
+void Menu::draw()
 {
 	//draw text
 	for (auto x : buttons)
 		window.draw(x);
 }
 
-bool Menu::isTextClicked(Text text, RenderWindow &window)
+bool Menu::isTextClicked(Text text)
 {
 	sf::IntRect rect(text.getPosition().x, text.getPosition().y, text.getGlobalBounds().width, text.getGlobalBounds().height);
 
@@ -100,59 +106,71 @@ bool Menu::isTextClicked(Text text, RenderWindow &window)
 	return false;
 }
 
-void Menu::handleInput(RenderWindow &window)
+void Menu::handleInput()
 {
-	Event event;
-
-	while (window.pollEvent(event))
+	while (window.isOpen())
 	{
-		switch (event.type)
-		{
-			/* Close the window */
-		case Event::Closed:
-			window.close();
-			break;
+		Event event;
 
-			//check if text is hovered over
-		/*case sf::Event::MouseMoved:
-			if (isTextClicked(buttons[0],window))
-				buttons[0].setColor(sf::Color::Red);
-			else
-				buttons[0].setColor(sf::Color::White);
-			if (isTextClicked(buttons[1], window))
-				buttons[1].setColor(sf::Color::Red);
-			else
-				buttons[1].setColor(sf::Color::White);
-			if (isTextClicked(buttons[2], window))
-				buttons[2].setColor(sf::Color::Red);
-			else
-				buttons[2].setColor(sf::Color::White);
-			break;
-		}*/
-		}
-		//check if text is clicked.
-		if (Mouse::isButtonPressed(sf::Mouse::Left))
+		while (window.pollEvent(event))
 		{
-			if (isTextClicked(buttons[0], window))
+			switch (event.type)
 			{
-				Text text;
-				text.setString("hello");
-				Font font;
-				font.loadFromFile("Resources/Montserrat-BlackItalic.ttf");
-				window.create(VideoMode(800, 600), "hello");
-				window.draw(text);
-				window.display();
-			}
-
-			else if (isTextClicked(buttons[2], window))
+				/* Close the window */
+			case Event::Closed:
 				window.close();
+				break;
+
+			case sf::Event::KeyPressed:
+				if (event.key.code == sf::Keyboard::Escape)
+				{
+					window.close();
+				}
+				//else if (event.key.code == sf::Keyboard::Return)
+					//loadgame();
+				break;
+
+				//check if text is hovered over
+			/*case sf::Event::MouseMoved:
+				if (isTextClicked(buttons[0],window))
+					buttons[0].setColor(sf::Color::Red);
+				else
+					buttons[0].setColor(sf::Color::White);
+				if (isTextClicked(buttons[1], window))
+					buttons[1].setColor(sf::Color::Red);
+				else
+					buttons[1].setColor(sf::Color::White);
+				if (isTextClicked(buttons[2], window))
+					buttons[2].setColor(sf::Color::Red);
+				else
+					buttons[2].setColor(sf::Color::White);
+				break;
+			}*/
+			}
+			//check if text is clicked.
+			if (Mouse::isButtonPressed(sf::Mouse::Left))
+			{
+				if (isTextClicked(buttons[0]))
+				{
+					Text text;
+					text.setString("hello");
+					Font font;
+					font.loadFromFile("Resources/Montserrat-BlackItalic.ttf");
+					window.create(VideoMode(800, 600), "hello");
+					window.draw(text);
+					window.display();
+				}
+
+				else if (isTextClicked(buttons[2]))
+					window.close();
 
 
+			}
 		}
 	}
 }
 
-void Menu::windowDisplay(RenderWindow &window)
+void Menu::windowDisplay()
 {
 	window.display();
 }

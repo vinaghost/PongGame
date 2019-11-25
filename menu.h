@@ -11,9 +11,11 @@ using namespace sf;
 class Menu
 {
 private:
+	vector<string> S;
 	vector<Text> buttons;
 	Font font;
 	float x, y, screenX, screenY;
+	RenderWindow window;
 public:
 	Menu();
 	~Menu();
@@ -57,16 +59,25 @@ public:
 	**/
 	float getY();
 	/**
+	* Tạo tên nút trên Menu
+	*
+	* @note
+	*
+	* @param a tên của nút
+	*
+	* @return (float) x
+	**/
+	void setButtons(string a);
+	/**
 	* Tạo các nút trên Menu
 	*
 	* @note
 	*
-	* @param x hoành độ vị trí đầu của Menu
-	*        y tung độ vị trí đầu của Menu
+	* @param 
 	*
 	* @return (float) x
 	**/
-	void setMenu(float x, float y);
+	void setMenu();
 	/**
 	* Gán chiều dài của window
 	*
@@ -114,7 +125,7 @@ public:
 	*
 	* @return
 	**/
-	void setRenderWindow(RenderWindow &window);
+	void setRenderWindow();
 	/**
 	* Vẽ Menu lên màn hình window
 	*
@@ -124,7 +135,7 @@ public:
 	*
 	* @return
 	**/
-	void draw(RenderWindow &window);
+	void draw();
 	/**
 	* Xét Mouse có trên màn hình window hay không
 	*
@@ -135,7 +146,7 @@ public:
 	*
 	* @return (bool) True/False
 	**/
-	bool isTextClicked(Text text, RenderWindow &window);
+	bool isTextClicked(Text text);
 	/**
 	* Xử lý Mouse bấm trên Menu
 	*
@@ -145,7 +156,7 @@ public:
 	*
 	* @noreturn 
 	**/
-	void handleInput(RenderWindow &window);
+	void handleInput();
 	/**
 	* Trình chiếu window
 	*
@@ -155,7 +166,7 @@ public:
 	*
 	* @noreturn
 	**/
-	void windowDisplay(RenderWindow &window);
+	void windowDisplay();
 
 
 };
