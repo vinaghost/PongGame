@@ -1,5 +1,4 @@
 #include "Entity.h"
-
 Entity::Entity(RenderWindow* window) : shape(NULL), window(window) {}
 
 Entity::~Entity() {

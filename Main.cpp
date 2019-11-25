@@ -7,11 +7,11 @@ int main() {
 	//Code test
 
 	RenderWindow window(VideoMode(800, 600), "My window", Style::Default ^ Style::Resize);
-	Board b(200, 100, &window);
-	b.setX(30);
-	b.setY(30);
+	Board b(500, 400, &window);
+	b.setX(50);
+	b.setY(50);
 	b.setColor(255, 124, 0);
-	b.setBackgroundColor(0, 0, 0);
+	b.setBackgroundColor(0, 0, 255);
 
 	sf::Event event;
 	sf::Clock clock;
@@ -19,11 +19,10 @@ int main() {
 	Int64 timeInterval;
 	Ball ball(&window, &b);
 
-	ball.setup(40, 40, 20);
+	ball.setup(500, 200, 20);
 	ball.setBackgroundColor(0, 255, 0);
 
-	while (window.isOpen())
-	{
+	while (window.isOpen()) {
 		window.clear();
 		while (window.pollEvent(event)) {
 			//Xử lý khi người dùng nhấn X để thoát

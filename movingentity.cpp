@@ -1,5 +1,6 @@
 #include "movingentity.h"
 
+#include <iostream>
 MovingEntity::MovingEntity(RenderWindow* window, Board* b) : Entity(window), b(b) {
 }
 

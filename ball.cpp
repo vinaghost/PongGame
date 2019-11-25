@@ -1,5 +1,5 @@
 #include "ball.h"
-
+#include <iostream>
 Ball::Ball(RenderWindow* window, Board* b) : MovingEntity(window, b), idle(true) {
 	srand((unsigned int)time(NULL));
 	shape = new CircleShape;
@@ -19,10 +19,14 @@ bool Ball::getIdle() {
 void Ball::reflect(eDir dir) {
 	switch (dir) {
 	case LEFT:
+		v.x *= -1.0;
+		break;
 	case RIGHT:
 		v.x *= -1.0;
 		break;
 	case UP:
+		v.y *= -1.0;
+		break;
 	case DOWN:
 		v.y *= -1.0;
 		break;
@@ -35,7 +39,7 @@ void Ball::randomDirection() {
 		v = Vector2f(1.0, 1.0) * (float)initspeed;
 		break;
 	case 1:
-		v = Vector2f(-1.0, 1.0)*(float)initspeed;
+		v = Vector2f(-1.0, 1.0) * (float)initspeed;
 		break;
 	case 2:
 		v = Vector2f(1.0, -1.0)*(float)initspeed;
@@ -50,7 +54,7 @@ void Ball::speedUp(float percent) {
 	this->v *= (1 + percent);
 }
 eDir Ball::getWall() {
-	if (shape->getGlobalBounds().left <= b->getLeft()) {
+	if (shape->getGlobalBounds().left <= b->getLeft() + 1) {
 		return LEFT;
 	}
 
@@ -72,6 +76,7 @@ void Ball::update(Int64 elapsedTime) {
 
 	if (dir) {
 		reflect(dir);
+		speedUp(0.1);
 	}
 
 	MovingEntity::update(elapsedTime);
