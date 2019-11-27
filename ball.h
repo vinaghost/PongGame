@@ -12,13 +12,14 @@ enum eDir {
 class Ball : public MovingEntity {
 private:
 	bool idle;
+	const float radius;
 	const int initspeed = 2; //Pixel per frame
 
 public:
-	Ball(RenderWindow* window, Board* b);
+	Ball(RenderWindow* window, Board* b, float x, float y, float radius);
 	string getNameClass();
 
-	void setup(float x, float y, float radius);
+	void reset();
 
 	bool getIdle();
 

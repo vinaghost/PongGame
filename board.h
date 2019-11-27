@@ -2,8 +2,7 @@
 #include "entity.h"
 class Board : public Entity {
 public:
-	Board(float width, float height, RenderWindow* window);
-	virtual ~Board();
+	Board(RenderWindow* window, float x, float y, float width, float height);
 	/**
 	* Trả lại tên class
 	*

@@ -1,10 +1,9 @@
 #include "board.h"
 
-Board::Board(float width, float height, RenderWindow* window) : Entity(window) {
+Board::Board(RenderWindow* window, float x, float y, float width, float height) : Entity(window, x, y) {
 	shape = new RectangleShape(Vector2f(width, height));
-}
-
-Board::~Board() {
+	setX(x);
+	setY(y);
 }
 
 string Board::getNameClass() {

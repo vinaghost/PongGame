@@ -1,22 +1,26 @@
 #include "movingentity.h"
 
 #include <iostream>
-MovingEntity::MovingEntity(RenderWindow* window, Board* b) : Entity(window), b(b) {
+MovingEntity::MovingEntity(RenderWindow* window, Board* b, float x, float y) : Entity(window, x, y), b(b) {
 }
 
 MovingEntity::~MovingEntity() {
 }
 
+void MovingEntity::reset() {
+	setX(x);
+	setY(y);
+}
 void MovingEntity::setX(float x) {
 	if (x < this->b->getLeft()) x = this->b->getLeft();
-	else if (x > this->b->getRight()) x = this->b->getRight();
+	else if (x + this->shape->getLocalBounds().width > this->b->getRight()) x = this->b->getRight() - this->shape->getLocalBounds().width;
 
 	Entity::setX(x);
 }
 
 void MovingEntity::setY(float y) {
 	if (y < this->b->getTop()) y = this->b->getTop();
-	else if (y > this->b->getBottom()) y = this->b->getBottom();
+	else if (y + this->shape->getLocalBounds().height > this->b->getBottom()) y = this->b->getBottom() - this->shape->getLocalBounds().height;
 
 	Entity::setY(y);
 }

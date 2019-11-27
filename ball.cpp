@@ -1,17 +1,18 @@
 #include "ball.h"
 #include <iostream>
-Ball::Ball(RenderWindow* window, Board* b) : MovingEntity(window, b), idle(true) {
+Ball::Ball(RenderWindow* window, Board* b, float x, float y, float radius) : MovingEntity(window, b, x, y), idle(true), radius(radius) {
 	srand((unsigned int)time(NULL));
-	shape = new CircleShape;
+	shape = new CircleShape(radius);
+	setX(x);
+	setY(y);
 }
 
 string Ball::getNameClass() {
 	return "Ball";
 }
-void Ball::setup(float x, float y, float radius) {
-	static_cast<CircleShape*>(shape)->setRadius(radius);
-	setX(x);
-	setY(y);
+void Ball::reset() {
+	MovingEntity::reset();
+	v = { 0, 0 };
 }
 bool Ball::getIdle() {
 	return this->idle;
@@ -76,7 +77,7 @@ void Ball::update(Int64 elapsedTime) {
 
 	if (dir) {
 		reflect(dir);
-		speedUp(0.1);
+		speedUp(0.1f);
 	}
 
 	MovingEntity::update(elapsedTime);

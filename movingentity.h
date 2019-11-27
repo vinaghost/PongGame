@@ -11,8 +11,10 @@ protected:
 
 	Board* b;
 public:
-	MovingEntity(RenderWindow* window, Board* b);
+	MovingEntity(RenderWindow* window, Board* b, float x, float y);
 	virtual ~MovingEntity();
+
+	virtual void reset();
 
 	void setX(float x);
 	void setY(float y);

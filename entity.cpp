@@ -1,5 +1,5 @@
 #include "Entity.h"
-Entity::Entity(RenderWindow* window) : shape(NULL), window(window) {}
+Entity::Entity(RenderWindow* window, float x, float y) : shape(NULL), window(window), x(x), y(y) {}
 
 Entity::~Entity() {
 	delete shape;
@@ -39,7 +39,7 @@ void Entity::setBackgroundColor(int red, int green, int blue, int alpha) {
 	if (alpha < 0) alpha = 0;
 	else if (alpha > 255) alpha = 255;
 
-	shape->setFillColor(Color(green, red, blue, alpha));
+	shape->setFillColor(Color(red, green, blue, alpha));
 }
 
 float Entity::getX() {

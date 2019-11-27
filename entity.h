@@ -7,11 +7,13 @@ using std::string;
 
 class Entity {
 protected:
+	const float x;
+	const float y;
 	Shape* shape;
 	RenderWindow* window;
 
 public:
-	Entity(RenderWindow* window);
+	Entity(RenderWindow* window, float x, float y);
 
 	virtual ~Entity();
 
