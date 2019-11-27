@@ -8,7 +8,7 @@
 
 #include <iostream>
 
-Menu::Menu() {};
+Menu::Menu(RenderWindow* window, float x, float y): window(window), x(x), y(y) {};
 
 Menu::~Menu() {};
 
@@ -61,36 +61,11 @@ void Menu::setMenu()
 	//buttons[2].setString("Quit");
 }
 
-void Menu::setScreenX(float screenX)
-{
-	this->screenX = screenX;
-}
-
-void Menu::setScreenY(float screenY)
-{
-	this->screenY = screenY;
-}
-
-float Menu::getScreenX()
-{
-	return this->screenX;
-}
-
-float Menu::getScreenY()
-{
-	return this->screenY;
-}
-
-void Menu::setRenderWindow()
-{
-	window.create(VideoMode(screenX, screenY), "Pong", sf::Style::Titlebar | sf::Style::Close);
-}
-
 void Menu::draw()
 {
 	//draw text
 	for (auto x : buttons)
-		window.draw(x);
+		window->draw(x);
 }
 
 bool Menu::isTextClicked(Text text)
@@ -98,7 +73,7 @@ bool Menu::isTextClicked(Text text)
 	sf::IntRect rect(text.getPosition().x, text.getPosition().y, text.getGlobalBounds().width, text.getGlobalBounds().height);
 
 	//If mouse position is in the rectangle do whatever
-	if (rect.contains(Mouse::getPosition(window)))
+	if (rect.contains(Mouse::getPosition(*window)))
 		return true;
 
 
@@ -108,25 +83,23 @@ bool Menu::isTextClicked(Text text)
 
 void Menu::handleInput()
 {
-	while (window.isOpen())
+	while (window->isOpen())
 	{
 		Event event;
 
-		while (window.pollEvent(event))
+		while (window->pollEvent(event))
 		{
 			switch (event.type)
 			{
 				/* Close the window */
 			case Event::Closed:
-				window.close();
+				window->close();
 				break;
 
 			case sf::Event::KeyPressed:
 				if (event.key.code == sf::Keyboard::Escape)
 				{
-				
 					setMenu();
-					setRenderWindow();
 					draw();
 					windowDisplay();
 				}
@@ -161,13 +134,13 @@ void Menu::handleInput()
 					Text text;
 					text.setString("hello");
 					
-					window.create(VideoMode(800, 600), "hello");
-					window.draw(text);
-					window.display();
+					window->create(VideoMode(800, 600), "hello");
+					window->draw(text);
+					window->display();
 				}
 
 				else if (isTextClicked(buttons[2]))
-					window.close();
+					window->close();
 
 
 			}
@@ -177,5 +150,5 @@ void Menu::handleInput()
 
 void Menu::windowDisplay()
 {
-	window.display();
+	window->display();
 }

@@ -14,10 +14,10 @@ private:
 	vector<string> S;
 	vector<Text> buttons;
 	Font font;
-	float x, y, screenX, screenY;
-	RenderWindow window;
+	float x, y;
+	RenderWindow* window;
 public:
-	Menu();
+	Menu(RenderWindow* window, float x, float y);
 	~Menu();
 
 	/**
@@ -78,54 +78,6 @@ public:
 	* @return (float) x
 	**/
 	void setMenu();
-	/**
-	* Gán chiều dài của window
-	*
-	* @note
-	*
-	* @param screenX chiều dài
-	*
-	* @noreturn
-	**/
-	void setScreenX(float screenX);
-	/**
-	* Gán chiều rộng của window
-	*
-	* @note
-	*
-	* @param screenY chiều rộng
-	*
-	* @noreturn
-	**/
-	void setScreenY(float screenY);
-	/**
-	* Trả chiều dài của window
-	*
-	* @note
-	*
-	*
-	* @return (float) screenX
-	**/
-	float getScreenX();
-	/**
-	* Trả chiều rộng của window
-	*
-	* @note
-	*
-	*
-	* @return (float) screenY
-	**/
-	float getScreenY();
-	/**
-	* Tạo màn hình window
-	*
-	* @note
-	*
-	* @param window
-	*
-	* @return
-	**/
-	void setRenderWindow();
 	/**
 	* Vẽ Menu lên màn hình window
 	*
