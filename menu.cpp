@@ -124,7 +124,11 @@ void Menu::handleInput()
 			case sf::Event::KeyPressed:
 				if (event.key.code == sf::Keyboard::Escape)
 				{
-					window.close();
+				
+					setMenu();
+					setRenderWindow();
+					draw();
+					windowDisplay();
 				}
 				//else if (event.key.code == sf::Keyboard::Return)
 					//loadgame();
@@ -152,10 +156,11 @@ void Menu::handleInput()
 			{
 				if (isTextClicked(buttons[0]))
 				{
-					Text text;
-					text.setString("hello");
 					Font font;
 					font.loadFromFile("Resources/Montserrat-BlackItalic.ttf");
+					Text text;
+					text.setString("hello");
+					
 					window.create(VideoMode(800, 600), "hello");
 					window.draw(text);
 					window.display();
