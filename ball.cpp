@@ -1,10 +1,12 @@
 #include "ball.h"
 #include <iostream>
-Ball::Ball(RenderWindow* window, Board* b, float x, float y, float radius) : MovingEntity(window, b, x, y), idle(true), radius(radius) {
+Ball::Ball(RenderWindow* window, Board* b, float radius) : MovingEntity(window, b, b->getLeft() / 2 + b->getRight() / 2, b->getTop() / 2 + b->getBottom() / 2), idle(true), radius(radius) {
 	srand((unsigned int)time(NULL));
+
 	shape = new CircleShape(radius);
-	setX(x);
-	setY(y);
+
+	setX(b->getLeft() / 2 + b->getRight() / 2);
+	setY(b->getTop() / 2 + b->getBottom() / 2);
 }
 
 string Ball::getNameClass() {
@@ -90,7 +92,7 @@ void Ball::handleCollisions(std::vector<Entity*> others) {
 			collisionSide = Entity::getCollisionSide(*others.at(i));
 			if (collisionSide != sides::NONE) {
 				if (others.at(i)->getNameClass() == "Paddle") {
-					//speedUp(0.1f);
+					speedUp(0.1f);
 				}
 
 				reflect(collisionSide, dWall);

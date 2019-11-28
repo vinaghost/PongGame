@@ -17,7 +17,7 @@ int main() {
 	sf::Clock clock;
 
 	Int64 timeInterval;
-	Ball *ball = new Ball(&window, &b, 200, 200, 20);
+	Ball *ball = new Ball(&window, &b, 20);
 	ball->setBackgroundColor(0, 255, 0);
 
 	Paddle *p1 = new Paddle(&window, &b, 50, 50 + 400 / 2, 10, 100);

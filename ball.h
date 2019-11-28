@@ -2,15 +2,23 @@
 #include "movingentity.h"
 
 #include <vector>
+namespace winner {
+	enum side {
+		NONE,
+		LEFT,
+		RIGHT
+	};
+};
 
 class Ball : public MovingEntity {
 private:
 	bool idle;
+	winner::side winner;
 	const float radius;
 	const int initspeed = 2; //Pixel per frame
 
 public:
-	Ball(RenderWindow* window, Board* b, float x, float y, float radius);
+	Ball(RenderWindow* window, Board* b, float radius);
 	string getNameClass();
 
 	void reset();
