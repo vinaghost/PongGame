@@ -13,6 +13,7 @@ string Ball::getNameClass() {
 void Ball::reset() {
 	MovingEntity::reset();
 	v = { 0, 0 };
+	idle = true;
 }
 bool Ball::getIdle() {
 	return this->idle;

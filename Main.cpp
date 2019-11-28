@@ -19,8 +19,13 @@ int main() {
 	Int64 timeInterval;
 	Ball ball(&window, &b, 500, 200, 20);
 	ball.setBackgroundColor(0, 255, 0);
+
 	Paddle p1(&window, &b, 50, 50 + 400 / 2, 10, 100);
 	p1.setBackgroundColor(255, 0, 0);
+
+	Paddle p2(&window, &b, 550 - 10, 50 + 400 / 2, 10, 100);
+	p2.setBackgroundColor(255, 0, 0);
+
 	while (window.isOpen()) {
 		window.clear();
 		while (window.pollEvent(event)) {
@@ -40,8 +45,19 @@ int main() {
 				p1.stopMoving();
 			}
 
+			if (Keyboard::isKeyPressed(Keyboard::I)) {
+				p2.moveUp();
+			}
+			if (Keyboard::isKeyPressed(Keyboard::K)) {
+				p2.moveDown();
+			}
+			if (!Keyboard::isKeyPressed(Keyboard::I) && !Keyboard::isKeyPressed(Keyboard::K)) {
+				p2.stopMoving();
+			}
+
 			if (Keyboard::isKeyPressed(Keyboard::R)) {
 				p1.reset();
+				p2.reset();
 				ball.reset();
 			}
 		}
@@ -52,10 +68,12 @@ int main() {
 
 		ball.update(timeInterval);
 		p1.update(timeInterval);
+		p2.update(timeInterval);
 
 		b.draw();
 		ball.draw();
 		p1.draw();
+		p2.draw();
 
 		window.display();
 	}
