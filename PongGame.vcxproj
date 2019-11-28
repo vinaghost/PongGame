@@ -132,13 +132,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="game.cpp" />
+    <ClCompile Include="ball.cpp" />
+    <ClCompile Include="board.cpp" />
+    <ClCompile Include="entity.cpp" />
     <ClCompile Include="Main.cpp" />
-    <ClCompile Include="windows.cpp" />
+    <ClCompile Include="movingentity.cpp" />
+    <ClCompile Include="paddle.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="game.h" />
-    <ClInclude Include="windows.h" />
+    <ClInclude Include="ball.h" />
+    <ClInclude Include="board.h" />
+    <ClInclude Include="entity.h" />
+    <ClInclude Include="movingentity.h" />
+    <ClInclude Include="paddle.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
