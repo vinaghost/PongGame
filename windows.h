@@ -5,9 +5,6 @@
 #include <SFML/Graphics.hpp>
 
 using namespace sf;
-#define FPS 60.0
-
-double const mSPF = 1000000.0 / FPS;
 
 class Windows {
 protected:

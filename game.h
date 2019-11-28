@@ -4,14 +4,25 @@
 
 #include "windows.h"
 
+#include "board.h"
+#include "ball.h"
+#include "paddle.h"
+
 class Game : public Windows {
 private:
 	bool endGame;
-	/*Ball* ball;
-	Paddle* player1;
-	Paddle* player2;*/
+	Int64 timeInterval;
 	/*int nPlayer; //Số người chơi
 	string nameP1 = "PLAYER 1";*/
+
+	const int width = 500;
+	const int height = 400;
+	Board *b;
+	Ball* ball;
+	Paddle* p1;
+	Paddle* p2;
+
+	std::vector<Entity*> others;
 
 	void processEvents();
 	void update();
