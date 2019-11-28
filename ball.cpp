@@ -16,9 +16,13 @@ void Ball::reset() {
 	MovingEntity::reset();
 	v = { 0, 0 };
 	idle = true;
+	winner = winner::NONE;
 }
 bool Ball::getIdle() {
 	return this->idle;
+}
+winner::side Ball::getWinner() {
+	return this->winner;
 }
 void Ball::reflect(sides::Side side, bool dWall) {
 	if (dWall) {
@@ -83,8 +87,18 @@ void Ball::handleCollisions(std::vector<Entity*> others) {
 
 	collisionSide = getWallSide();
 	if (collisionSide != sides::NONE) {
+		switch (collisionSide) {
+		case sides::LEFT:
+			winner = winner::RIGHT;
+			return;
+		case sides::RIGHT:
+			winner = winner::LEFT;
+			return;
+		default:
+			reflect(collisionSide);
+		}
+
 		dWall = true;
-		reflect(collisionSide);
 	}
 
 	for (size_t i = 0; i < others.size(); i++) {

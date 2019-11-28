@@ -23,6 +23,7 @@ public:
 
 	void reset();
 
+	winner::side getWinner();
 	bool getIdle();
 
 	void reflect(sides::Side side, bool dWall = false);
