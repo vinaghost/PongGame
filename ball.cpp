@@ -1,12 +1,12 @@
 #include "ball.h"
 #include <iostream>
-Ball::Ball(RenderWindow* window, Board* b, float radius) : MovingEntity(window, b, b->getLeft() / 2 + b->getRight() / 2, b->getTop() / 2 + b->getBottom() / 2), idle(true), radius(radius) {
+Ball::Ball(RenderWindow* window, Board* b, float radius) : MovingEntity(window, b, b->getLeft() / 2 + b->getRight() / 2 - radius, b->getTop() / 2 + b->getBottom() / 2 - radius), idle(true), radius(radius) {
 	srand((unsigned int)time(NULL));
 
 	shape = new CircleShape(radius);
 
-	setX(b->getLeft() / 2 + b->getRight() / 2);
-	setY(b->getTop() / 2 + b->getBottom() / 2);
+	setX(b->getLeft() / 2 + b->getRight() / 2 - radius);
+	setY(b->getTop() / 2 + b->getBottom() / 2 - radius);
 }
 
 string Ball::getNameClass() {
