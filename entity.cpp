@@ -1,4 +1,4 @@
-#include "Entity.h"
+﻿#include "Entity.h"
 Entity::Entity(RenderWindow* window, float x, float y) : shape(NULL), window(window), x(x), y(y) {}
 
 Entity::~Entity() {
@@ -57,4 +57,30 @@ Color Entity::getBackgroundColor() {
 
 void Entity::draw() {
 	window->draw(*shape);
+}
+bool Entity::isIntersect(Entity &other) {
+	return this->shape->getGlobalBounds().intersects(other.shape->getGlobalBounds());
+}
+
+const sides::Side Entity::getCollisionSide(Entity &other) {
+	float amtRight, amtLeft, amtTop, amtBottom;
+
+	amtRight = this->shape->getGlobalBounds().left + this->shape->getGlobalBounds().width - other.shape->getGlobalBounds().left;
+	float lowest = abs(amtRight);
+
+	amtLeft = this->shape->getGlobalBounds().left - other.shape->getGlobalBounds().left + other.shape->getGlobalBounds().width;
+	if (lowest > abs(amtLeft)) lowest = abs(amtLeft);
+
+	amtTop = this->shape->getGlobalBounds().top - other.shape->getGlobalBounds().top + other.shape->getGlobalBounds().height;
+	if (lowest > abs(amtTop)) lowest = abs(amtTop);
+
+	amtBottom = this->shape->getGlobalBounds().top + this->shape->getGlobalBounds().height - other.shape->getGlobalBounds().top;
+	if (lowest > abs(amtBottom)) lowest = abs(amtBottom);
+
+	// nào nhỏ nhất thì mình đang đụng nó .-.
+
+	return lowest == abs(amtRight) ? sides::RIGHT :
+		lowest == abs(amtLeft) ? sides::LEFT :
+		lowest == abs(amtBottom) ? sides::BOTTOM :
+		sides::TOP;
 }

@@ -18,20 +18,22 @@ void Ball::reset() {
 bool Ball::getIdle() {
 	return this->idle;
 }
-void Ball::reflect(eDir dir) {
-	switch (dir) {
-	case LEFT:
+void Ball::reflect(sides::Side side, bool dWall) {
+	if (dWall) {
 		v.x *= -1.0;
-		break;
-	case RIGHT:
-		v.x *= -1.0;
-		break;
-	case UP:
 		v.y *= -1.0;
-		break;
-	case DOWN:
-		v.y *= -1.0;
-		break;
+	}
+	else {
+		switch (side) {
+		case sides::LEFT:
+		case sides::RIGHT:
+			v.x *= -1.0;
+			break;
+		case sides::TOP:
+		case sides::BOTTOM:
+			v.y *= -1.0;
+			break;
+		}
 	}
 }
 void Ball::randomDirection() {
@@ -55,31 +57,48 @@ void Ball::randomDirection() {
 void Ball::speedUp(float percent) {
 	this->v *= (1 + percent);
 }
-eDir Ball::getWall() {
+sides::Side Ball::getWallSide() {
 	if (shape->getGlobalBounds().left <= b->getLeft() + 1) {
-		return LEFT;
+		return sides::LEFT;
 	}
 
 	if (shape->getGlobalBounds().left + shape->getGlobalBounds().width >= b->getRight()) {
-		return RIGHT;
+		return sides::RIGHT;
 	}
 
 	if (shape->getGlobalBounds().top <= b->getTop()) {
-		return UP;
+		return sides::TOP;
 	}
 
 	if (shape->getGlobalBounds().top + shape->getGlobalBounds().height >= b->getBottom()) {
-		return DOWN;
+		return sides::BOTTOM;
 	}
-	return NONE;
+	return sides::NONE;
 }
-void Ball::update(Int64 elapsedTime) {
-	eDir dir = getWall();
+void Ball::handleCollisions(std::vector<Entity*> others) {
+	sides::Side collisionSide;
+	bool dWall = false;
 
-	if (dir) {
-		reflect(dir);
-		speedUp(0.1f);
+	collisionSide = getWallSide();
+	if (collisionSide != sides::NONE) {
+		dWall = true;
+		reflect(collisionSide);
 	}
 
+	for (size_t i = 0; i < others.size(); i++) {
+		if (this->isIntersect(*others.at(i))) {
+			collisionSide = Entity::getCollisionSide(*others.at(i));
+			if (collisionSide != sides::NONE) {
+				if (others.at(i)->getNameClass() == "Paddle") {
+					//speedUp(0.1f);
+				}
+
+				reflect(collisionSide, dWall);
+			}
+		}
+	}
+}
+
+void Ball::update(Int64 elapsedTime) {
 	MovingEntity::update(elapsedTime);
 }

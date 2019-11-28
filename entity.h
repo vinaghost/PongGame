@@ -5,6 +5,24 @@
 using namespace sf;
 using std::string;
 
+namespace sides {
+	enum Side {
+		TOP,
+		BOTTOM,
+		LEFT,
+		RIGHT,
+		NONE
+	};
+
+	inline Side getOppositeSide(Side side) {
+		return side == TOP ? BOTTOM :
+			side == BOTTOM ? TOP :
+			side == LEFT ? RIGHT :
+			side == RIGHT ? LEFT :
+			NONE;
+	}
+}
+
 class Entity {
 protected:
 	const float x;
@@ -113,4 +131,7 @@ public:
 	Color getBackgroundColor();
 
 	void draw();
+
+	bool isIntersect(Entity &other);
+	const sides::Side getCollisionSide(Entity &other);
 };

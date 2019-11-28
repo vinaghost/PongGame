@@ -1,13 +1,7 @@
 #pragma once
 #include "movingentity.h"
 
-enum eDir {
-	NONE,
-	LEFT,
-	UP,
-	DOWN,
-	RIGHT
-};
+#include <vector>
 
 class Ball : public MovingEntity {
 private:
@@ -23,12 +17,13 @@ public:
 
 	bool getIdle();
 
-	void reflect(eDir dir);
+	void reflect(sides::Side side, bool dWall = false);
 
 	void randomDirection();
 
 	void speedUp(float percent);
+	sides::Side getWallSide();
 
-	eDir getWall();
+	void handleCollisions(std::vector<Entity*> others);
 	void update(Int64 elapsedTime);
 };
