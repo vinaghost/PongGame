@@ -130,7 +130,7 @@ public:
 	**/
 	Color getBackgroundColor();
 
-	void draw();
+	virtual void draw();
 
 	bool isIntersect(Entity &other);
 	const sides::Side getCollisionSide(Entity &other);

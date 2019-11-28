@@ -4,6 +4,11 @@ Board::Board(RenderWindow* window, float x, float y, float width, float height) 
 	shape = new RectangleShape(Vector2f(width, height));
 	setX(x);
 	setY(y);
+
+	midLine.setSize(sf::Vector2f((float)2, (float)height));
+	midLine.setOrigin(midLine.getSize() / 2.f);
+	midLine.setPosition(sf::Vector2f(x + width / (float)2, y + height / (float)2));
+	midLine.setFillColor(sf::Color(255, 255, 255, 255 / 2));
 }
 
 string Board::getNameClass() {
@@ -23,4 +28,9 @@ float Board::getRight() {
 
 float Board::getBottom() {
 	return shape->getGlobalBounds().top + shape->getGlobalBounds().height;
+}
+
+void Board::draw() {
+	Entity::draw();
+	window->draw(midLine);
 }

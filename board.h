@@ -1,6 +1,8 @@
 ﻿#pragma once
 #include "entity.h"
 class Board : public Entity {
+private:
+	RectangleShape midLine;
 public:
 	Board(RenderWindow* window, float x, float y, float width, float height);
 	/**
@@ -51,4 +53,6 @@ public:
 	* @return (float) left
 	**/
 	float getLeft();
+
+	void draw();
 };
