@@ -15,13 +15,15 @@ protected:
 	RenderWindow renderWindow;
 	Event event;
 	Clock clock;
+
+	virtual void processEvents() = 0;
+	virtual void update() = 0;
+	virtual void render() = 0;
 public:
 	Windows(int width, int height);
 	virtual ~Windows();
 
-	virtual void draw() = 0;
-	virtual void run() = 0;
+	void run();
 };
-
 
 #endif

@@ -9,11 +9,7 @@ int main() {
 
 	Game g(800, 600);
 
-
-	while (g.isOpenWindow()) {
-		g.run();
-		g.reset();
-	}
+	g.run();
 
 	//Code test
 	return 0;
