@@ -1,8 +1,8 @@
 #pragma once
 
 namespace globals {
-	const int SCREEN_WIDTH = 600;
-	const int SCREEN_HEIGHT = 800;
+	const int SCREEN_WIDTH = 900;
+	const int SCREEN_HEIGHT = 700;
 }
 
 namespace winners {
