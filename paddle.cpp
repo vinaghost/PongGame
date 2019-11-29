@@ -1,9 +1,10 @@
 #include "paddle.h"
 
-Paddle::Paddle(RenderWindow* window, Board* b, float x, float y, float width, float height) : MovingEntity(window, b, x, y) {
-	shape = new RectangleShape(Vector2f(width, height));
-	setX(x);
-	setY(y);
+Paddle::Paddle(RenderWindow* window, Board* b, winners::side side) : MovingEntity(window, b, side == winners::LEFT ? b->getLeft() + 10 : b->getRight() - default_width - 10, b->getTop() / 2 + b->getBottom() / 2 - default_height / 2) {
+	shape = new RectangleShape(Vector2f(default_width, default_height));
+
+	setX(side == winners::LEFT ? b->getLeft() + 10 : b->getRight() - default_width - 10);
+	setY(b->getTop() / 2 + b->getBottom() / 2 - default_height / 2);
 }
 
 string Paddle::getNameClass() {

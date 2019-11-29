@@ -23,10 +23,11 @@ int main() {
 	Ball *ball = new Ball(&window, &b, 20);
 	ball->setBackgroundColor(0, 255, 0);
 
-	Paddle *p1 = new Paddle(&window, &b, 50, 50 + 400 / 2, 10, 100);
+	Paddle *p1 = new Paddle(&window, &b, winners::LEFT);
 	p1->setBackgroundColor(255, 0, 0);
 	others.push_back(p1);
-	Paddle *p2 = new Paddle(&window, &b, 550 - 10, 50 + 400 / 2, 10, 100);
+	Paddle *p2 = new Paddle(&window, &b, winners::RIGHT);
+
 	p2->setBackgroundColor(255, 0, 0);
 	others.push_back(p2);
 
