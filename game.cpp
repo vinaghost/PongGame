@@ -6,7 +6,7 @@ using std::vector;
 Game::Game(int width, int height) : Windows(width, height), endGame(false) {
 	srand((unsigned int)time(NULL));
 
-	b = new Board(&renderWindow, 50, 50, width, height);
+	b = new Board(&renderWindow);
 	b->setColor(255, 124, 0);
 	b->setBackgroundColor(0, 0, 255);
 

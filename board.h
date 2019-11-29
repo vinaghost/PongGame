@@ -3,8 +3,13 @@
 class Board : public Entity {
 private:
 	RectangleShape midLine;
+	const float default_width = 400.f;
+	const float default_height = 500.f;
+	const float default_x = 400.f - default_width / 2;
+	const float default_y = 50.f;
+
 public:
-	Board(RenderWindow* window, float x, float y, float width, float height);
+	Board(RenderWindow* window);
 	/**
 	* Trả lại tên class
 	*
