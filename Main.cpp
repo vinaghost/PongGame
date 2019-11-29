@@ -1,4 +1,5 @@
 ﻿//include Thư viện
+#include "globals.h"
 #include "board.h"
 #include "ball.h"
 #include "paddle.h"
@@ -7,10 +8,10 @@
 int main() {
 	//Code test
 	std::vector<Entity*> others;
-	RenderWindow window(VideoMode(800, 600), "My window", Style::Default ^ Style::Resize);
+	RenderWindow window(VideoMode(globals::SCREEN_WIDTH, globals::SCREEN_HEIGHT), "My window", Style::Default ^ Style::Resize);
 	const int width = 500;
 	const int height = 400;
-	Board b(&window, 50, 50, width, height);
+	Board b(&window);
 	//window.setKeyRepeatEnabled(false);
 	b.setColor(255, 124, 0);
 	b.setBackgroundColor(0, 0, 255);
