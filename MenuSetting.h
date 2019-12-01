@@ -38,11 +38,9 @@ private:
 		{"Toc do cua thanh khi di chuyen: "},
 	};
 	vector<int>itemSetting;
-	RenderWindow* window;
-	float x, y;
 	Event event;
 public:
-	MenuSetting(RenderWindow* window, float x, float y);
+	MenuSetting();
 	~MenuSetting();
 	/**
 	* Trả về MODE được chọn ở menu setting

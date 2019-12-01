@@ -1,7 +1,7 @@
 ﻿#include "MenuSetting.h"
 
 
-MenuSetting::MenuSetting(RenderWindow* window, float x, float y) : window(window), x(x), y(y), Menu(window, x, y)
+MenuSetting::MenuSetting() : Menu(window, x, y)
 {
 	string a, b;
 	for (int item = 0; item < SAVE; item++)

@@ -1,6 +1,6 @@
 ﻿#include "Menu.h"
 
-#include "MenuSetting.h"
+
 
 #include "Utils.h"
 
@@ -61,6 +61,7 @@ void Menu::setMenu(int distance)
 	//buttons[0].setString("Play Game");
 	//buttons[1].setString("Options");
 	//buttons[2].setString("Quit");
+	
 }
 
 void Menu::draw()
@@ -68,6 +69,7 @@ void Menu::draw()
 	//draw text
 	for (auto x : buttons)
 		window->draw(x);
+	window->display();
 }
 
 bool Menu::isTextClicked(Text text)
