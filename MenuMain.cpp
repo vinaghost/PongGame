@@ -10,76 +10,17 @@
 
 
 
-MenuMain::MenuMain(RenderWindow* window, float x, float y) : window(window), x(x), y(y) {};
-
-void MenuMain::setX(float x)
-{
-	this->x = x;
-}
-
-void MenuMain::setY(float y)
-{
-	this->y = y;
-}
-
-float MenuMain::getX()
-{
-	return this->x;
-}
-
-float MenuMain::getY()
-{
-	return this->y;
-}
-
-void MenuMain::setButtons(string a)
-{
-	S.push_back(a);
-}
-
-void MenuMain::setMenu(int distance)
-{
-	Text text;
-	font.loadFromFile("Resources/Montserrat-BlackItalic.ttf");
-	text.setFont(font);
-	text.setPosition(x, y);
-
-	//set positions of things
-	for (int i = 0; i < S.size(); i++)
-	{
-		buttons.push_back(text);
-		buttons[i].setPosition(text.getPosition().x, text.getPosition().y + i * distance);
-		buttons[i].setString(S[i]);
-	}
-
-}
-
-void MenuMain::draw()
-{
-	//draw text
-	for (auto x : buttons)
-		window->draw(x);
-}
-
-bool MenuMain::isTextClicked(Text text)
-{
-	sf::IntRect rect(text.getPosition().x, text.getPosition().y, text.getGlobalBounds().width, text.getGlobalBounds().height);
-
-	//If mouse position is in the rectangle do whatever
-	if (rect.contains(Mouse::getPosition(*window)))
-		return true;
-
-
-	//Otherwise, don't do anything
-	return false;
-}
-
-
-void MenuMain::show()
+MenuMain::MenuMain(RenderWindow* window, float x, float y) : Menu(window,x,y) 
 {
 	this->setButtons("Play Game");
 	this->setButtons("Options");
 	this->setButtons("Exit");
+};
+
+
+void MenuMain::show()
+{
+	
 	this->setMenu(100);
 	this->draw();
 	window->display();

@@ -69,7 +69,7 @@ void Menu::draw()
 	//draw text
 	for (auto x : buttons)
 		window->draw(x);
-	window->display();
+	
 }
 
 bool Menu::isTextClicked(Text text)
