@@ -1,5 +1,7 @@
 ﻿#include "Menu.h"
 
+#include "MenuSetting.h"
+
 #include "Utils.h"
 
 #include "SFML/Graphics.hpp"
@@ -32,14 +34,14 @@ float Menu::getY()
 	return this->y;
 }
 
-void Menu::setButtons(string a)
+void Menu::setButtons( string a)
 {
 	S.push_back(a);
 }
 
-void Menu::setMenu()
+void Menu::setMenu(int distance)
 {
-	sf::Text text;
+	Text text;
 	font.loadFromFile("Resources/Montserrat-BlackItalic.ttf");
 	text.setFont(font);
 	text.setPosition(x, y);
@@ -51,7 +53,7 @@ void Menu::setMenu()
 	for (int i = 0; i < S.size(); i++)
 	{
 		buttons.push_back(text);
-		buttons[i].setPosition(text.getPosition().x, text.getPosition().y + i * 100);
+		buttons[i].setPosition(text.getPosition().x, text.getPosition().y + i * distance);
 		buttons[i].setString(S[i]);
 	}
 
@@ -81,74 +83,3 @@ bool Menu::isTextClicked(Text text)
 	return false;
 }
 
-void Menu::handleInput()
-{
-	while (window->isOpen())
-	{
-		Event event;
-
-		while (window->pollEvent(event))
-		{
-			switch (event.type)
-			{
-				/* Close the window */
-			case Event::Closed:
-				window->close();
-				break;
-
-			case sf::Event::KeyPressed:
-				if (event.key.code == sf::Keyboard::Escape)
-				{
-					setMenu();
-					draw();
-					windowDisplay();
-				}
-				//else if (event.key.code == sf::Keyboard::Return)
-					//loadgame();
-				break;
-
-				//check if text is hovered over
-			/*case sf::Event::MouseMoved:
-				if (isTextClicked(buttons[0],window))
-					buttons[0].setColor(sf::Color::Red);
-				else
-					buttons[0].setColor(sf::Color::White);
-				if (isTextClicked(buttons[1], window))
-					buttons[1].setColor(sf::Color::Red);
-				else
-					buttons[1].setColor(sf::Color::White);
-				if (isTextClicked(buttons[2], window))
-					buttons[2].setColor(sf::Color::Red);
-				else
-					buttons[2].setColor(sf::Color::White);
-				break;
-			}*/
-			}
-			//check if text is clicked.
-			if (Mouse::isButtonPressed(sf::Mouse::Left))
-			{
-				if (isTextClicked(buttons[0]))
-				{
-					Font font;
-					font.loadFromFile("Resources/Montserrat-BlackItalic.ttf");
-					Text text;
-					text.setString("hello");
-					
-					window->create(VideoMode(800, 600), "hello");
-					window->draw(text);
-					window->display();
-				}
-
-				else if (isTextClicked(buttons[2]))
-					window->close();
-
-
-			}
-		}
-	}
-}
-
-void Menu::windowDisplay()
-{
-	window->display();
-}

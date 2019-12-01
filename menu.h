@@ -6,16 +6,16 @@
 using namespace std;
 using namespace sf;
 
-#define NUM_BUTTONS 3
 
 class Menu
 {
-private:
+protected:
 	vector<string> S;
 	vector<Text> buttons;
 	Font font;
 	float x, y;
 	RenderWindow* window;
+	Event event;
 public:
 	Menu(RenderWindow* window, float x, float y);
 	~Menu();
@@ -77,7 +77,7 @@ public:
 	*
 	* @return (float) x
 	**/
-	void setMenu();
+	void setMenu(int distance);
 	/**
 	* Vẽ Menu lên màn hình window
 	*
@@ -99,26 +99,5 @@ public:
 	* @return (bool) True/False
 	**/
 	bool isTextClicked(Text text);
-	/**
-	* Xử lý Mouse bấm trên Menu
-	*
-	* @note
-	*
-	* @param window
-	*
-	* @noreturn 
-	**/
-	void handleInput();
-	/**
-	* Trình chiếu window
-	*
-	* @note
-	*
-	* @param window
-	*
-	* @noreturn
-	**/
-	void windowDisplay();
-
 
 };

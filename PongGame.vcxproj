@@ -134,10 +134,14 @@
   <ItemGroup>
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="menu.cpp" />
+    <ClCompile Include="MenuMain.cpp" />
+    <ClCompile Include="MenuSetting.cpp" />
     <ClCompile Include="Utils.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="menu.h" />
+    <ClInclude Include="MenuMain.h" />
+    <ClInclude Include="MenuSetting.h" />
     <ClInclude Include="Utils.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

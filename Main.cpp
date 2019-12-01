@@ -1,4 +1,6 @@
-﻿#include "menu.h"
+﻿//#include "MenuMain.h"
+#include "MenuMain.h"
+#include "MenuSetting.h"
 #include "Utils.h"
 //#include "Utils.h"
 
@@ -18,14 +20,11 @@ int main() {
 	const int screenX = 800;
 	const int screenY = 600;
 	RenderWindow window(VideoMode(800, 600), "My window", Style::Default ^ Style::Resize);
-	Menu menu(&window, 100, 100);
-	menu.setButtons("Play Game");
-	menu.setButtons("Options");
-	menu.setButtons("Exit");
-	menu.setMenu();
-	menu.draw();
-	menu.windowDisplay();
-	menu.handleInput();
-	
+	MenuMain main(&window, 100, 100);
+	main.show();
+	while (window.isOpen())
+	{
+		main.update();
+	}
 	return EXIT_SUCCESS;
 }
