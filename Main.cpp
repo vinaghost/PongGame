@@ -45,6 +45,8 @@ int main() {
 	//WinnerName.setPosition(100, 100);
 
 	WinnerName.setString(L"Á à a");
+
+	bool newgame = true;
 	while (window.isOpen()) {
 		window.clear();
 		while (window.pollEvent(event)) {
@@ -53,7 +55,10 @@ int main() {
 				window.close();
 			//Xử lý người dùng nhấn phím bất kỳ để chạy paddle
 			if (event.type == Event::EventType::KeyPressed)
-				if (ball->getIdle()) ball->randomDirection();
+				if (ball->getIdle() && newgame) {
+					ball->randomDirection();
+					newgame = false;
+				}
 		}
 
 		if (Keyboard::isKeyPressed(Keyboard::W)) {
@@ -80,6 +85,7 @@ int main() {
 			p1->reset();
 			p2->reset();
 			ball->reset();
+			newgame = true;
 		}
 
 		//Tính khoảng thời gian render giữa 2 frame

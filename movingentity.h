@@ -19,5 +19,7 @@ public:
 	void setX(float x);
 	void setY(float y);
 
+	Vector2f getV();
+
 	virtual void update(Int64 elapsedTime);
 };

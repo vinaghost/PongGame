@@ -1,6 +1,7 @@
 #include "ball.h"
+#include "paddle.h"
 #include <iostream>
-Ball::Ball(RenderWindow* window, Board* b, float radius) : MovingEntity(window, b, b->getLeft() / 2 + b->getRight() / 2 - radius, b->getTop() / 2 + b->getBottom() / 2 - radius), idle(true), radius(radius) {
+Ball::Ball(RenderWindow* window, Board* b, float radius) : MovingEntity(window, b, b->getLeft() / 2 + b->getRight() / 2 - radius, b->getTop() / 2 + b->getBottom() / 2 - radius), idle(true), radius(radius), sticker(NULL) {
 	srand((unsigned int)time(NULL));
 
 	shape = new CircleShape(radius);
@@ -106,7 +107,14 @@ void Ball::handleCollisions(std::vector<Entity*> others) {
 			collisionSide = Entity::getCollisionSide(*others.at(i));
 			if (collisionSide != sides::NONE) {
 				if (others.at(i)->getNameClass() == "Paddle") {
-					speedUp(0.1f);
+					if (!idle) {
+						idle = true;
+						speedUp(0.1f);
+						v_old = v;
+						sticker = others.at(i);
+						clocker.restart();
+						nextTime = clocker.getElapsedTime().asMilliseconds() + 5000;
+					}
 				}
 
 				reflect(collisionSide, dWall);
@@ -116,5 +124,15 @@ void Ball::handleCollisions(std::vector<Entity*> others) {
 }
 
 void Ball::update(Int64 elapsedTime) {
+	if (idle && sticker) {
+		this->v = static_cast<Paddle*>(sticker)->getV();
+
+		if (nextTime < clocker.getElapsedTime().asMilliseconds()) {
+			this->v = v_old;
+			idle = false;
+			sticker = NULL;
+		}
+	}
+
 	MovingEntity::update(elapsedTime);
 }

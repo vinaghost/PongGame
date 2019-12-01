@@ -17,6 +17,11 @@ private:
 	const float radius;
 	const int initspeed = 2; //Pixel per frame
 
+	Vector2f v_old;
+	Entity* sticker;
+	Clock clocker;
+	Int32 nextTime;
+
 public:
 	Ball(RenderWindow* window, Board* b, float radius);
 	string getNameClass();
