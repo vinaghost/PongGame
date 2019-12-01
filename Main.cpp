@@ -1,15 +1,15 @@
-﻿//include Thư viện
+﻿//#include "MenuMain.h"
+#include "MenuMain.h"
+#include "MenuSetting.h"
+#include "Utils.h"
+//#include "Utils.h"
 
-#include "game.h"
-
-//include Thư viện
+#include <iostream>
+using namespace std;
+using namespace sf;
 
 int main() {
 	//Code test
-
-	Game g(800, 600);
-
-	g.run();
 
 	//Code test
 	return 0;
