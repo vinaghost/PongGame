@@ -10,7 +10,7 @@
 
 #include <iostream>
 
-Menu::Menu(RenderWindow* window, float x, float y): window(window), x(x), y(y) {};
+Menu::Menu(RenderWindow* window, float x, float y) : window(window), x(x), y(y) {};
 
 Menu::~Menu() {};
 
@@ -34,7 +34,7 @@ float Menu::getY()
 	return this->y;
 }
 
-void Menu::setButtons( string a)
+void Menu::setButtons(string a)
 {
 	S.push_back(a);
 }

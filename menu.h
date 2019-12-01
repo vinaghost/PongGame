@@ -15,7 +15,7 @@ protected:
 	Font font;
 	float x, y;
 	RenderWindow* window;
-	Event event;
+	
 public:
 	Menu(RenderWindow* window, float x, float y);
 	~Menu();
@@ -73,7 +73,7 @@ public:
 	*
 	* @note
 	*
-	* @param 
+	* @param
 	*
 	* @return (float) x
 	**/
@@ -94,10 +94,10 @@ public:
 	* @note
 	*
 	* @param window
-	* @param text 
+	* @param text
 	*
 	* @return (bool) True/False
 	**/
 	bool isTextClicked(Text text);
-
+	
 };

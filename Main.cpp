@@ -1,4 +1,4 @@
-﻿//#include "MenuMain.h"
+﻿
 #include "MenuMain.h"
 #include "MenuSetting.h"
 #include "Utils.h"
@@ -22,9 +22,20 @@ int main() {
 	RenderWindow window(VideoMode(800, 600), "My window", Style::Default ^ Style::Resize);
 	MenuMain main(&window, 100, 100);
 	main.show();
+	int choice;
 	while (window.isOpen())
 	{
-		main.update();
+           main.update();
+		   choice = main.getChoice();
+		   cout << choice << endl;
+		   if (choice == 1)
+		   {
+			   
+		   }
+		   else if (choice == 2)
+		   {
+			   window.close();
+		   }
 	}
 	return EXIT_SUCCESS;
 }

@@ -32,7 +32,7 @@ private:
 	};
 	char constNameSettings[5][1][40] = {
 		{"Mode: "},
-	    {"Do dai cua thanh: "},
+		{"Do dai cua thanh: "},
 		{"Do to cua san choi: "},
 		{"Toc do cua banh khi bat dau: "},
 		{"Toc do cua thanh khi di chuyen: "},
@@ -40,7 +40,7 @@ private:
 	vector<int>itemSetting;
 	RenderWindow* window;
 	float x, y;
-	
+	Event event;
 public:
 	MenuSetting(RenderWindow* window, float x, float y);
 	~MenuSetting();
@@ -94,7 +94,6 @@ public:
 	void update();
 
 	void changeItem(int item);
-	
+
 	void show();
 };
-

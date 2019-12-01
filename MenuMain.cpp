@@ -62,6 +62,7 @@ void MenuMain::update()
 		{
 			if (isTextClicked(buttons[0]))
 			{
+				this->choice = 0;
 				font.loadFromFile("Resources/Montserrat-BlackItalic.ttf");
 				Text text;
 				text.setFont(font);
@@ -72,14 +73,22 @@ void MenuMain::update()
 
 			else if (isTextClicked(buttons[1]))
 			{
-				
+				this->choice = 1;
 			}
 
 			else if (isTextClicked(buttons[2]))
-				window->close();
+			{
+                this->choice = 2;
+			}
+				
+          
 
 
 		}
 	}
+		
 }
 
+int MenuMain::getChoice() {
+	return this->choice;
+}

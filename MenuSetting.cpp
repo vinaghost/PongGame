@@ -1,7 +1,7 @@
 ﻿#include "MenuSetting.h"
 
 
-MenuSetting::MenuSetting(RenderWindow* window, float x, float y): window(window), x(x), y(y), Menu(window, x, y)
+MenuSetting::MenuSetting(RenderWindow* window, float x, float y) : window(window), x(x), y(y), Menu(window, x, y)
 {
 	string a, b;
 	for (int item = 0; item < SAVE; item++)
@@ -100,11 +100,11 @@ void MenuSetting::update()
 		case sf::Event::KeyPressed:
 			if (event.key.code == sf::Keyboard::Escape)
 			{
-				
+				return;
 			}
 			break;
 		}
-		
+
 		//check if text is clicked.
 		if (Mouse::isButtonPressed(sf::Mouse::Left))
 		{
@@ -153,7 +153,7 @@ void MenuSetting::update()
 			}
 			else if (isTextClicked(buttons[5]))
 			{
-				
+				return;
 			}
 		}
 	}
