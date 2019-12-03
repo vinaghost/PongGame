@@ -8,6 +8,8 @@ private:
 
 	const float default_v = 15;
 
+	winners::side side;
+
 public:
 	Paddle(RenderWindow* window, Board* b, winners::side side);
 	string getNameClass();
@@ -15,4 +17,6 @@ public:
 	void moveUp();
 	void moveDown();
 	void stopMoving();
+
+	winners::side getSide();
 };

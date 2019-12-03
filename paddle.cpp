@@ -1,6 +1,6 @@
 #include "paddle.h"
 
-Paddle::Paddle(RenderWindow* window, Board* b, winners::side side) : MovingEntity(window, b, side == winners::LEFT ? b->getLeft() + 10 : b->getRight() - default_width - 10, b->getTop() / 2 + b->getBottom() / 2 - default_height / 2) {
+Paddle::Paddle(RenderWindow* window, Board* b, winners::side side) : MovingEntity(window, b, side == winners::LEFT ? b->getLeft() + 10 : b->getRight() - default_width - 10, b->getTop() / 2 + b->getBottom() / 2 - default_height / 2), side(side) {
 	shape = new RectangleShape(Vector2f(default_width, default_height));
 
 	setX(side == winners::LEFT ? b->getLeft() + 10 : b->getRight() - default_width - 10);
@@ -21,4 +21,8 @@ void Paddle::moveDown() {
 
 void Paddle::stopMoving() {
 	this->v = { 0 , 0 };
+}
+
+winners::side Paddle::getSide() {
+	return side;
 }

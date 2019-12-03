@@ -9,18 +9,18 @@ namespace winner {
 		RIGHT
 	};
 };
-
 class Ball : public MovingEntity {
 private:
-	bool idle;
 	winner::side winner;
 	const float radius;
 	const int initspeed = 2; //Pixel per frame
+	bool idle;
 
 	Vector2f v_old;
 	Entity* sticker;
+
 	Clock clocker;
-	Int32 nextTime;
+	Time nextTime;
 
 public:
 	Ball(RenderWindow* window, Board* b, float radius);
@@ -38,6 +38,10 @@ public:
 	void speedUp(float percent);
 	sides::Side getWallSide();
 
+	const sides::Side getCollisionSide(Entity &other);
 	void handleCollisions(std::vector<Entity*> others);
 	void update(Int64 elapsedTime);
+
+	void unfreeze();
+	void freeze(Time time, Entity* sticker);
 };

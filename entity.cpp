@@ -62,25 +62,17 @@ bool Entity::isIntersect(Entity &other) {
 	return this->shape->getGlobalBounds().intersects(other.shape->getGlobalBounds());
 }
 
-const sides::Side Entity::getCollisionSide(Entity &other) {
-	float amtRight, amtLeft, amtTop, amtBottom;
+float Entity::getBottom() {
+	return this->shape->getGlobalBounds().top + this->shape->getGlobalBounds().height;
+}
 
-	amtRight = this->shape->getGlobalBounds().left + this->shape->getGlobalBounds().width - other.shape->getGlobalBounds().left;
-	float lowest = abs(amtRight);
+float Entity::getRight() {
+	return this->shape->getGlobalBounds().left + this->shape->getGlobalBounds().width;
+}
+float Entity::getLeft() {
+	return getX();
+}
 
-	amtLeft = this->shape->getGlobalBounds().left - other.shape->getGlobalBounds().left + other.shape->getGlobalBounds().width;
-	if (lowest > abs(amtLeft)) lowest = abs(amtLeft);
-
-	amtTop = this->shape->getGlobalBounds().top - other.shape->getGlobalBounds().top + other.shape->getGlobalBounds().height;
-	if (lowest > abs(amtTop)) lowest = abs(amtTop);
-
-	amtBottom = this->shape->getGlobalBounds().top + this->shape->getGlobalBounds().height - other.shape->getGlobalBounds().top;
-	if (lowest > abs(amtBottom)) lowest = abs(amtBottom);
-
-	// nào nhỏ nhất thì mình đang đụng nó .-.
-
-	return lowest == abs(amtRight) ? sides::RIGHT :
-		lowest == abs(amtLeft) ? sides::LEFT :
-		lowest == abs(amtBottom) ? sides::BOTTOM :
-		sides::TOP;
+float Entity::getTop() {
+	return getY();
 }

@@ -4,10 +4,13 @@
 #include "ball.h"
 #include "paddle.h"
 //include Thư viện
-
+#include <iostream>
+using std::cout;
 int main() {
 	//Code test
+
 	std::vector<Entity*> others;
+
 	RenderWindow window(VideoMode(globals::SCREEN_WIDTH, globals::SCREEN_HEIGHT), "My window", Style::Default ^ Style::Resize);
 	const int width = 500;
 	const int height = 400;
@@ -98,8 +101,8 @@ int main() {
 		else {
 			p1->update(timeInterval);
 			p2->update(timeInterval);
-			ball->handleCollisions(others);
 			ball->update(timeInterval);
+			ball->handleCollisions(others);
 
 			b.draw();
 			ball->draw();
