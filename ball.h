@@ -31,6 +31,7 @@ public:
 	void randomDirection();
 
 	void speedUp(float percent);
+	void speedDown(float percent);
 	sides::Side getWallSide();
 
 	void handleCollisions(std::vector<Entity*> others);

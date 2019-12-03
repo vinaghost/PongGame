@@ -135,6 +135,9 @@
     <ClCompile Include="ball.cpp" />
     <ClCompile Include="board.cpp" />
     <ClCompile Include="entity.cpp" />
+    <ClCompile Include="freezeBall_item.cpp" />
+    <ClCompile Include="Item.cpp" />
+    <ClCompile Include="ItemManager.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="movingentity.cpp" />
     <ClCompile Include="paddle.cpp" />
@@ -143,6 +146,9 @@
     <ClInclude Include="ball.h" />
     <ClInclude Include="board.h" />
     <ClInclude Include="entity.h" />
+    <ClInclude Include="freezeBall_item.h" />
+    <ClInclude Include="Item.h" />
+    <ClInclude Include="ItemManager.h" />
     <ClInclude Include="movingentity.h" />
     <ClInclude Include="paddle.h" />
   </ItemGroup>

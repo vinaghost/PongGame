@@ -3,7 +3,12 @@
 #include "board.h"
 #include "ball.h"
 #include "paddle.h"
+#include "freezeBall_item.h"
+
+
 //include Thư viện
+
+
 
 int main() {
 	//Code test
@@ -22,6 +27,9 @@ int main() {
 	Int64 timeInterval;
 	Ball *ball = new Ball(&window, &b, 20);
 	ball->setBackgroundColor(0, 255, 0);
+
+	freezeBall_item item(&window, &b, 10);
+	item.setBackgroundColor(0, 250, 0);
 
 	Paddle *p1 = new Paddle(&window, &b, winners::LEFT);
 	p1->setBackgroundColor(255, 0, 0);
@@ -42,7 +50,7 @@ int main() {
 
 	sf::FloatRect bound1(WinnerName.getLocalBounds());
 	WinnerName.setPosition(width / 2 - (bound1.left + bound1.width / 2), height / 2 - (bound1.top + bound1.height / 2));
-	//WinnerName.setPosition(100, 100);
+	WinnerName.setPosition(100, 100);
 
 	WinnerName.setString(L"Á à a");
 	while (window.isOpen()) {
@@ -97,6 +105,8 @@ int main() {
 
 			b.draw();
 			ball->draw();
+			item.draw();
+			item.active(ball);
 			p1->draw();
 			p2->draw();
 		}
