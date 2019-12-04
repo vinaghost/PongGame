@@ -1,7 +1,5 @@
-﻿
-#include "MenuMain.h"
+﻿#include "MenuMain.h"
 
-#include "Utils.h"
 //#include "Utils.h"
 
 //#include <SFML\Window.hpp>
@@ -15,7 +13,6 @@
 using namespace std;
 using namespace sf;
 
-
 int main() {
 	const int screenX = 800;
 	const int screenY = 600;
@@ -25,17 +22,16 @@ int main() {
 	int choice;
 	while (window.isOpen())
 	{
-           main.update();
-		   choice = main.getChoice();
-		   cout << choice << endl;
-		   if (choice == 1)
-		   {
-			   
-		   }
-		   else if (choice == 2)
-		   {
-			   window.close();
-		   }
+		main.update();
+		choice = main.getChoice();
+		cout << choice << endl;
+		if (choice == 1)
+		{
+		}
+		else if (choice == 2)
+		{
+			window.close();
+		}
 	}
 	return EXIT_SUCCESS;
 }
