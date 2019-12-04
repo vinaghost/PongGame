@@ -3,8 +3,10 @@
 
 using namespace sf;
 enum {
+	EXIT,
 	MAIN_MENU,
-	PlAY_GAME,
+	IN_GAME,
+	PAUSE
 };
 class Screen {
 protected:
@@ -14,9 +16,10 @@ protected:
 	virtual void processEvents() = 0;
 	virtual void update() = 0;
 	virtual void render() = 0;
+	virtual void reset() = 0;
 public:
 	Screen(RenderWindow* window);
 	virtual void setWindow(RenderWindow* window) = 0;
-	int run();
+	int run(bool reset = 0);
 	virtual ~Screen();
 };

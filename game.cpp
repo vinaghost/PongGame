@@ -3,7 +3,7 @@
 
 using std::vector;
 
-Game::Game(RenderWindow* window) : Screen(window), endGame(false) {
+Game::Game(RenderWindow* window) : Screen(window), newGame(true), endGame(false) {
 	srand((unsigned int)time(NULL));
 
 	b = new Board(window);
@@ -13,16 +13,13 @@ Game::Game(RenderWindow* window) : Screen(window), endGame(false) {
 	ball = new Ball(window, b, 20);
 	ball->setBackgroundColor(0, 255, 0);
 
-	p1 = new Paddle(window, b, 50, 50 + 400 / 2, 10, 100);
+	p1 = new Paddle(window, b, winners::LEFT);
 	p1->setBackgroundColor(255, 0, 0);
 	others.push_back(p1);
 
-	p2 = new Paddle(window, b, 550 - 10, 50 + 400 / 2, 10, 100);
+	p2 = new Paddle(window, b, winners::RIGHT);
 	p2->setBackgroundColor(255, 0, 0);
 	others.push_back(p2);
-
-	/*nPlayer = n;
-	if (n == 1) nameP1 = "BOT";*/
 }
 
 Game::~Game() {
@@ -38,7 +35,10 @@ void Game::processEvents() {
 			window->close();
 		//Xử lý người dùng nhấn phím bất kỳ để chạy paddle
 		if (event.type == Event::EventType::KeyPressed)
-			if (ball->getIdle()) ball->randomDirection();
+			if (ball->getIdle() && newGame) {
+				ball->randomDirection();
+				newGame = false;
+			}
 	}
 	if (Keyboard::isKeyPressed(Keyboard::W)) {
 		p1->moveUp();
@@ -61,9 +61,11 @@ void Game::processEvents() {
 	}
 
 	if (Keyboard::isKeyPressed(Keyboard::R)) {
-		p1->reset();
-		p2->reset();
-		ball->reset();
+		reset();
+	}
+	if (Keyboard::isKeyPressed(Keyboard::Escape)) {
+		nextScreen = PAUSE;
+		loop = false;
 	}
 }
 void Game::update() {
@@ -72,12 +74,23 @@ void Game::update() {
 
 	p1->update(timeInterval);
 	p2->update(timeInterval);
-	ball->handleCollisions(others);
 	ball->update(timeInterval);
+	ball->handleCollisions(others);
 }
 void Game::render() {
 	b->draw();
 	ball->draw();
 	p1->draw();
 	p2->draw();
+}
+void Game::reset() {
+	p1->reset();
+	p2->reset();
+	ball->reset();
+
+	newGame = true;
+}
+
+void Game::setWindow(RenderWindow* window) {
+	this->window = window;
 }

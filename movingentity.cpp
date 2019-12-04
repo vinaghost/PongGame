@@ -25,6 +25,9 @@ void MovingEntity::setY(float y) {
 	Entity::setY(y);
 }
 
+Vector2f MovingEntity::getV() {
+	return v;
+}
 void MovingEntity::update(Int64 elapsedTime) {
 	setX(getX() + v.x * elapsedTime / mSPF);
 	setY(getY() + v.y * elapsedTime / mSPF);

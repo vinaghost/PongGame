@@ -21,10 +21,18 @@ void MainMenu::update() {
 	int choice = mainMenu->getChoice();
 	switch (choice) {
 	case 0:
-		nextScreen = 1;
+		nextScreen = IN_GAME;
+	case 1:
+		nextScreen = EXIT;
+		break;
+	default:
+		nextScreen = -1;
+		break
 	}
 	if (nextScreen != -1) loop = false;
 }
 void MainMenu::render() {
 	this->mainMenu->draw();
+}
+void MainMenu::reset() {
 }

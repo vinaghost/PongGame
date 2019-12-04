@@ -9,6 +9,7 @@ protected:
 	void processEvents();
 	void update();
 	void render();
+	void reset();
 public:
 	MainMenu(RenderWindow* window);
 	virtual ~MainMenu();

@@ -13,6 +13,7 @@ private:
 	Event event;
 	Clock clock;
 	bool endGame;
+	bool newGame;
 	Int64 timeInterval;
 	/*int nPlayer; //Số người chơi
 	string nameP1 = "PLAYER 1";*/
@@ -27,6 +28,7 @@ protected:
 	void processEvents();
 	void update();
 	void render();
+	void reset();
 public:
 	Game(RenderWindow* window);
 	virtual ~Game();
