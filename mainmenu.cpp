@@ -27,7 +27,7 @@ void MainMenu::update() {
 		break;
 	default:
 		nextScreen = -1;
-		break
+		break;
 	}
 	if (nextScreen != -1) loop = false;
 }

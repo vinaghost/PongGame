@@ -3,18 +3,17 @@
 #define _WINDOWS_H
 
 #include <SFML/Graphics.hpp>
-
+#include <vector>
+#include "screen.h"
 using namespace sf;
 
 class Windows {
 protected:
-	int width, height;
 	RenderWindow renderWindow;
-	Event event;
-	Clock clock;
-
+	std::vector<Screen*> screens;
+	int screen;
 public:
-	Windows(int width, int height);
+	Windows();
 	virtual ~Windows();
 
 	void run();

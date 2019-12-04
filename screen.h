@@ -3,7 +3,7 @@
 
 using namespace sf;
 enum {
-	EXIT,
+	EXIT = -1,
 	MAIN_MENU,
 	IN_GAME,
 	PAUSE
