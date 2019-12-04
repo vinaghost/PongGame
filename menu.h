@@ -1,21 +1,25 @@
 ﻿#pragma once
 
 #include "SFML/Graphics.hpp"
-
 #include <vector>
-using namespace std;
+#include <string>
+
 using namespace sf;
+using std::vector;
+using std::string;
 
-
-class Menu
-{
+class Menu {
 protected:
-	vector<string> S;
+	vector<string> nameItem;
 	vector<Text> buttons;
 	Font font;
-	float x, y;
-	RenderWindow* window;
 	Event event;
+
+	RenderWindow* window;
+	float x, y;
+
+	int choice;
+
 public:
 	Menu(RenderWindow* window, float x, float y);
 	~Menu();
@@ -63,41 +67,53 @@ public:
 	*
 	* @note
 	*
-	* @param a tên của nút
+	* @param nameButton tên của nút
 	*
-	* @return (float) x
+	* @noreturn
 	**/
-	void setButtons(string a);
+	void addButtons(string nameButton);
+
 	/**
-	* Tạo các nút trên Menu
+	* Khởi tạo vị trí các nút
 	*
-	* @note
+	* @note dựa trên [x, y], các nút được xếp dọc
 	*
-	* @param 
+	* @param distance - Khoảng cách giữa các nút
 	*
-	* @return (float) x
+	* @noreturn
 	**/
-	void setMenu(int distance);
+	void initMenu(int distance);
+
 	/**
 	* Vẽ Menu lên màn hình window
 	*
 	* @note
 	*
-	* @param window
 	*
-	* @return
+	* @noreturn
 	**/
 	void draw();
+
 	/**
-	* Xét Mouse có trên màn hình window hay không
+	* Check chuột ở trong hitbox của text
 	*
 	* @note
 	*
-	* @param window
-	* @param text 
+	* @param text
 	*
-	* @return (bool) True/False
+	* @return (bool)
 	**/
 	bool isTextClicked(Text text);
 
+	void processEvents();
+
+	/**
+	* Trả về lựa chọn item
+	*
+	* @note
+	*
+	*
+	* @return (int) item được chọn
+	**/
+	int getChoice();
 };

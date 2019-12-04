@@ -13,9 +13,6 @@ protected:
 	Event event;
 	Clock clock;
 
-	virtual void processEvents() = 0;
-	virtual void update() = 0;
-	virtual void render() = 0;
 public:
 	Windows(int width, int height);
 	virtual ~Windows();

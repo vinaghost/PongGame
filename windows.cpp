@@ -8,12 +8,4 @@ Windows::Windows(int width, int height) : width(width), height(height) {
 Windows::~Windows() {}
 
 void Windows::run() {
-	while (renderWindow.isOpen()) {
-		processEvents();
-		update();
-
-		renderWindow.clear();
-		render();
-		renderWindow.display();
-	}
 }

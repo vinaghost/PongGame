@@ -1,18 +1,16 @@
 ﻿#include "Menu.h"
 
-#include "MenuSetting.h"
-
-#include "Utils.h"
-
 #include "SFML/Graphics.hpp"
 #include "SFML/Graphics/Text.hpp"
 #include "SFML/Window/Event.hpp"
 
 #include <iostream>
 
-Menu::Menu(RenderWindow* window, float x, float y): window(window), x(x), y(y) {};
+Menu::Menu(RenderWindow* window, float x, float y) : window(window), x(x), y(y) {
+	font.loadFromFile("Resources/Montserrat-BlackItalic.ttf");
+}
 
-Menu::~Menu() {};
+Menu::~Menu() {}
 
 void Menu::setX(float x)
 {
@@ -34,33 +32,23 @@ float Menu::getY()
 	return this->y;
 }
 
-void Menu::setButtons( string a)
+void Menu::addButtons(string a)
 {
-	S.push_back(a);
+	nameItem.push_back(a);
 }
 
-void Menu::setMenu(int distance)
+void Menu::initMenu(int distance)
 {
 	Text text;
-	font.loadFromFile("Resources/Montserrat-BlackItalic.ttf");
 	text.setFont(font);
 	text.setPosition(x, y);
-	//text.setCharacterSize(24); // in pixels, not points!                         
-	//text.setColor(sf::Color::White);   // set the color  
-	//text.setStyle(sf::Text::Bold); // set the text style
 
-	//set positions of things
-	for (int i = 0; i < S.size(); i++)
+	for (int i = 0; i < nameItem.size(); i++)
 	{
 		buttons.push_back(text);
 		buttons[i].setPosition(text.getPosition().x, text.getPosition().y + i * distance);
-		buttons[i].setString(S[i]);
+		buttons[i].setString(nameItem[i]);
 	}
-
-	//Since it's only 3 text its fine to just manually set each...
-	//buttons[0].setString("Play Game");
-	//buttons[1].setString("Options");
-	//buttons[2].setString("Quit");
 }
 
 void Menu::draw()
@@ -78,8 +66,33 @@ bool Menu::isTextClicked(Text text)
 	if (rect.contains(Mouse::getPosition(*window)))
 		return true;
 
-
 	//Otherwise, don't do anything
 	return false;
 }
 
+void Menu::processEvents() {
+	while (window->pollEvent(event))
+	{
+		switch (event.type)
+		{
+		case Event::Closed:
+			window->close();
+			break;
+		}
+	}
+
+	if (Mouse::isButtonPressed(sf::Mouse::Left))
+	{
+		for (size_t i = 0; i < nameItem.size(); i++) {
+			if (isTextClicked(buttons[i])) {
+				this->choice = i;
+				return;
+			}
+		}
+		this->choice = -1;
+	}
+}
+
+int Menu::getChoice() {
+	return this->choice;
+}
