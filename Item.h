@@ -1,24 +1,21 @@
 #pragma once
 #include "entity.h"
 
-#include "ball.h"
 
 class Item : public Entity
 {
 protected:
 	string name;
-	int soluong;
-	bool used = false;
+	bool used, spawned;
 public:
-	Item(RenderWindow* window, Board* b, float radius);
+	Item(RenderWindow* window);
 	~Item();
 	void setNameItem(string name);
-	void setSL(int sl);
+	void setUsed(bool);
 	string getNameItem();
-	int getSL();
 	string getNameClass();
-	void checkcollisionItem(Ball*);
-	virtual void active(Ball*);
-	void ItemoutBoard(Ball*);
+	virtual void active(Entity*) = 0;
+	void spawn();
+	void despawn();
 };
 

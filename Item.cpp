@@ -1,13 +1,14 @@
-#include "Item.h"
+﻿#include "Item.h"
 
 
 #include <iostream>
 using namespace std;
 
-Item::Item(RenderWindow* window, Board* b, float radius): Entity(window, b->getLeft() / 2 + b->getRight() / 2 - radius, b->getTop() / 2 + b->getBottom() / 2 - radius)
+Item::Item(RenderWindow* window): Entity(window, 0, 0)
 {
-	shape = new CircleShape(radius);
-
+	shape = new CircleShape(10);
+	used = false;
+	spawned = false;
 }
 
 
@@ -24,46 +25,35 @@ void Item::setNameItem(string name)
 {
 	this->name = name;
 }
-void Item::setSL(int sl)
+
+void Item::setUsed(bool used)
 {
-	this->soluong = sl;
+	this->used = used;
 }
+
 string Item::getNameItem()
 {
 	return this->name;
 }
-int Item::getSL() 
-{
-	return this->soluong;
-}
 
-void Item::checkcollisionItem(Ball* b)
-{
-	if (this->isIntersect(*b))
-	{
-	    used = true;
-	}
-}
 
-void Item::active(Ball* b)
+void Item::spawn()
 {
-	checkcollisionItem(b);
-	if (used == true)
-	{
-		cout << "Cham vao roi" << endl;
-		//Dua vao ten de thuc hien tinh nang cua Item
-		if (name == "freeze")
-		{
-			b->speedDown(0.1f);
-		}
-	}
-}
+	// đã xuất hiện trên màn hình.
+	if (this->spawned) return;
 
-void Item::ItemoutBoard(Ball* b)
+	// Ngược lại, vẽ và xác nhận Item đã xuất hiện.
+	this->draw();
+	this->spawned = true;
+}
+void Item::despawn()
 {
-	if (used == true)
-	{
-		soluong--;
-		//khong bk xoa item khoi man hinh .-.
-	}
+	// đã biến mất khỏi màn hình.
+	if (!this->spawned) return;
+
+	// Ngược lại, xóa và xác nhận Item đã biến mất.
+	//cau lenh xoa 
+
+	//cau lenh xoa
+	this->spawned = false;
 }

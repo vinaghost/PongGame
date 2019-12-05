@@ -64,10 +64,7 @@ void Ball::speedUp(float percent) {
 	this->v *= (1 + percent);
 }
 
-void Ball::speedDown(float percent)
-{
-	this->v *= (1 - percent);
-}
+
 
 sides::Side Ball::getWallSide() {
 	if (shape->getGlobalBounds().left <= b->getLeft() + 1) {
