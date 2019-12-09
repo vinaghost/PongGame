@@ -57,3 +57,8 @@ void Item::despawn()
 	//cau lenh xoa
 	this->spawned = false;
 }
+
+void Item::setRenderWindow(RenderWindow* window)
+{
+	this->window = window;
+}

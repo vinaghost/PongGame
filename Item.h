@@ -17,5 +17,6 @@ public:
 	virtual void active(Entity*) = 0;
 	void spawn();
 	void despawn();
+	void setRenderWindow(RenderWindow* window);
 };
 
