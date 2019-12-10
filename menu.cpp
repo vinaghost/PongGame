@@ -6,7 +6,7 @@
 
 #include <iostream>
 
-Menu::Menu(RenderWindow* window, float x, float y) : window(window), x(x), y(y) {
+Menu::Menu(RenderWindow* window, float x, float y) : window(window), x(x), y(y), choice(-1) {
 	font.loadFromFile("Resources/Montserrat-BlackItalic.ttf");
 }
 
@@ -83,13 +83,13 @@ void Menu::processEvents() {
 
 	if (Mouse::isButtonPressed(sf::Mouse::Left))
 	{
+		this->choice = -1;
 		for (size_t i = 0; i < nameItem.size(); i++) {
 			if (isTextClicked(buttons[i])) {
 				this->choice = i;
-				return;
+				break;
 			}
 		}
-		this->choice = -1;
 	}
 }
 
