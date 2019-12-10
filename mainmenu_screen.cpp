@@ -1,0 +1,34 @@
+#include "mainmenu_screen.h"
+#include "globals.h"
+
+#include <iostream>
+
+MainMenuScreen::MainMenuScreen(RenderWindow* window) : Screen(window) {
+	mainMenu = new Menu(window, globals::SCREEN_WIDTH / 2 - 100, 100);
+	mainMenu->addButtons("Play");
+	mainMenu->addButtons("Exit");
+	mainMenu->initMenu(100);
+}
+
+MainMenuScreen::~MainMenuScreen() {
+	delete mainMenu;
+}
+
+void MainMenuScreen::processEvents() {
+	mainMenu->processEvents();
+
+	int choice = mainMenu->getChoice();
+	switch (choice) {
+	case 0:
+		loop = false;
+		nextScreen = IN_GAME;
+		break;
+	case 1:
+		loop = false;
+		nextScreen = EXIT;
+		break;
+	}
+}
+void MainMenuScreen::render() {
+	mainMenu->draw();
+}

@@ -33,16 +33,19 @@
     <ClCompile Include="paddle.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="game.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="windows.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="screen.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="mainmenu.cpp">
+    <ClCompile Include="mainmenu_screen.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="game_screen.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="pause_screen.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -62,28 +65,22 @@
     <ClInclude Include="paddle.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="game.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="windows.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClCompile Include="menu.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Utils.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="MenuSetting.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="MenuMain.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClInclude Include="screen.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="mainmenu.h">
+    <ClInclude Include="mainmenu_screen.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="game_screen.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="pause_screen.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

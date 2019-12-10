@@ -1,9 +1,9 @@
-﻿#include "game.h"
+﻿#include "game_screen.h"
 #include <vector>
 
 using std::vector;
 
-Game::Game(RenderWindow* window) : Screen(window), newGame(true), endGame(false) {
+GameScreen::GameScreen(RenderWindow* window) : Screen(window), newGame(true), endGame(false) {
 	srand((unsigned int)time(NULL));
 
 	b = new Board(window);
@@ -22,13 +22,13 @@ Game::Game(RenderWindow* window) : Screen(window), newGame(true), endGame(false)
 	others.push_back(p2);
 }
 
-Game::~Game() {
+GameScreen::~GameScreen() {
 	delete ball;
 	delete p1;
 	delete p2;
 }
 
-void Game::processEvents() {
+void GameScreen::processEvents() {
 	while (window->pollEvent(event)) {
 		//Xử lý khi người dùng nhấn X để thoát
 		if (event.type == Event::EventType::Closed)
@@ -68,7 +68,7 @@ void Game::processEvents() {
 		loop = false;
 	}
 }
-void Game::update() {
+void GameScreen::update() {
 	timeInterval = clock.getElapsedTime().asMicroseconds();
 	clock.restart();
 
@@ -77,13 +77,13 @@ void Game::update() {
 	ball->update(timeInterval);
 	ball->handleCollisions(others);
 }
-void Game::render() {
+void GameScreen::render() {
 	b->draw();
 	ball->draw();
 	p1->draw();
 	p2->draw();
 }
-void Game::reset() {
+void GameScreen::reset() {
 	p1->reset();
 	p2->reset();
 	ball->reset();
@@ -91,6 +91,6 @@ void Game::reset() {
 	newGame = true;
 }
 
-void Game::setWindow(RenderWindow* window) {
+void GameScreen::setWindow(RenderWindow* window) {
 	this->window = window;
 }

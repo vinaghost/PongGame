@@ -135,11 +135,12 @@
     <ClCompile Include="ball.cpp" />
     <ClCompile Include="board.cpp" />
     <ClCompile Include="entity.cpp" />
-    <ClCompile Include="game.cpp" />
+    <ClCompile Include="game_screen.cpp" />
     <ClCompile Include="Main.cpp" />
-    <ClCompile Include="mainmenu.cpp" />
+    <ClCompile Include="mainmenu_screen.cpp" />
     <ClCompile Include="movingentity.cpp" />
     <ClCompile Include="paddle.cpp" />
+    <ClCompile Include="pause_screen.cpp" />
     <ClCompile Include="screen.cpp" />
     <ClCompile Include="windows.cpp" />
   </ItemGroup>
@@ -147,10 +148,11 @@
     <ClInclude Include="ball.h" />
     <ClInclude Include="board.h" />
     <ClInclude Include="entity.h" />
-    <ClInclude Include="game.h" />
-    <ClInclude Include="mainmenu.h" />
+    <ClInclude Include="game_screen.h" />
+    <ClInclude Include="mainmenu_screen.h" />
     <ClInclude Include="movingentity.h" />
     <ClInclude Include="paddle.h" />
+    <ClInclude Include="pause_screen.h" />
     <ClInclude Include="screen.h" />
     <ClInclude Include="windows.h" />
     <ClCompile Include="menu.cpp" />

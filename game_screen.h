@@ -8,7 +8,7 @@
 #include "ball.h"
 #include "paddle.h"
 
-class Game : public Screen {
+class GameScreen : public Screen {
 private:
 	Event event;
 	Clock clock;
@@ -30,8 +30,8 @@ protected:
 	void render();
 	void reset();
 public:
-	Game(RenderWindow* window);
-	virtual ~Game();
+	GameScreen(RenderWindow* window);
+	virtual ~GameScreen();
 
 	void setWindow(RenderWindow* window);
 };

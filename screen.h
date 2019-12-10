@@ -13,13 +13,13 @@ protected:
 	RenderWindow* window;
 	int nextScreen;
 	bool loop;
-	virtual void processEvents() = 0;
-	virtual void update() = 0;
-	virtual void render() = 0;
-	virtual void reset() = 0;
+	virtual void processEvents();
+	virtual void update();
+	virtual void render();
+	virtual void reset();
 public:
 	Screen(RenderWindow* window);
-	virtual void setWindow(RenderWindow* window) = 0;
+	virtual void setWindow(RenderWindow* window);
 	int run(bool reset = 0);
 	virtual ~Screen();
 };
