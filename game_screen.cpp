@@ -71,10 +71,12 @@ void GameScreen::processEvents() {
 
 	switch (ball->getWinner()) {
 	case winners::LEFT:
+		nextScreen = LEFT_WIN;
+		loop = false;
 		break;
 	case winners::RIGHT:
-		break;
-	case winners::NONE:
+		nextScreen = RIGHT_WIN;
+		loop = false;
 		break;
 	}
 }

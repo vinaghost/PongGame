@@ -48,6 +48,15 @@
     <ClCompile Include="pause_screen.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="win_screen.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="leftwin_screen.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="rightwin_screen.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="entity.h">
@@ -81,6 +90,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="pause_screen.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="win_screen.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="leftwin_screen.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="rightwin_screen.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

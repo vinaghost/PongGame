@@ -6,7 +6,9 @@ enum {
 	EXIT = -1,
 	MAIN_MENU,
 	IN_GAME,
-	PAUSE
+	PAUSE,
+	LEFT_WIN,
+	RIGHT_WIN
 };
 class Screen {
 protected:

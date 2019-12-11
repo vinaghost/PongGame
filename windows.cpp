@@ -3,20 +3,31 @@
 
 #include "mainmenu_screen.h"
 #include "game_screen.h"
+
 #include "pause_screen.h"
+#include "leftwin_screen.h"
+#include "rightwin_screen.h"
 
 Windows::Windows() : screen(MAIN_MENU) {
 	renderWindow.create(VideoMode(globals::SCREEN_WIDTH, globals::SCREEN_HEIGHT), "Pong !", Style::Titlebar | Style::Close);
 	renderWindow.setFramerateLimit(60);
 
-	MainMenuScreen* mainMenuScreen = new MainMenuScreen(&renderWindow);
-	screens.push_back(mainMenuScreen);
+	Screen* s;
 
-	GameScreen* gameScreen = new GameScreen(&renderWindow);
-	screens.push_back(gameScreen);
+	s = new MainMenuScreen(&renderWindow);
+	screens.push_back(s);
 
-	PauseScreen* pauseScreen = new PauseScreen(&renderWindow);
-	screens.push_back(pauseScreen);
+	s = new GameScreen(&renderWindow);
+	screens.push_back(s);
+
+	s = new PauseScreen(&renderWindow);
+	screens.push_back(s);
+
+	s = new LeftWinScreen(&renderWindow);
+	screens.push_back(s);
+
+	s = new RightWinScreen(&renderWindow);
+	screens.push_back(s);
 }
 
 Windows::~Windows() {
