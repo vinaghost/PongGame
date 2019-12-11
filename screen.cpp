@@ -6,8 +6,9 @@ Screen::Screen(RenderWindow* window) : window(window), loop(true) {}
 
 Screen::~Screen() {}
 
-int Screen::run(bool reset) {
-	if (reset) this->reset();
+int Screen::run() {
+	this->reset();
+
 	loop = true;
 	while (loop) {
 		processEvents();

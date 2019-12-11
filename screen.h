@@ -20,6 +20,6 @@ protected:
 public:
 	Screen(RenderWindow* window);
 	virtual void setWindow(RenderWindow* window);
-	int run(bool reset = 0);
+	int run();
 	virtual ~Screen();
 };

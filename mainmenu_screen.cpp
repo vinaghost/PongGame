@@ -4,10 +4,10 @@
 #include <iostream>
 
 MainMenuScreen::MainMenuScreen(RenderWindow* window) : Screen(window) {
-	mainMenu = new Menu(window, globals::SCREEN_WIDTH / 2 - 100, 100);
+	mainMenu = new Menu(window, globals::SCREEN_WIDTH / 2 - 100, 200);
 	mainMenu->addButtons("Play");
 	mainMenu->addButtons("Exit");
-	mainMenu->initMenu(100);
+	mainMenu->initMenu(80);
 }
 
 MainMenuScreen::~MainMenuScreen() {

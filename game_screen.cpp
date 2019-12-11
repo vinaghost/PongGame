@@ -33,13 +33,14 @@ void GameScreen::processEvents() {
 		//Xử lý khi người dùng nhấn X để thoát
 		if (event.type == Event::EventType::Closed)
 			window->close();
-		//Xử lý người dùng nhấn phím bất kỳ để chạy paddle
-		if (event.type == Event::EventType::KeyPressed)
-			if (ball->getIdle() && newGame) {
-				ball->randomDirection();
-				newGame = false;
-			}
 	}
+	if (Keyboard::isKeyPressed(Keyboard::F)) {
+		if (ball->getIdle() && newGame) {
+			ball->randomDirection();
+			newGame = false;
+		}
+	}
+
 	if (Keyboard::isKeyPressed(Keyboard::W)) {
 		p1->moveUp();
 	}
@@ -66,6 +67,15 @@ void GameScreen::processEvents() {
 	if (Keyboard::isKeyPressed(Keyboard::Escape)) {
 		nextScreen = PAUSE;
 		loop = false;
+	}
+
+	switch (ball->getWinner()) {
+	case winners::LEFT:
+		break;
+	case winners::RIGHT:
+		break;
+	case winners::NONE:
+		break;
 	}
 }
 void GameScreen::update() {

@@ -4,10 +4,10 @@
 #include <iostream>
 
 PauseScreen::PauseScreen(RenderWindow* window) : Screen(window) {
-	pauseMenu = new Menu(window, globals::SCREEN_WIDTH / 2 - 100, 100);
+	pauseMenu = new Menu(window, globals::SCREEN_WIDTH / 2 - 100, 300);
 	pauseMenu->addButtons("Continue");
-	pauseMenu->addButtons("Exit");
-	pauseMenu->initMenu(100);
+	pauseMenu->addButtons("Back to Mainmenu");
+	pauseMenu->initMenu(80);
 }
 
 PauseScreen::~PauseScreen() {
