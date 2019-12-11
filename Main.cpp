@@ -28,8 +28,8 @@ int main() {
 	Ball *ball = new Ball(&window, &b, 20);
 	ball->setBackgroundColor(0, 255, 0);
 
-	freezeBall_item item(&window, &b, 10);
-	item.setBackgroundColor(0, 250, 0);
+	//freezeBall_item item(&window);
+	//item.setBackgroundColor(0, 250, 0);
 
 	Paddle *p1 = new Paddle(&window, &b, winners::LEFT);
 	p1->setBackgroundColor(255, 0, 0);

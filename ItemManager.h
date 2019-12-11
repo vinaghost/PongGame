@@ -2,10 +2,23 @@
 
 #include "Item.h"
 
+#include <vector>
+using namespace std;
+
 class ItemManager
 {
+private:
+	vector<Item*> items;
+	vector<bool> spawns;
+	RenderWindow* window;
 public:
-	ItemManager();
+	ItemManager(RenderWindow* window);
 	~ItemManager();
+	void setItem(Item* );
+	void setRenderWindow(RenderWindow*);
+	void processEvents();
+	void draw(string name_item);
+	void createItem();
+	vector<Item*> spawnedItem();
 };
 

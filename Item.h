@@ -6,17 +6,16 @@ class Item : public Entity
 {
 protected:
 	string name;
-	bool used, spawned;
+	bool actived;
 public:
 	Item(RenderWindow* window);
 	~Item();
 	void setNameItem(string name);
-	void setUsed(bool);
+	void setActived(bool);
+	bool getActived();
 	string getNameItem();
 	string getNameClass();
 	virtual void active(Entity*) = 0;
-	void spawn();
-	void despawn();
 	void setRenderWindow(RenderWindow* window);
 };
 
