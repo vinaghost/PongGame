@@ -1,20 +1,16 @@
-#include "Caption.h"
-
-
+#include "caption.h"
 
 Caption::Caption()
 {
 	font.loadFromFile("Resources/Montserrat-Black.ttf");
-	x = 0; 
-	y = 0;
+	text.setFont(font);
 }
-
 
 Caption::~Caption() {}
 
 void Caption::setString(string name)
 {
-	this->name_text = name;
+	text.setString(name);
 }
 
 void Caption::draw()
@@ -22,10 +18,9 @@ void Caption::draw()
 	window->draw(this->text);
 }
 
-void Caption::setCoord(float x, float y)
+void Caption::setPosition(float x, float y)
 {
-	this->x = x;
-	this->y = y;
+	text.setPosition(x, y);
 }
 
 void Caption::setRenderWindow(RenderWindow* window)
@@ -33,7 +28,7 @@ void Caption::setRenderWindow(RenderWindow* window)
 	this->window = window;
 }
 
-void Caption::setColor(string color) 
+void Caption::setColor(string color)
 {
 	if (color == "Black")
 	{
@@ -71,12 +66,4 @@ void Caption::setColor(string color)
 	{
 		this->text.setFillColor(Color::Transparent);
 	}
-}
-
-void Caption::update()
-{
-	text.setFont(font);
-	text.setPosition(x, y);
-	text.setString(name_text);
-	draw();
 }
