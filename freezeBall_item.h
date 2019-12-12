@@ -5,7 +5,9 @@
 class freezeBall_item : public Item
 {
 public:
-	freezeBall_item(RenderWindow* window, Board* b, float radius);
+	freezeBall_item(RenderWindow* window);
 	~freezeBall_item();
+	void active(Entity*);
+	string getNameClass();
 };
 

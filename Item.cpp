@@ -32,7 +32,7 @@ void Item::setActived(bool used)
 
 bool Item::getActived()
 {
-	return this->active;
+	return this->actived;
 }
 
 string Item::getNameItem()

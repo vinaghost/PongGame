@@ -1,4 +1,5 @@
 #include "ball.h"
+#include "freezeBall_item.h"
 #include <iostream>
 Ball::Ball(RenderWindow* window, Board* b, float radius) : MovingEntity(window, b, b->getLeft() / 2 + b->getRight() / 2 - radius, b->getTop() / 2 + b->getBottom() / 2 - radius), idle(true), radius(radius) {
 	srand((unsigned int)time(NULL));
@@ -110,6 +111,10 @@ void Ball::handleCollisions(std::vector<Entity*> others) {
 			if (collisionSide != sides::NONE) {
 				if (others.at(i)->getNameClass() == "Paddle") {
 					speedUp(0.1f);
+				}
+				if (others.at(i)->getNameClass() == "freeze")
+				{
+					std::cout << "ok" << std::endl;
 				}
 
 				reflect(collisionSide, dWall);

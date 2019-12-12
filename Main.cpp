@@ -4,6 +4,7 @@
 #include "ball.h"
 #include "paddle.h"
 #include "freezeBall_item.h"
+#include "ItemManager.h"
 
 
 //include Thư viện
@@ -28,8 +29,10 @@ int main() {
 	Ball *ball = new Ball(&window, &b, 20);
 	ball->setBackgroundColor(0, 255, 0);
 
-	//freezeBall_item item(&window);
-	//item.setBackgroundColor(0, 250, 0);
+	freezeBall_item item(&window);
+    item.setBackgroundColor(0, 250, 0);
+	ItemManager things(&window);
+	things.setItem(&item);
 
 	Paddle *p1 = new Paddle(&window, &b, winners::LEFT);
 	p1->setBackgroundColor(255, 0, 0);
@@ -53,6 +56,9 @@ int main() {
 	WinnerName.setPosition(100, 100);
 
 	WinnerName.setString(L"Á à a");
+
+	std::vector<Entity*> objects;
+	std::vector<Item*> things1;
 	while (window.isOpen()) {
 		window.clear();
 		while (window.pollEvent(event)) {
@@ -98,15 +104,26 @@ int main() {
 			window.draw(WinnerName);
 		}
 		else {
+			things.processEvents();
+			things.createItem();
+			objects.clear();
+			things1.clear();
+			things1 = things.spawnedItem();
+			for (int i = 0; i < others.size(); i++)
+			{
+				objects.push_back(others[i]);
+			}
+			for (int i = 0; i < things1.size(); i++)
+			{
+				objects.push_back(things1[i]);
+			}
 			p1->update(timeInterval);
 			p2->update(timeInterval);
-			ball->handleCollisions(others);
+			ball->handleCollisions(objects);
 			ball->update(timeInterval);
 
 			b.draw();
 			ball->draw();
-			item.draw();
-			item.active(ball);
 			p1->draw();
 			p2->draw();
 		}

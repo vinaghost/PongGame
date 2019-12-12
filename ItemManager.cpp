@@ -1,6 +1,6 @@
 #include "ItemManager.h"
 
-
+#include "board.h"
 
 ItemManager::ItemManager(RenderWindow* window): window(window)
 {
@@ -47,13 +47,15 @@ void ItemManager::draw(string name_item)
 
 void ItemManager::createItem()
 {
+	Board b(window);
 	for (int i = 0; i < items.size(); i++)
 	{
 		if (items[i]->getActived() == false)
 		{
-			items[i]->setX(50.0f);
-			items[i]->setY(50.0f);
+			items[i]->setX(b.getLeft() / 2 + b.getRight() / 2 + 10.0f);
+			items[i]->setY(b.getTop() / 2 + b.getBottom() / 2 + 5.0f);
 			spawns[i] = true;
+			draw(items[i]->getNameItem());
 			break;
 		}
 	}
