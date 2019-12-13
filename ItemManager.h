@@ -14,7 +14,7 @@ private:
 public:
 	ItemManager(RenderWindow* window);
 	~ItemManager();
-	void setItem(Item*);
+	void addItem(Item*);
 	void setRenderWindow(RenderWindow*);
 	void processEvents();
 	void draw();
