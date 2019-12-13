@@ -3,7 +3,6 @@
 #include "board.h"
 #include "ball.h"
 #include "paddle.h"
-#include "freezeBall_item.h"
 #include "ItemManager.h"
 
 //include Thư viện
@@ -26,10 +25,7 @@ int main() {
 	Ball *ball = new Ball(&window, &b, 20);
 	ball->setBackgroundColor(0, 255, 0);
 
-	freezeBall_item item(&window);
-	item.setBackgroundColor(0, 250, 0);
 	ItemManager things(&window);
-	things.setItem(&item);
 
 	Paddle *p1 = new Paddle(&window, &b, winners::LEFT);
 	p1->setBackgroundColor(255, 0, 0);

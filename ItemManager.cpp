@@ -2,8 +2,13 @@
 
 #include "board.h"
 
+#include "freezeBall_item.h"
+
 ItemManager::ItemManager(RenderWindow* window) : window(window)
 {
+	Item* object;
+	object = new freezeBall_item(window);
+	this->setItem(object);
 }
 
 ItemManager::~ItemManager()
@@ -17,6 +22,7 @@ void ItemManager::setRenderWindow(RenderWindow* window)
 
 void ItemManager::setItem(Item* object)
 {
+	object->setBackgroundColor(0, 250, 0);
 	items.push_back(object);
 	spawns.push_back(false);
 }

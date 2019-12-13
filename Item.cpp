@@ -3,10 +3,9 @@
 #include <iostream>
 using namespace std;
 
-Item::Item(RenderWindow* window) : Entity(window, 0, 0)
+Item::Item(RenderWindow* window) : Entity(window, 0, 0), actived(false)
 {
 	shape = new RectangleShape(Vector2f(50.0f, 50.0f));
-	actived = false;
 }
 
 Item::~Item()
