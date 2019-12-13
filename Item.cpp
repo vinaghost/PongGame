@@ -1,15 +1,13 @@
 ﻿#include "Item.h"
 
-
 #include <iostream>
 using namespace std;
 
-Item::Item(RenderWindow* window): Entity(window, 0, 0)
+Item::Item(RenderWindow* window) : Entity(window, 0, 0)
 {
-	shape = new RectangleShape(Vector2f(5.0f,5.0f));
+	shape = new RectangleShape(Vector2f(50.0f, 50.0f));
 	actived = false;
 }
-
 
 Item::~Item()
 {

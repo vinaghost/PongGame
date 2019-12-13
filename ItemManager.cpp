@@ -2,10 +2,9 @@
 
 #include "board.h"
 
-ItemManager::ItemManager(RenderWindow* window): window(window)
+ItemManager::ItemManager(RenderWindow* window) : window(window)
 {
 }
-
 
 ItemManager::~ItemManager()
 {
@@ -33,11 +32,11 @@ void ItemManager::processEvents()
 	}
 }
 
-void ItemManager::draw(string name_item)
+void ItemManager::draw()
 {
 	for (int i = 0; i < items.size(); i++)
 	{
-		if (items[i]->getNameItem() == name_item)
+		if (spawns[i])
 		{
 			items[i]->draw();
 			break;
@@ -48,17 +47,13 @@ void ItemManager::draw(string name_item)
 void ItemManager::createItem()
 {
 	Board b(window);
-	for (int i = 0; i < items.size(); i++)
-	{
-		if (items[i]->getActived() == false)
-		{
-			items[i]->setX(b.getLeft() / 2 + b.getRight() / 2 + 10.0f);
-			items[i]->setY(b.getTop() / 2 + b.getBottom() / 2 + 5.0f);
-			spawns[i] = true;
-			draw(items[i]->getNameItem());
-			break;
-		}
-	}
+
+	int i = 0;
+
+	items[i]->setX(b.getLeft() / 2 + b.getRight() / 2 + 30.0f);
+	items[i]->setY(b.getTop() / 2 + b.getBottom() / 2 + 50.0f);
+
+	spawns[i] = true;
 }
 
 vector<Item*> ItemManager::spawnedItem()

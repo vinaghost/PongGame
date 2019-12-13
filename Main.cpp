@@ -6,10 +6,7 @@
 #include "freezeBall_item.h"
 #include "ItemManager.h"
 
-
 //include Thư viện
-
-
 
 int main() {
 	//Code test
@@ -30,7 +27,7 @@ int main() {
 	ball->setBackgroundColor(0, 255, 0);
 
 	freezeBall_item item(&window);
-    item.setBackgroundColor(0, 250, 0);
+	item.setBackgroundColor(0, 250, 0);
 	ItemManager things(&window);
 	things.setItem(&item);
 
@@ -59,6 +56,8 @@ int main() {
 
 	std::vector<Entity*> objects;
 	std::vector<Item*> things1;
+	things.createItem();
+
 	while (window.isOpen()) {
 		window.clear();
 		while (window.pollEvent(event)) {
@@ -104,8 +103,6 @@ int main() {
 			window.draw(WinnerName);
 		}
 		else {
-			things.processEvents();
-			things.createItem();
 			objects.clear();
 			things1.clear();
 			things1 = things.spawnedItem();
@@ -117,15 +114,18 @@ int main() {
 			{
 				objects.push_back(things1[i]);
 			}
+
 			p1->update(timeInterval);
 			p2->update(timeInterval);
 			ball->handleCollisions(objects);
 			ball->update(timeInterval);
+			things.processEvents();
 
 			b.draw();
 			ball->draw();
 			p1->draw();
 			p2->draw();
+			things.draw();
 		}
 		window.display();
 	}

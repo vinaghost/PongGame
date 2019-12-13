@@ -6,9 +6,7 @@ using namespace std;
 freezeBall_item::freezeBall_item(RenderWindow* window) : Item(window)
 {
 	setNameItem("freeze");
-
 }
-
 
 freezeBall_item::~freezeBall_item()
 {
@@ -17,6 +15,8 @@ freezeBall_item::~freezeBall_item()
 void freezeBall_item::active(Entity* object)
 {
 	cout << "Cham vao roi" << endl;
+
+	setActived(true);
 }
 
 string freezeBall_item::getNameClass()

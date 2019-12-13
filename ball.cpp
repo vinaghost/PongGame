@@ -65,8 +65,6 @@ void Ball::speedUp(float percent) {
 	this->v *= (1 + percent);
 }
 
-
-
 sides::Side Ball::getWallSide() {
 	if (shape->getGlobalBounds().left <= b->getLeft() + 1) {
 		return sides::LEFT;
@@ -93,11 +91,11 @@ void Ball::handleCollisions(std::vector<Entity*> others) {
 	if (collisionSide != sides::NONE) {
 		switch (collisionSide) {
 		case sides::LEFT:
-			winner = winner::RIGHT;
-			return;
+			//winner = winner::RIGHT;
+			//return;
 		case sides::RIGHT:
-			winner = winner::LEFT;
-			return;
+			//winner = winner::LEFT;
+			//return;
 		default:
 			reflect(collisionSide);
 		}
@@ -114,7 +112,8 @@ void Ball::handleCollisions(std::vector<Entity*> others) {
 				}
 				if (others.at(i)->getNameClass() == "freeze")
 				{
-					std::cout << "ok" << std::endl;
+					static_cast<Item*>(others.at(i))->active(this);
+					std::cout << "ALO DMMM: " << static_cast<Item*>(others.at(i))->getActived() << " \n";
 				}
 
 				reflect(collisionSide, dWall);

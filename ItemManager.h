@@ -14,11 +14,10 @@ private:
 public:
 	ItemManager(RenderWindow* window);
 	~ItemManager();
-	void setItem(Item* );
+	void setItem(Item*);
 	void setRenderWindow(RenderWindow*);
 	void processEvents();
-	void draw(string name_item);
+	void draw();
 	void createItem();
 	vector<Item*> spawnedItem();
 };
-
