@@ -43,7 +43,7 @@ void Menu::initMenu(int distance)
 	text.setFont(font);
 	text.setPosition(x, y);
 
-	for (int i = 0; i < nameItem.size(); i++)
+	for (size_t i = 0; i < nameItem.size(); i++)
 	{
 		buttons.push_back(text);
 		buttons[i].setPosition(text.getPosition().x, text.getPosition().y + i * distance);
@@ -60,7 +60,7 @@ void Menu::draw()
 
 bool Menu::isTextClicked(Text text)
 {
-	sf::IntRect rect(text.getPosition().x, text.getPosition().y, text.getGlobalBounds().width, text.getGlobalBounds().height);
+	sf::IntRect rect((int)text.getPosition().x, (int)text.getPosition().y, (int)text.getGlobalBounds().width, (int)text.getGlobalBounds().height);
 
 	//If mouse position is in the rectangle do whatever
 	if (rect.contains(Mouse::getPosition(*window)))
