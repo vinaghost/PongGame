@@ -4,11 +4,11 @@ Board::Board(RenderWindow* window) : Entity(window, default_x, default_y) {
 	shape = new RectangleShape(Vector2f(default_width, default_height));
 	setX(default_x);
 	setY(default_y);
+	font.loadFromFile("Resources/Montserrat-BlackItalic.ttf");
+	text.setFont(font);
+	text.setString("Brick Game");
+	text.setPosition(350, 100);
 
-	midLine.setSize(Vector2f((float)2, (float)default_height));
-	midLine.setOrigin(midLine.getSize() / 2.f);
-	midLine.setPosition(Vector2f(default_x + default_width / (float)2, default_y + default_height / (float)2));
-	midLine.setFillColor(Color(255, 255, 255, 255 / 2));
 }
 string Board::getNameClass() {
 	return "Board";
@@ -31,5 +31,5 @@ float Board::getBottom() {
 
 void Board::draw() {
 	Entity::draw();
-	window->draw(midLine);
+	window->draw(text);
 }

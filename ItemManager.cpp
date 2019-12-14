@@ -8,7 +8,7 @@
 ItemManager::ItemManager(RenderWindow* window, Board* b) : window(window)
 {
 	sl_cot = (b->getRight() - b->getLeft() - 50.0f) / 50.0f;
-	sl_hang = (b->getBottom() / 2 - b->getTop() - 20.0f) / 30.0f;
+	sl_hang = ((b->getBottom()  - b->getTop())/2 - 20.0f) / 30.0f;
 }
 
 ItemManager::~ItemManager()
@@ -53,7 +53,7 @@ void ItemManager::createItem(Board* b)
 {
 	Item* object;
 	int linenow = 0, columnnow = 0;
-	for (int i = 0; i <= sl_cot * sl_hang; i++)
+	for (int i = 0; i <= sl_cot * sl_hang + 2; i++)
 	{
 		if (i == (sl_cot - 1)*(sl_hang - 1))
 		{
