@@ -78,17 +78,18 @@ void Menu::processEvents() {
 		case Event::Closed:
 			window->close();
 			break;
-		}
-	}
-
-	if (Mouse::isButtonPressed(sf::Mouse::Left))
-	{
-		this->choice = -1;
-		for (size_t i = 0; i < nameItem.size(); i++) {
-			if (isTextClicked(buttons[i])) {
-				this->choice = i;
-				break;
+		case Event::MouseButtonPressed:
+			if (event.mouseButton.button == Mouse::Left)
+			{
+				this->choice = -1;
+				for (size_t i = 0; i < nameItem.size(); i++) {
+					if (isTextClicked(buttons[i])) {
+						this->choice = i;
+						break;
+					}
+				}
 			}
+			break;
 		}
 	}
 }
