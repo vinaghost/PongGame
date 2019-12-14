@@ -1,28 +1,32 @@
 ﻿#include "ball.h"
 #include "paddle.h"
 #include <iostream>
-Ball::Ball(RenderWindow* window, Board* b, float radius) : MovingEntity(window, b, b->getLeft() / 2 + b->getRight() / 2 - radius, b->getTop() / 2 + b->getBottom() / 2 - radius), idle(true), radius(radius), sticker(NULL) {
+Ball::Ball(RenderWindow* window, Board* b, float radius, Paddle* player) : MovingEntity(window, b, b->getLeft() / 2 + b->getRight() / 2 - radius, player->getTop() - radius * 3), idle(true), radius(radius), sticker(player), state(0), ingame(false) {
 	srand((unsigned int)time(NULL));
 
 	shape = new CircleShape(radius);
 
 	setX(b->getLeft() / 2 + b->getRight() / 2 - radius);
-	setY(b->getTop() / 2 + b->getBottom() / 2 - radius);
+	setY(player->getTop() - radius * 3);
+
+	v = v_old = { 0 , 0 };
 }
 
 string Ball::getNameClass() {
 	return "Ball";
 }
-void Ball::reset() {
+void Ball::reset(Paddle* player) {
 	MovingEntity::reset();
-	v = { 0, 0 };
-	winner = winner::NONE;
+	idle = true;
+	sticker = player;
+	v = v_old = { 0, 0 };
+	state = 0;
 }
 bool Ball::getIdle() {
 	return v.x == 0 && v.y == 0;
 }
-winner::side Ball::getWinner() {
-	return this->winner;
+int Ball::getState() {
+	return this->state;
 }
 void Ball::reflect(sides::Side side, bool dWall) {
 	if (dWall) {
@@ -42,20 +46,16 @@ void Ball::reflect(sides::Side side, bool dWall) {
 		}
 	}
 }
-void Ball::randomDirection() {
+void Ball::getStart() {
 	idle = false;
-	switch (rand() % 4) {
+	unfreeze();
+
+	switch (rand() % 2) {
 	case 0:
-		v = Vector2f(1.0, 1.0) * (float)initspeed;
+		v = Vector2f(1.0, -1.0) * (float)initspeed;
 		break;
 	case 1:
-		v = Vector2f(-1.0, 1.0) * (float)initspeed;
-		break;
-	case 2:
-		v = Vector2f(1.0, -1.0)*(float)initspeed;
-		break;
-	case 3:
-		v = Vector2f(-1.0, -1.0)*(float)initspeed;
+		v = Vector2f(-1.0, -1.0) * (float)initspeed;
 		break;
 	}
 }
@@ -111,13 +111,11 @@ void Ball::handleCollisions(std::vector<Entity*> others) {
 	collisionSide = getWallSide();
 	if (collisionSide != sides::NONE) {
 		switch (collisionSide) {
-		case sides::LEFT:
-			winner = winner::RIGHT;
-			return;
-		case sides::RIGHT:
-			winner = winner::LEFT;
-			return;
 		case sides::BOTTOM:
+			state = 1;
+			return;
+		case sides::LEFT:
+		case sides::RIGHT:
 		case sides::TOP:
 			dWall = true;
 		}
@@ -168,20 +166,21 @@ void Ball::handleCollisions(std::vector<Entity*> others) {
 void Ball::freeze(Time time, Entity* sticker) {
 	idle = true;
 	v_old = v;
+	ingame = true;
 	this->sticker = sticker;
 	clocker.restart();
 	nextTime = clocker.getElapsedTime() + time;
 }
 void Ball::unfreeze() {
 	idle = false;
-
+	ingame = false;
 	sticker = NULL;
 	v = v_old;
 }
 
 void Ball::update(Int64 elapsedTime) {
 	if (idle && sticker) {
-		if (nextTime < clocker.getElapsedTime()) {
+		if (nextTime < clocker.getElapsedTime() && ingame) {
 			unfreeze();
 		}
 		else {

@@ -1,22 +1,20 @@
 #pragma once
 #include "movingentity.h"
 #include "globals.h"
+
+const float default_width = 100.0f;
+const float default_height = 10.0f;
+
 class Paddle : public MovingEntity {
 private:
-	const float default_width = 10;
-	const float default_height = 100;
 
 	const float default_v = 15;
 
-	winners::side side;
-
 public:
-	Paddle(RenderWindow* window, Board* b, winners::side side);
+	Paddle(RenderWindow* window, Board* b);
 	string getNameClass();
 
-	void moveUp();
-	void moveDown();
+	void moveRight();
+	void moveLeft();
 	void stopMoving();
-
-	winners::side getSide();
 };

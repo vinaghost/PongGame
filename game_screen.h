@@ -20,8 +20,7 @@ private:
 
 	Board* b;
 	Ball* ball;
-	Paddle* p1;
-	Paddle* p2;
+	Paddle* player;
 
 	std::vector<Entity*> others;
 protected:

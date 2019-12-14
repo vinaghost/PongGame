@@ -9,11 +9,14 @@ namespace winner {
 		RIGHT
 	};
 };
+class Paddle;
+
 class Ball : public MovingEntity {
 private:
-	winner::side winner;
+	int state;
 	const float radius;
 	const int initspeed = 2; //Pixel per frame
+	bool ingame;
 	bool idle;
 
 	Vector2f v_old;
@@ -23,17 +26,17 @@ private:
 	Time nextTime;
 
 public:
-	Ball(RenderWindow* window, Board* b, float radius);
+	Ball(RenderWindow* window, Board* b, float radius, Paddle* player);
 	string getNameClass();
 
-	void reset();
+	void reset(Paddle* player);
 
-	winner::side getWinner();
+	int getState();
 	bool getIdle();
 
 	void reflect(sides::Side side, bool dWall = false);
 
-	void randomDirection();
+	void getStart();
 
 	void speedUp(float percent);
 	sides::Side getWallSide();

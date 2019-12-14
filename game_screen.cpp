@@ -10,22 +10,17 @@ GameScreen::GameScreen(RenderWindow* window) : Screen(window), newGame(true), en
 	b->setColor(255, 124, 0);
 	b->setBackgroundColor(0, 0, 255);
 
-	ball = new Ball(window, b, 20);
+	player = new Paddle(window, b);
+	player->setBackgroundColor(255, 0, 0);
+	others.push_back(player);
+
+	ball = new Ball(window, b, 20, player);
 	ball->setBackgroundColor(0, 255, 0);
-
-	p1 = new Paddle(window, b, winners::LEFT);
-	p1->setBackgroundColor(255, 0, 0);
-	others.push_back(p1);
-
-	p2 = new Paddle(window, b, winners::RIGHT);
-	p2->setBackgroundColor(255, 0, 0);
-	others.push_back(p2);
 }
 
 GameScreen::~GameScreen() {
 	delete ball;
-	delete p1;
-	delete p2;
+	delete player;
 }
 
 void GameScreen::processEvents() {
@@ -34,31 +29,22 @@ void GameScreen::processEvents() {
 		if (event.type == Event::EventType::Closed)
 			window->close();
 	}
+
 	if (Keyboard::isKeyPressed(Keyboard::F)) {
 		if (ball->getIdle() && newGame) {
-			ball->randomDirection();
+			ball->getStart();
 			newGame = false;
 		}
 	}
 
-	if (Keyboard::isKeyPressed(Keyboard::W)) {
-		p1->moveUp();
+	if (Keyboard::isKeyPressed(Keyboard::D)) {
+		player->moveRight();
 	}
-	if (Keyboard::isKeyPressed(Keyboard::S)) {
-		p1->moveDown();
+	if (Keyboard::isKeyPressed(Keyboard::A)) {
+		player->moveLeft();
 	}
-	if (!Keyboard::isKeyPressed(Keyboard::W) && !Keyboard::isKeyPressed(Keyboard::S)) {
-		p1->stopMoving();
-	}
-
-	if (Keyboard::isKeyPressed(Keyboard::I)) {
-		p2->moveUp();
-	}
-	if (Keyboard::isKeyPressed(Keyboard::K)) {
-		p2->moveDown();
-	}
-	if (!Keyboard::isKeyPressed(Keyboard::I) && !Keyboard::isKeyPressed(Keyboard::K)) {
-		p2->stopMoving();
+	if (!Keyboard::isKeyPressed(Keyboard::A) && !Keyboard::isKeyPressed(Keyboard::D)) {
+		player->stopMoving();
 	}
 
 	if (Keyboard::isKeyPressed(Keyboard::R)) {
@@ -69,36 +55,27 @@ void GameScreen::processEvents() {
 		loop = false;
 	}
 
-	switch (ball->getWinner()) {
-	case winners::LEFT:
+	if (ball->getState()) {
 		nextScreen = LEFT_WIN;
 		loop = false;
-		break;
-	case winners::RIGHT:
-		nextScreen = RIGHT_WIN;
-		loop = false;
-		break;
 	}
 }
 void GameScreen::update() {
 	timeInterval = clock.getElapsedTime().asMicroseconds();
 	clock.restart();
 
-	p1->update(timeInterval);
-	p2->update(timeInterval);
+	player->update(timeInterval);
 	ball->update(timeInterval);
 	ball->handleCollisions(others);
 }
 void GameScreen::render() {
 	b->draw();
 	ball->draw();
-	p1->draw();
-	p2->draw();
+	player->draw();
 }
 void GameScreen::reset() {
-	p1->reset();
-	p2->reset();
-	ball->reset();
+	player->reset();
+	ball->reset(player);
 
 	newGame = true;
 }
