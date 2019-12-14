@@ -35,6 +35,8 @@ public:
 	void draw();
 
 	String getName();
+
+	void setScore(int score);
 	int getScore();
 
 	void checkName();

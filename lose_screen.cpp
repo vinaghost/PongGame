@@ -1,17 +1,17 @@
-#include "win_screen.h"
+#include "lose_screen.h"
 #include "globals.h"
 
 #include <iostream>
 
-WinScreen::WinScreen(RenderWindow* window) : Screen(window) {
+LoseScreen::LoseScreen(RenderWindow* window) : Screen(window) {
 	continueMenu = new Menu(window, globals::SCREEN_WIDTH / 2 - 100, 400);
 }
 
-WinScreen::~WinScreen() {
+LoseScreen::~LoseScreen() {
 	delete continueMenu;
 }
 
-void WinScreen::processEvents() {
+void LoseScreen::processEvents() {
 	continueMenu->processEvents();
 
 	int choice = continueMenu->getChoice();
@@ -26,6 +26,6 @@ void WinScreen::processEvents() {
 		break;
 	}
 }
-void WinScreen::render() {
+void LoseScreen::render() {
 	continueMenu->draw();
 }

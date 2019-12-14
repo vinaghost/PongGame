@@ -60,13 +60,16 @@
     <ClCompile Include="pause_screen.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="win_screen.cpp">
+    <ClCompile Include="Caption.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="leftwin_screen.cpp">
+    <ClCompile Include="setting.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="rightwin_screen.cpp">
+    <ClCompile Include="setting_screen.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="lose_screen.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -104,13 +107,22 @@
     <ClInclude Include="pause_screen.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="win_screen.h">
+    <ClInclude Include="Brick.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="leftwin_screen.h">
+    <ClInclude Include="freezeBall_item.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="rightwin_screen.h">
+    <ClInclude Include="Item.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="setting_screen.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lose_screen.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -193,6 +205,9 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="Resources\next.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\brick.PNG">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

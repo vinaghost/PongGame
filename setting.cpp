@@ -112,7 +112,9 @@ String Setting::getName() {
 int Setting::getScore() {
 	return score[szName];
 }
-
+void Setting::setScore(int score) {
+	this->score[szName] = score;
+}
 int Setting::save() {
 	ofstream f(filename::scoreFile);
 

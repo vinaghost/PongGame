@@ -5,8 +5,9 @@
 #include "game_screen.h"
 
 #include "pause_screen.h"
-#include "leftwin_screen.h"
-#include "rightwin_screen.h"
+#include "lose_screen.h"
+
+#include "setting_screen.h"
 
 Windows::Windows() : screen(MAIN_MENU) {
 	renderWindow.create(VideoMode(globals::SCREEN_WIDTH, globals::SCREEN_HEIGHT), "Pong !", Style::Titlebar | Style::Close);
@@ -23,10 +24,10 @@ Windows::Windows() : screen(MAIN_MENU) {
 	s = new PauseScreen(&renderWindow);
 	screens.push_back(s);
 
-	s = new LeftWinScreen(&renderWindow);
+	s = new LoseScreen(&renderWindow);
 	screens.push_back(s);
 
-	s = new RightWinScreen(&renderWindow);
+	s = new SettingScreen(&renderWindow);
 	screens.push_back(s);
 }
 

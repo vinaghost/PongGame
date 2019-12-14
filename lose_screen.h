@@ -1,12 +1,12 @@
 #pragma once
 #include "screen.h"
 #include "menu.h"
-class WinScreen : public Screen {
+class LoseScreen : public Screen {
 protected:
 	Menu* continueMenu;
 	void processEvents();
 	void render();
 public:
-	WinScreen(RenderWindow* window);
-	virtual ~WinScreen();
+	LoseScreen(RenderWindow* window);
+	virtual ~LoseScreen();
 };

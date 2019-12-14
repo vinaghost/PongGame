@@ -7,8 +7,8 @@ enum {
 	MAIN_MENU,
 	IN_GAME,
 	PAUSE,
-	LEFT_WIN,
-	RIGHT_WIN
+	LOSE,
+	SETTING
 };
 class Screen {
 protected:
