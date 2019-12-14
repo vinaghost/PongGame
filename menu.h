@@ -82,7 +82,7 @@ public:
 	*
 	* @noreturn
 	**/
-	void initMenu(int distance);
+	virtual void initMenu(int distance);
 
 	/**
 	* Vẽ Menu lên màn hình window
@@ -92,7 +92,7 @@ public:
 	*
 	* @noreturn
 	**/
-	void draw();
+	virtual void draw();
 
 	/**
 	* Check chuột ở trong hitbox của text
@@ -105,7 +105,7 @@ public:
 	**/
 	bool isTextClicked(Text text);
 
-	void processEvents();
+	virtual void processEvents();
 
 	/**
 	* Trả về lựa chọn item

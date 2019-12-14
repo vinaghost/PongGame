@@ -151,6 +151,8 @@
     <ClCompile Include="pause_screen.cpp" />
     <ClCompile Include="screen.cpp" />
     <ClCompile Include="windows.cpp" />
+    <ClCompile Include="menu.cpp" />
+    <ClCompile Include="setting.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ball.h" />
@@ -174,9 +176,33 @@
     <ClInclude Include="menu.h" />
     <ClInclude Include="Caption.h" />
     <ClInclude Include="globals.h" />
+    <ClInclude Include="setting.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Resources\brick.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="Resources\Montserrat-Black.ttf" />
+    <Font Include="Resources\Montserrat-BlackItalic.ttf" />
+    <Font Include="Resources\Montserrat-Bold.ttf" />
+    <Font Include="Resources\Montserrat-BoldItalic.ttf" />
+    <Font Include="Resources\Montserrat-ExtraBold.ttf" />
+    <Font Include="Resources\Montserrat-ExtraBoldItalic.ttf" />
+    <Font Include="Resources\Montserrat-ExtraLight.ttf" />
+    <Font Include="Resources\Montserrat-ExtraLightItalic.ttf" />
+    <Font Include="Resources\Montserrat-Italic.ttf" />
+    <Font Include="Resources\Montserrat-Light.ttf" />
+    <Font Include="Resources\Montserrat-LightItalic.ttf" />
+    <Font Include="Resources\Montserrat-Medium.ttf" />
+    <Font Include="Resources\Montserrat-MediumItalic.ttf" />
+    <Font Include="Resources\Montserrat-Regular.ttf" />
+    <Font Include="Resources\Montserrat-SemiBold.ttf" />
+    <Font Include="Resources\Montserrat-SemiBoldItalic.ttf" />
+    <Font Include="Resources\Montserrat-Thin.ttf" />
+    <Font Include="Resources\Montserrat-ThinItalic.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Resources\next.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

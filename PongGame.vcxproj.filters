@@ -118,6 +118,9 @@
     <ClInclude Include="menu.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="setting.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="globals.h">
@@ -131,5 +134,66 @@
     <ClInclude Include="Caption.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="Resources\Montserrat-Black.ttf">
+      <Filter>Resource Files</Filter>
+    </Font>
+    <Font Include="Resources\Montserrat-BlackItalic.ttf">
+      <Filter>Resource Files</Filter>
+    </Font>
+    <Font Include="Resources\Montserrat-Bold.ttf">
+      <Filter>Resource Files</Filter>
+    </Font>
+    <Font Include="Resources\Montserrat-BoldItalic.ttf">
+      <Filter>Resource Files</Filter>
+    </Font>
+    <Font Include="Resources\Montserrat-ExtraBold.ttf">
+      <Filter>Resource Files</Filter>
+    </Font>
+    <Font Include="Resources\Montserrat-ExtraBoldItalic.ttf">
+      <Filter>Resource Files</Filter>
+    </Font>
+    <Font Include="Resources\Montserrat-ExtraLight.ttf">
+      <Filter>Resource Files</Filter>
+    </Font>
+    <Font Include="Resources\Montserrat-ExtraLightItalic.ttf">
+      <Filter>Resource Files</Filter>
+    </Font>
+    <Font Include="Resources\Montserrat-Italic.ttf">
+      <Filter>Resource Files</Filter>
+    </Font>
+    <Font Include="Resources\Montserrat-Light.ttf">
+      <Filter>Resource Files</Filter>
+    </Font>
+    <Font Include="Resources\Montserrat-LightItalic.ttf">
+      <Filter>Resource Files</Filter>
+    </Font>
+    <Font Include="Resources\Montserrat-Medium.ttf">
+      <Filter>Resource Files</Filter>
+    </Font>
+    <Font Include="Resources\Montserrat-MediumItalic.ttf">
+      <Filter>Resource Files</Filter>
+    </Font>
+    <Font Include="Resources\Montserrat-Regular.ttf">
+      <Filter>Resource Files</Filter>
+    </Font>
+    <Font Include="Resources\Montserrat-SemiBold.ttf">
+      <Filter>Resource Files</Filter>
+    </Font>
+    <Font Include="Resources\Montserrat-SemiBoldItalic.ttf">
+      <Filter>Resource Files</Filter>
+    </Font>
+    <Font Include="Resources\Montserrat-Thin.ttf">
+      <Filter>Resource Files</Filter>
+    </Font>
+    <Font Include="Resources\Montserrat-ThinItalic.ttf">
+      <Filter>Resource Files</Filter>
+    </Font>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Resources\next.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>
