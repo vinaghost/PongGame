@@ -7,6 +7,7 @@
 #include "board.h"
 #include "ball.h"
 #include "paddle.h"
+#include "ItemManager.h"
 
 class GameScreen : public Screen {
 private:
@@ -22,7 +23,11 @@ private:
 	Ball* ball;
 	Paddle* player;
 
+	ItemManager* things;
+
 	std::vector<Entity*> others;
+	std::vector<Entity*> objects;
+	std::vector<Item*> things1;
 protected:
 	void processEvents();
 	void update();

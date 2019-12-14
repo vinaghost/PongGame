@@ -176,9 +176,6 @@
     <ClInclude Include="globals.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="globals.h" />
-  </ItemGroup>
-  <ItemGroup>
     <Image Include="Resources\brick.PNG" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

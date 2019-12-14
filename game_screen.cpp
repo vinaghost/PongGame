@@ -16,6 +16,10 @@ GameScreen::GameScreen(RenderWindow* window) : Screen(window), newGame(true), en
 
 	ball = new Ball(window, b, 20, player);
 	ball->setBackgroundColor(0, 255, 0);
+
+	things = new ItemManager(&window, &b);
+
+	things->createItem(b);
 }
 
 GameScreen::~GameScreen() {
