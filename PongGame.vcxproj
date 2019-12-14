@@ -177,6 +177,7 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="Resources\brick.PNG" />
+    <Image Include="Resources\freeze.png" />
   </ItemGroup>
   <ItemGroup>
     <Font Include="Resources\Montserrat-Black.ttf" />
