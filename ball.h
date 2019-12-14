@@ -39,6 +39,7 @@ public:
 	void getStart();
 
 	void speedUp(float percent);
+	
 	sides::Side getWallSide();
 
 	const sides::Side getCollisionSide(Entity &other);

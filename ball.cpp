@@ -1,5 +1,6 @@
 ﻿#include "ball.h"
 #include "paddle.h"
+#include "freezeBall_item.h"
 #include <iostream>
 Ball::Ball(RenderWindow* window, Board* b, float radius, Paddle* player) : MovingEntity(window, b, b->getLeft() / 2 + b->getRight() / 2 - radius, player->getTop() - radius * 3), idle(true), radius(radius), sticker(player), state(0), ingame(false) {
 	srand((unsigned int)time(NULL));
@@ -63,6 +64,7 @@ void Ball::getStart() {
 void Ball::speedUp(float percent) {
 	this->v *= (1 + percent);
 }
+
 sides::Side Ball::getWallSide() {
 	if (shape->getGlobalBounds().left <= b->getLeft() + 1) {
 		return sides::LEFT;
