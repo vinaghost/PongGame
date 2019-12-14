@@ -1,4 +1,4 @@
-﻿#include "menusetting.h"
+﻿#include "setting.h"
 
 //#include "Utils.h"
 
@@ -17,16 +17,23 @@ int main() {
 	const int screenX = 800;
 	const int screenY = 600;
 	RenderWindow window(VideoMode(800, 600), "My window", Style::Default ^ Style::Resize);
-	MenuSetting main(&window, 100, 200);
+	//MenuSetting main(&window, 100, 200);
 
-	while (window.isOpen())
-	{
+	Setting setting(&window, 100, 100);
+
+	setting.load();
+
+	while (window.isOpen()) {
 		window.clear();
 
-		main.processEvents();
+		setting.processEvents();
 
-		main.draw();
+		setting.draw();
+
 		window.display();
 	}
+
+	setting.save();
+
 	return EXIT_SUCCESS;
 }
