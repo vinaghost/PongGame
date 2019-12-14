@@ -24,12 +24,18 @@
     <ClCompile Include="menusetting.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="charts.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="menu.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="menusetting.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="charts.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -98,5 +104,10 @@
     <Image Include="Resources\next.png">
       <Filter>Resource Files</Filter>
     </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="userinfo.dat">
+      <Filter>Source Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

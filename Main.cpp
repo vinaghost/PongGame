@@ -1,4 +1,4 @@
-﻿#include "menusetting.h"
+﻿#include "charts.h"
 
 //#include "Utils.h"
 
@@ -17,15 +17,16 @@ int main() {
 	const int screenX = 800;
 	const int screenY = 600;
 	RenderWindow window(VideoMode(800, 600), "My window", Style::Default ^ Style::Resize);
-	MenuSetting main(&window, 100, 200);
-
+	charts achive(&window, 350, 40);
+	achive.loadfromFile();
+	achive.sort();
+	
 	while (window.isOpen())
 	{
 		window.clear();
-
-		main.processEvents();
-
-		main.draw();
+		
+		achive.drawCharts(30);
+		achive.processEvents();
 		window.display();
 	}
 	return EXIT_SUCCESS;
