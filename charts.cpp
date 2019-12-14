@@ -17,6 +17,11 @@ charts::~charts()
 {
 }
 
+int charts::getState()
+{
+	return this->state;
+}
+
 void charts::loadfromFile()
 {
 	fstream f;
@@ -138,6 +143,7 @@ void charts::drawCharts(int distance)
 }
 void charts::processEvents()
 {
+	this->state = 0;
 	while (window->pollEvent(event))
 	{
 		switch (event.type)
@@ -151,7 +157,7 @@ void charts::processEvents()
 	{
 	
 	    if (isTextClicked(buttons[0])) {
-			window->close();
+			this->state = 1;
 				
 		
 		}
