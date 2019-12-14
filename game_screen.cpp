@@ -17,7 +17,7 @@ GameScreen::GameScreen(RenderWindow* window) : Screen(window), newGame(true), en
 	ball = new Ball(window, b, 20, player);
 	ball->setBackgroundColor(0, 255, 0);
 
-	things = new ItemManager(&window, &b);
+	things = new ItemManager(window, b);
 
 	things->createItem(b);
 }
@@ -65,17 +65,31 @@ void GameScreen::processEvents() {
 	}
 }
 void GameScreen::update() {
+	
+	objects.clear();
+	things1.clear();
+	things1 = things->spawnedItem();
+	for (int i = 0; i < others.size(); i++)
+	{
+		objects.push_back(others[i]);
+	}
+	for (int i = 0; i < things1.size(); i++)
+	{
+		objects.push_back(things1[i]);
+	}
 	timeInterval = clock.getElapsedTime().asMicroseconds();
 	clock.restart();
 
 	player->update(timeInterval);
+	ball->handleCollisions(objects);
 	ball->update(timeInterval);
-	ball->handleCollisions(others);
+	things->processEvents();
 }
 void GameScreen::render() {
 	b->draw();
 	ball->draw();
 	player->draw();
+	things->draw();
 }
 void GameScreen::reset() {
 	player->reset();

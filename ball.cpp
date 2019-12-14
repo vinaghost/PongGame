@@ -1,6 +1,7 @@
 ﻿#include "ball.h"
 #include "paddle.h"
 #include "freezeBall_item.h"
+#include "Brick.h"
 #include <iostream>
 Ball::Ball(RenderWindow* window, Board* b, float radius, Paddle* player) : MovingEntity(window, b, b->getLeft() / 2 + b->getRight() / 2 - radius, player->getTop() - radius * 3), idle(true), radius(radius), sticker(player), state(0), ingame(false) {
 	srand((unsigned int)time(NULL));
@@ -155,6 +156,15 @@ void Ball::handleCollisions(std::vector<Entity*> others) {
 						freeze(seconds(0.05f), others.at(i));
 					}
 				}
+				if (others.at(i)->getNameClass() == "freeze")
+				{
+						static_cast<Item*>(others.at(i))->active(this);
+				}
+				if (others.at(i)->getNameClass() == "Brick")
+				{
+						static_cast<Item*>(others.at(i))->active(this);
+				}
+				
 				break;
 			}
 		}
