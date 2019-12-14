@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Item.h"
+#include "item.h"
 #include "board.h"
 
 #include <vector>

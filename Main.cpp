@@ -3,7 +3,7 @@
 #include "board.h"
 #include "ball.h"
 #include "paddle.h"
-#include "ItemManager.h"
+#include "itemManager.h"
 
 //include Thư viện
 

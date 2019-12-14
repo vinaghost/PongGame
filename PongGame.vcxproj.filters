@@ -33,16 +33,19 @@
     <ClCompile Include="paddle.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ItemManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="freezeBall_item.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Item.cpp">
+    <ClCompile Include="bigball.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Brick.cpp">
+    <ClCompile Include="brick.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="item.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="itemManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -62,16 +65,19 @@
     <ClInclude Include="paddle.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Item.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ItemManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="freezeBall_item.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Brick.h">
+    <ClInclude Include="bigball.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="brick.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="item.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="itemManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -82,6 +88,12 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="Resources\brick.PNG">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\freeze.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\BigBall.PNG">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

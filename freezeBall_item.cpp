@@ -8,6 +8,9 @@ using namespace std;
 freezeBall_item::freezeBall_item(RenderWindow* window) : Item(window)
 {
 	setNameItem("freeze");
+	shape = new RectangleShape(Vector2f(50.0f, 30.0f));
+	image.loadFromFile("Resources/freeze.png");
+	shape->setTexture(&image, true);
 }
 
 freezeBall_item::~freezeBall_item()

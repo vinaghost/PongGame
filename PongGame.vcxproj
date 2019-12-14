@@ -133,24 +133,26 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="ball.cpp" />
+    <ClCompile Include="bigball.cpp" />
     <ClCompile Include="board.cpp" />
-    <ClCompile Include="Brick.cpp" />
+    <ClCompile Include="brick.cpp" />
     <ClCompile Include="entity.cpp" />
     <ClCompile Include="freezeBall_item.cpp" />
-    <ClCompile Include="Item.cpp" />
-    <ClCompile Include="ItemManager.cpp" />
+    <ClCompile Include="item.cpp" />
+    <ClCompile Include="itemManager.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="movingentity.cpp" />
     <ClCompile Include="paddle.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ball.h" />
+    <ClInclude Include="bigball.h" />
     <ClInclude Include="board.h" />
-    <ClInclude Include="Brick.h" />
+    <ClInclude Include="brick.h" />
     <ClInclude Include="entity.h" />
     <ClInclude Include="freezeBall_item.h" />
-    <ClInclude Include="Item.h" />
-    <ClInclude Include="ItemManager.h" />
+    <ClInclude Include="item.h" />
+    <ClInclude Include="itemManager.h" />
     <ClInclude Include="movingentity.h" />
     <ClInclude Include="paddle.h" />
   </ItemGroup>
@@ -158,7 +160,9 @@
     <ClInclude Include="globals.h" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="Resources\BigBall.PNG" />
     <Image Include="Resources\brick.PNG" />
+    <Image Include="Resources\freeze.jpg" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

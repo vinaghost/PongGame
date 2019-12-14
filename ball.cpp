@@ -1,5 +1,5 @@
 #include "ball.h"
-#include "freezeBall_item.h"
+#include "item.h"
 #include <iostream>
 Ball::Ball(RenderWindow* window, Board* b, float radius) : MovingEntity(window, b, b->getLeft() / 2 + b->getRight() / 2 - radius, b->getTop() / 2 + b->getBottom() / 2 - radius), idle(true), radius(radius) {
 	srand((unsigned int)time(NULL));
@@ -120,6 +120,11 @@ void Ball::handleCollisions(std::vector<Entity*> others) {
 					static_cast<Item*>(others.at(i))->active(this);
 					std::cout << "ALO DMMM: " << static_cast<Item*>(others.at(i))->getActived() << " \n";
 				}
+				if (others.at(i)->getNameClass() == "bigball")
+				{
+					static_cast<Item*>(others.at(i))->active(this);
+					std::cout << "ALO DMMM: " << static_cast<Item*>(others.at(i))->getActived() << " \n";
+				}
 				reflect(collisionSide, dWall);
 			}
 		}
@@ -128,4 +133,10 @@ void Ball::handleCollisions(std::vector<Entity*> others) {
 
 void Ball::update(Int64 elapsedTime) {
 	MovingEntity::update(elapsedTime);
+}
+
+void Ball::setShape(int a)
+{
+	shape = new CircleShape(radius*a);
+	setBackgroundColor(0, 255, 0);
 }

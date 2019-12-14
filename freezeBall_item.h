@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Item.h"
+#include "item.h"
 
 class freezeBall_item : public Item
 {
