@@ -25,15 +25,15 @@ int main() {
 	Ball *ball = new Ball(&window, &b, 20);
 	ball->setBackgroundColor(0, 255, 0);
 
-	ItemManager things(&window);
+	ItemManager things(&window, &b);
 
-	Paddle *p1 = new Paddle(&window, &b, winners::LEFT);
-	p1->setBackgroundColor(255, 0, 0);
-	others.push_back(p1);
-	Paddle *p2 = new Paddle(&window, &b, winners::RIGHT);
+	//Paddle *p1 = new Paddle(&window, &b, winners::LEFT);
+	//p1->setBackgroundColor(255, 0, 0);
+	//others.push_back(p1);
+	//Paddle *p2 = new Paddle(&window, &b, winners::RIGHT);
 
-	p2->setBackgroundColor(255, 0, 0);
-	others.push_back(p2);
+	//p2->setBackgroundColor(255, 0, 0);
+	//others.push_back(p2);
 
 	Font dFont;
 	dFont.loadFromFile("Resources/Montserrat-Black.ttf");
@@ -52,7 +52,7 @@ int main() {
 
 	std::vector<Entity*> objects;
 	std::vector<Item*> things1;
-	things.createItem();
+	things.createItem(&b);
 
 	while (window.isOpen()) {
 		window.clear();
@@ -66,28 +66,28 @@ int main() {
 		}
 
 		if (Keyboard::isKeyPressed(Keyboard::W)) {
-			p1->moveUp();
+			//p1->moveUp();
 		}
 		if (Keyboard::isKeyPressed(Keyboard::S)) {
-			p1->moveDown();
+			//p1->moveDown();
 		}
 		if (!Keyboard::isKeyPressed(Keyboard::W) && !Keyboard::isKeyPressed(Keyboard::S)) {
-			p1->stopMoving();
+			//p1->stopMoving();
 		}
 
 		if (Keyboard::isKeyPressed(Keyboard::I)) {
-			p2->moveUp();
+			//p2->moveUp();
 		}
 		if (Keyboard::isKeyPressed(Keyboard::K)) {
-			p2->moveDown();
+			//p2->moveDown();
 		}
 		if (!Keyboard::isKeyPressed(Keyboard::I) && !Keyboard::isKeyPressed(Keyboard::K)) {
-			p2->stopMoving();
+			//p2->stopMoving();
 		}
 
 		if (Keyboard::isKeyPressed(Keyboard::R)) {
-			p1->reset();
-			p2->reset();
+			//p1->reset();
+			//p2->reset();
 			ball->reset();
 		}
 
@@ -111,24 +111,24 @@ int main() {
 				objects.push_back(things1[i]);
 			}
 
-			p1->update(timeInterval);
-			p2->update(timeInterval);
+			//p1->update(timeInterval);
+			//p2->update(timeInterval);
 			ball->handleCollisions(objects);
 			ball->update(timeInterval);
 			things.processEvents();
 
 			b.draw();
 			ball->draw();
-			p1->draw();
-			p2->draw();
+			//p1->draw();
+			//p2->draw();
 			things.draw();
 		}
 		window.display();
 	}
 
 	delete ball;
-	delete p1;
-	delete p2;
+	//delete p1;
+	//delete p2;
 
 	//Code test
 	return 0;

@@ -1,14 +1,14 @@
 #include "ItemManager.h"
 
-#include "board.h"
+
 
 #include "freezeBall_item.h"
+#include "Brick.h"
 
-ItemManager::ItemManager(RenderWindow* window) : window(window)
+ItemManager::ItemManager(RenderWindow* window, Board* b) : window(window)
 {
-	Item* object;
-	object = new freezeBall_item(window);
-	this->addItem(object);
+	sl_cot = (b->getRight() - b->getLeft() - 50.0f) / 50.0f;
+	sl_hang = (b->getBottom() / 2 - b->getTop() - 20.0f) / 30.0f;
 }
 
 ItemManager::~ItemManager()
@@ -22,9 +22,9 @@ void ItemManager::setRenderWindow(RenderWindow* window)
 
 void ItemManager::addItem(Item* object)
 {
-	object->setBackgroundColor(0, 250, 0);
+	
 	items.push_back(object);
-	spawns.push_back(false);
+	spawns.push_back(true);
 }
 
 void ItemManager::processEvents()
@@ -45,21 +45,36 @@ void ItemManager::draw()
 		if (spawns[i])
 		{
 			items[i]->draw();
-			break;
 		}
 	}
 }
 
-void ItemManager::createItem()
+void ItemManager::createItem(Board* b)
 {
-	Board b(window);
+	Item* object;
+	int linenow = 0, columnnow = 0;
+	for (int i = 0; i <= sl_cot * sl_hang; i++)
+	{
+		if (i == (sl_cot - 1)*(sl_hang - 1))
+		{
+			object = new freezeBall_item(window);
+		}
+		else
+		{
+            object = new Brick(window);
+		}
+		
+		if (columnnow == sl_cot - 1)
+		{
+			columnnow = 0;
+			linenow++;
+		}
+		object->setX(b->getLeft() + 50.0f + 50.0f*columnnow);
+		object->setY(b->getTop() + 20.0f + 30.0f*linenow);
+		addItem(object);
+		columnnow++;
+	}
 
-	int i = 0;
-
-	items[i]->setX(b.getLeft() / 2 + b.getRight() / 2 + 30.0f);
-	items[i]->setY(b.getTop() / 2 + b.getBottom() / 2 + 50.0f);
-
-	spawns[i] = true;
 }
 
 vector<Item*> ItemManager::spawnedItem()

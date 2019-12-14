@@ -5,6 +5,7 @@
 class Item : public Entity
 {
 protected:
+	Texture image;
 	string name;
 	bool actived;
 public:

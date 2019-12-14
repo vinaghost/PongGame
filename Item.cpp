@@ -5,7 +5,9 @@ using namespace std;
 
 Item::Item(RenderWindow* window) : Entity(window, 0, 0), actived(false)
 {
-	shape = new RectangleShape(Vector2f(50.0f, 50.0f));
+	shape = new RectangleShape(Vector2f(50.0f, 30.0f));
+	image.loadFromFile("Resources/brick.png");
+	shape->setTexture(&image, true);
 }
 
 Item::~Item()

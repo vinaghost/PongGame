@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Item.h"
+#include "board.h"
 
 #include <vector>
 using namespace std;
@@ -11,13 +12,14 @@ private:
 	vector<Item*> items;
 	vector<bool> spawns;
 	RenderWindow* window;
+	int sl_hang, sl_cot;
 public:
-	ItemManager(RenderWindow* window);
+	ItemManager(RenderWindow* window, Board* b);
 	~ItemManager();
 	void addItem(Item*);
 	void setRenderWindow(RenderWindow*);
 	void processEvents();
 	void draw();
-	void createItem();
+	void createItem(Board* b);
 	vector<Item*> spawnedItem();
 };

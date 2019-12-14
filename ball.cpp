@@ -115,7 +115,11 @@ void Ball::handleCollisions(std::vector<Entity*> others) {
 					static_cast<Item*>(others.at(i))->active(this);
 					std::cout << "ALO DMMM: " << static_cast<Item*>(others.at(i))->getActived() << " \n";
 				}
-
+				if (others.at(i)->getNameClass() == "Brick")
+				{
+					static_cast<Item*>(others.at(i))->active(this);
+					std::cout << "ALO DMMM: " << static_cast<Item*>(others.at(i))->getActived() << " \n";
+				}
 				reflect(collisionSide, dWall);
 			}
 		}
