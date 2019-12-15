@@ -20,8 +20,10 @@ void MainMenuScreen::processEvents() {
 	int choice = mainMenu->getChoice();
 	switch (choice) {
 	case 0:
-		loop = false;
-		nextScreen = IN_GAME;
+		if (setting->getLoaded()) {
+			loop = false;
+			nextScreen = IN_GAME;
+		}
 		break;
 	case 1:
 		loop = false;

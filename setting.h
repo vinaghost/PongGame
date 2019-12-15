@@ -43,6 +43,7 @@ public:
 
 	void setScore(int score);
 	int getScore();
+	bool getLoaded();
 
 	void checkName();
 	vector<pair<string, int>> getSorted();

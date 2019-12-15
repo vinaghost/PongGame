@@ -209,3 +209,7 @@ vector<pair<string, int>> Setting::getSorted() {
 
 	return sorted;
 }
+
+bool Setting::getLoaded() {
+	return this->loaded;
+}
