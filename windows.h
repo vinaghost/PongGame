@@ -3,6 +3,7 @@
 #define _WINDOWS_H
 
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 #include <vector>
 #include "screen.h"
 #include "setting.h"
@@ -14,6 +15,7 @@ protected:
 	std::vector<Screen*> screens;
 	Setting* setting;
 	int screen;
+	Music music;
 public:
 	Windows();
 	virtual ~Windows();

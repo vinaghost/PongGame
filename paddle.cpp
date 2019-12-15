@@ -26,6 +26,5 @@ void Paddle::stopMoving() {
 
 void Paddle::setShape(float a)
 {
-	shape = new RectangleShape(Vector2f(default_width, default_height*a));
-	setBackgroundColor(255, 0, 0);
+	shape->setScale(Vector2f(1.0, a));
 }

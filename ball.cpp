@@ -2,9 +2,13 @@
 #include "paddle.h"
 #include "freezeBall_item.h"
 #include "Brick.h"
+#include "bigball.h"
+#include "bigpaddle.h"
+#include "smallball.h"
+#include "smallpaddle.h"
 #include "item.h"
 #include <iostream>
-Ball::Ball(RenderWindow* window, Board* b, float radius, Paddle* player) : MovingEntity(window, b, b->getLeft() / 2 + b->getRight() / 2 - radius, player->getTop() - radius * 3), idle(true), radius(radius), sticker(player), state(0), ingame(false) {
+Ball::Ball(RenderWindow* window, Board* b, float radius, Paddle* player) : MovingEntity(window, b, b->getLeft() / 2 + b->getRight() / 2 - radius, player->getTop() - radius * 3), idle(true), radius(radius), sticker(player), state(0), ingame(false), combo_score(1) {
 	srand((unsigned int)time(NULL));
 
 	shape = new CircleShape(radius);
@@ -13,6 +17,9 @@ Ball::Ball(RenderWindow* window, Board* b, float radius, Paddle* player) : Movin
 	setY(player->getTop() - radius * 3);
 
 	v = v_old = { 0 , 0 };
+
+	buffer.loadFromFile("Resources/ball_hit.wav");
+	sound.setBuffer(buffer);
 }
 
 string Ball::getNameClass() {
@@ -24,6 +31,7 @@ void Ball::reset(Paddle* player) {
 	sticker = player;
 	v = v_old = { 0, 0 };
 	state = 0;
+	combo_score = 1;
 }
 bool Ball::getIdle() {
 	return v.x == 0 && v.y == 0;
@@ -148,43 +156,46 @@ void Ball::handleCollisions(std::vector<Entity*> others) {
 					break;
 				}
 				}
-
 				reflect(collisionSide, dWall);
-
+				sound.play();
 				if (others.at(i)->getNameClass() == "Paddle") {
 					if (!idle) {
 						speedUp(0.1f);
 						freeze(seconds(0.05f), others.at(i));
 					}
 				}
-				if (others.at(i)->getNameClass() == "freeze")
+				else if (others.at(i)->getNameClass() == "freeze")
 				{
-					static_cast<Item*>(others.at(i))->active(this);
+					static_cast<freezeBall_item*>(others.at(i))->active(this);
 				}
-				if (others.at(i)->getNameClass() == "Brick")
+				else if (others.at(i)->getNameClass() == "Brick")
 				{
-					static_cast<Item*>(others.at(i))->active(this);
-					setScore(getScore() + 1);
+					static_cast<Brick*>(others.at(i))->active(this);
+					setScore(getScore() + 2 * combo_score);
 				}
-				if (others.at(i)->getNameClass() == "bigball")
+				else if (others.at(i)->getNameClass() == "bigball")
 				{
-					static_cast<Item*>(others.at(i))->active(this);
+					static_cast<BigBall*>(others.at(i))->active(this);
 				}
-				if (others.at(i)->getNameClass() == "smallball")
+				else if (others.at(i)->getNameClass() == "smallball")
 				{
-					static_cast<Item*>(others.at(i))->active(this);
+					static_cast<smallball*>(others.at(i))->active(this);
 				}
-				if (others.at(i)->getNameClass() == "bigpaddle")
+				else if (others.at(i)->getNameClass() == "bigpaddle")
 				{
-					static_cast<Item*>(others.at(i))->active(others[0]);
+					static_cast<bigpaddle*>(others.at(i))->active(others[0]);
 				}
-				if (others.at(i)->getNameClass() == "smallpaddle")
+				else if (others.at(i)->getNameClass() == "smallpaddle")
 				{
-					static_cast<Item*>(others.at(i))->active(others[0]);
+					static_cast<smallpaddle*>(others.at(i))->active(others[0]);
 				}
-				reflect(collisionSide, dWall);
 			}
 		}
+	}
+
+	if (dWall && !dEntity) {
+		reflect(collisionSide);
+		sound.play();
 	}
 }
 

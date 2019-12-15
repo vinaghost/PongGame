@@ -4,7 +4,7 @@
 MainMenuScreen::MainMenuScreen(RenderWindow* window, Setting* setting) : Screen(window, setting) {
 	mainMenu = new Menu(window, globals::SCREEN_WIDTH / 2 - 100, 200);
 	mainMenu->addButtons("Play");
-	mainMenu->addButtons("Setting");
+	mainMenu->addButtons("Load");
 	mainMenu->addButtons("Stat");
 	mainMenu->addButtons("Exit");
 	mainMenu->initMenu(80);

@@ -34,6 +34,8 @@ Windows::Windows() : screen(MAIN_MENU) {
 
 	s = new StatScreen(&renderWindow, setting);
 	screens.push_back(s);
+
+	music.openFromFile("Resources/background.ogg");
 }
 
 Windows::~Windows() {
@@ -44,8 +46,11 @@ Windows::~Windows() {
 
 void Windows::run() {
 	setting->load();
+	music.play();
+	music.setLoop(true);
 	while (screen != EXIT) {
 		screen = screens[screen]->run();
 	}
+	music.stop();
 	setting->save();
 }

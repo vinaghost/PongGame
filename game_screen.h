@@ -1,7 +1,6 @@
 ﻿#ifndef  _GAME_H
 
 #define _GAME_H
-
 #include "screen.h"
 
 #include "board.h"
@@ -30,6 +29,7 @@ private:
 	std::vector<Entity*> others;
 	std::vector<Entity*> objects;
 	std::vector<Item*> things1;
+
 protected:
 	void processEvents();
 	void update();

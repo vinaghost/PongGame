@@ -18,6 +18,7 @@ ItemManager::ItemManager(RenderWindow* window, Board* b) : window(window)
 
 ItemManager::~ItemManager()
 {
+	destroyItem();
 }
 
 void ItemManager::setRenderWindow(RenderWindow* window)
@@ -52,10 +53,16 @@ void ItemManager::draw()
 		}
 	}
 }
-
+void ItemManager::destroyItem() {
+	for (size_t i = 0; i < items.size(); i++) {
+		delete items[i];
+	}
+	items.clear();
+	spawns.clear();
+}
 void ItemManager::createItem(Board* b)
 {
-	items.clear();
+	destroyItem();
 	int a[5];
 	Item* object;
 	int linenow = 0, columnnow = 0;

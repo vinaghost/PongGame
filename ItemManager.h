@@ -21,5 +21,6 @@ public:
 	void processEvents();
 	void draw();
 	void createItem(Board* b);
+	void destroyItem();
 	vector<Item*> spawnedItem();
 };

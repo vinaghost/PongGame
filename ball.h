@@ -1,4 +1,7 @@
 #pragma once
+
+#include "SFML/Audio.hpp"
+
 #include "movingentity.h"
 #include "setting.h"
 #include <vector>
@@ -18,6 +21,7 @@ private:
 	const int initspeed = 2; //Pixel per frame
 	bool ingame;
 	bool idle;
+	int combo_score;
 
 	Vector2f v_old;
 	Entity* sticker;
@@ -26,6 +30,9 @@ private:
 	Time nextTime;
 
 	Setting* setting;
+
+	SoundBuffer buffer;
+	Sound sound;
 
 public:
 	Ball(RenderWindow* window, Board* b, float radius, Paddle* player);
