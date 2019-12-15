@@ -20,15 +20,18 @@ private:
 
 	Text szInput;
 	Text szScore;
-	Text szLoad, szBack;
+	Text szLoad, szReset, szBack;
 
 	bool clicked;
+	bool loaded;
 
 	int state;
 
 public:
 	Setting(RenderWindow* window, float x, float y);
 	virtual ~Setting();
+
+	void reset();
 
 	void processEvents();
 

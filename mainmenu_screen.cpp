@@ -4,6 +4,7 @@
 MainMenuScreen::MainMenuScreen(RenderWindow* window) : Screen(window) {
 	mainMenu = new Menu(window, globals::SCREEN_WIDTH / 2 - 100, 200);
 	mainMenu->addButtons("Play");
+	mainMenu->addButtons("Setting");
 	mainMenu->addButtons("Exit");
 	mainMenu->initMenu(80);
 }
@@ -23,8 +24,17 @@ void MainMenuScreen::processEvents() {
 		break;
 	case 1:
 		loop = false;
+		nextScreen = SETTING;
+		break;
+	case 2:
+		loop = false;
 		nextScreen = EXIT;
 		break;
+	}
+
+	if (choice == mainMenu->getCount()) {
+		loop = false;
+		nextScreen = EXIT;
 	}
 }
 void MainMenuScreen::render() {

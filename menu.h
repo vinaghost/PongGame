@@ -116,4 +116,6 @@ public:
 	* @return (int) item được chọn
 	**/
 	int getChoice();
+
+	int getCount();
 };

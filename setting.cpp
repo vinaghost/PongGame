@@ -10,7 +10,7 @@ using std::stringstream;
 using std::getline;
 using std::make_pair;
 
-Setting::Setting(RenderWindow* window, float x, float y) : state(0), window(window), x(x), y(y) {
+Setting::Setting(RenderWindow* window, float x, float y) : state(0), window(window), x(x), y(y), loaded(false), clicked(false) {
 	font.loadFromFile("Resources/Montserrat-BlackItalic.ttf");
 
 	szInput.setPosition(x, y);
@@ -25,7 +25,11 @@ Setting::Setting(RenderWindow* window, float x, float y) : state(0), window(wind
 	szLoad.setFont(font);
 	szLoad.setString("Load");
 
-	szBack.setPosition(x + 300, y + 300);
+	szReset.setPosition(x + 300, y + 300);
+	szReset.setFont(font);
+	szReset.setString("Reset");
+
+	szBack.setPosition(x + 600, y + 300);
 	szBack.setFont(font);
 	szBack.setString("Back");
 }
@@ -37,16 +41,24 @@ void Setting::draw() {
 	window->draw(szInput);
 	window->draw(szScore);
 	window->draw(szLoad);
+	window->draw(szReset);
 	window->draw(szBack);
 }
-
+void Setting::reset() {
+	szInput.setFillColor(Color::White);
+	szBack.setFillColor(Color::White);
+	szReset.setFillColor(Color::White);
+	szLoad.setFillColor(Color::White);
+}
 void Setting::processEvents() {
+	state = 0;
 	while (window->pollEvent(event))
 	{
 		switch (event.type)
 		{
 		case Event::Closed:
 			window->close();
+			state = 1;
 			break;
 		case Event::MouseButtonPressed:
 			if (event.mouseButton.button == Mouse::Left) {
@@ -60,8 +72,11 @@ void Setting::processEvents() {
 				}
 
 				if (isTextClicked(szBack)) {
-					state = 1;
+					state = 2;
 					szBack.setFillColor(Color::Green);
+				}
+				else {
+					szBack.setFillColor(Color::White);
 				}
 
 				if (isTextClicked(szLoad)) {
@@ -70,6 +85,14 @@ void Setting::processEvents() {
 				}
 				else {
 					szLoad.setFillColor(Color::White);
+				}
+				if (isTextClicked(szReset)) {
+					if (loaded)
+						score[szName] = 0;
+					szReset.setFillColor(Color::Green);
+				}
+				else {
+					szReset.setFillColor(Color::White);
 				}
 			}
 			break;
@@ -86,6 +109,7 @@ void Setting::processEvents() {
 						szName += event.text.unicode;
 					}
 					szInput.setString("Name: " + szName);
+					loaded = false;
 				}
 			}
 			break;
@@ -164,6 +188,8 @@ void Setting::checkName() {
 	sprintf_s(str, "Score: %d", tmp);
 
 	szScore.setString(str);
+
+	loaded = true;
 }
 
 int Setting::getState() {

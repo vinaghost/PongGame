@@ -28,6 +28,11 @@ void PauseScreen::processEvents() {
 		nextScreen = MAIN_MENU;
 		break;
 	}
+
+	if (choice == pauseMenu->getCount()) {
+		loop = false;
+		nextScreen = EXIT;
+	}
 }
 void PauseScreen::render() {
 	pauseMenu->draw();

@@ -1,26 +1,24 @@
 #include "setting_screen.h"
 #include "globals.h"
 
-SettingScreen::SettingScreen(RenderWindow* window) : Screen(window) {
-	setting = new Setting(window, globals::SCREEN_WIDTH / 2 - 100, 200);
-}
+SettingScreen::SettingScreen(RenderWindow* window) : Screen(window) {}
 
-SettingScreen::~SettingScreen() {
-	delete setting;
-}
+SettingScreen::~SettingScreen() {}
 
 void SettingScreen::processEvents() {
 	setting->processEvents();
 
-	if (setting->getState()) {
+	switch (setting->getState()) {
+	case 1:
+		loop = false;
+		nextScreen = EXIT;
+		break;
+	case 2:
 		loop = false;
 		nextScreen = MAIN_MENU;
+		break;
 	}
 }
 void SettingScreen::render() {
 	setting->draw();
-}
-
-Setting* SettingScreen::getSetting() {
-	return this->setting;
 }

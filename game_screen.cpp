@@ -31,7 +31,11 @@ void GameScreen::processEvents() {
 	while (window->pollEvent(event)) {
 		//Xử lý khi người dùng nhấn X để thoát
 		if (event.type == Event::EventType::Closed)
+		{
+			loop = false;
+			nextScreen = EXIT;
 			window->close();
+		}
 	}
 
 	if (Keyboard::isKeyPressed(Keyboard::F)) {
@@ -60,20 +64,19 @@ void GameScreen::processEvents() {
 	}
 
 	if (ball->getState()) {
-		nextScreen = LEFT_WIN;
+		nextScreen = LOSE;
 		loop = false;
 	}
 }
 void GameScreen::update() {
-	
 	objects.clear();
 	things1.clear();
 	things1 = things->spawnedItem();
-	for (int i = 0; i < others.size(); i++)
+	for (size_t i = 0; i < others.size(); i++)
 	{
 		objects.push_back(others[i]);
 	}
-	for (int i = 0; i < things1.size(); i++)
+	for (size_t i = 0; i < things1.size(); i++)
 	{
 		objects.push_back(things1[i]);
 	}

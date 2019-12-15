@@ -4,7 +4,10 @@
 #include <iostream>
 
 LoseScreen::LoseScreen(RenderWindow* window) : Screen(window) {
-	continueMenu = new Menu(window, globals::SCREEN_WIDTH / 2 - 100, 400);
+	continueMenu = new Menu(window, globals::SCREEN_WIDTH / 2 - 100, 300);
+	continueMenu->addButtons("Play again");
+	continueMenu->addButtons("Back to Mainmenu");
+	continueMenu->initMenu(80);
 }
 
 LoseScreen::~LoseScreen() {
@@ -24,6 +27,10 @@ void LoseScreen::processEvents() {
 		loop = false;
 		nextScreen = MAIN_MENU;
 		break;
+	}
+	if (choice == continueMenu->getCount()) {
+		loop = false;
+		nextScreen = EXIT;
 	}
 }
 void LoseScreen::render() {

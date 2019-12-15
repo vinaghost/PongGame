@@ -1,5 +1,6 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include "setting.h"
 
 using namespace sf;
 enum {
@@ -13,6 +14,8 @@ enum {
 class Screen {
 protected:
 	RenderWindow* window;
+	Setting* setting;
+
 	int nextScreen;
 	bool loop;
 	virtual void processEvents();
@@ -24,4 +27,6 @@ public:
 	virtual void setWindow(RenderWindow* window);
 	int run();
 	virtual ~Screen();
+
+	void setSetting(Setting* setting);
 };
