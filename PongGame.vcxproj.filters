@@ -63,16 +63,32 @@
     <ClCompile Include="paddle.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="freezeBall_item.cpp">
     <ClCompile Include="pause_screen.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="bigball.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="brick.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="item.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="itemManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="smallball.cpp">
     <ClCompile Include="screen.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="setting.cpp">
+    <ClCompile Include="bigpaddle.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="setting_screen.cpp">
+    <ClCompile Include="smallpaddle.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="windows.cpp">
@@ -119,10 +135,19 @@
     <ClInclude Include="globals.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Item.h">
+    <ClInclude Include="freezeBall_item.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ItemManager.h">
+    <ClInclude Include="bigball.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="brick.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="item.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="itemManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="lose_screen.h">
@@ -153,9 +178,14 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="windows.h">
+    <ClInclude Include="smallball.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="stat_screen.h">
+    <ClInclude Include="bigpaddle.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="smallpaddle.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -167,6 +197,25 @@
   <ItemGroup>
     <None Include="userinfo.dat">
       <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\freeze.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\BigBall.PNG">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\bigpaddle.PNG">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\freeze.PNG">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\smallball.PNG">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\smallpaddle.PNG">
+      <Filter>Resource Files</Filter>
+    </Image>
     </None>
   </ItemGroup>
 </Project>

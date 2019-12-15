@@ -1,4 +1,4 @@
-﻿#include "Entity.h"
+﻿#include "entity.h"
 Entity::Entity(RenderWindow* window, float x, float y) : shape(NULL), window(window), x(x), y(y) {}
 
 Entity::~Entity() {

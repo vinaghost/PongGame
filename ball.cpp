@@ -2,6 +2,7 @@
 #include "paddle.h"
 #include "freezeBall_item.h"
 #include "Brick.h"
+#include "item.h"
 #include <iostream>
 Ball::Ball(RenderWindow* window, Board* b, float radius, Paddle* player) : MovingEntity(window, b, b->getLeft() / 2 + b->getRight() / 2 - radius, player->getTop() - radius * 3), idle(true), radius(radius), sticker(player), state(0), ingame(false) {
 	srand((unsigned int)time(NULL));
@@ -162,32 +163,28 @@ void Ball::handleCollisions(std::vector<Entity*> others) {
 				}
 				if (others.at(i)->getNameClass() == "Brick")
 				{
-						static_cast<Item*>(others.at(i))->active(this);
+					static_cast<Item*>(others.at(i))->active(this);
 				}
-				
-				break;
+				if (others.at(i)->getNameClass() == "bigball")
+				{
+					static_cast<Item*>(others.at(i))->active(this);
+				}
+				if (others.at(i)->getNameClass() == "smallball")
+				{
+					static_cast<Item*>(others.at(i))->active(this);
+				}
+				if (others.at(i)->getNameClass() == "bigpaddle")
+				{
+					static_cast<Item*>(others.at(i))->active(others[0]);
+				}
+				if (others.at(i)->getNameClass() == "smallpaddle")
+				{
+					static_cast<Item*>(others.at(i))->active(others[0]);
+				}
+				reflect(collisionSide, dWall);
 			}
 		}
 	}
-
-	if (dWall && !dEntity) {
-		reflect(collisionSide);
-	}
-}
-
-void Ball::freeze(Time time, Entity* sticker) {
-	idle = true;
-	v_old = v;
-	ingame = true;
-	this->sticker = sticker;
-	clocker.restart();
-	nextTime = clocker.getElapsedTime() + time;
-}
-void Ball::unfreeze() {
-	idle = false;
-	ingame = false;
-	sticker = NULL;
-	v = v_old;
 }
 
 void Ball::update(Int64 elapsedTime) {
@@ -200,4 +197,10 @@ void Ball::update(Int64 elapsedTime) {
 		}
 	}
 	MovingEntity::update(elapsedTime);
+}
+
+void Ball::setShape(float a)
+{
+	shape = new CircleShape(radius*a);
+	setBackgroundColor(0, 255, 0);
 }

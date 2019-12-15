@@ -17,4 +17,6 @@ public:
 	void moveRight();
 	void moveLeft();
 	void stopMoving();
+
+	void setShape(float a);
 };

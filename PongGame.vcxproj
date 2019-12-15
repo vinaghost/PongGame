@@ -180,6 +180,49 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
   </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="ball.cpp" />
+    <ClCompile Include="bigball.cpp" />
+    <ClCompile Include="bigpaddle.cpp" />
+    <ClCompile Include="board.cpp" />
+    <ClCompile Include="brick.cpp" />
+    <ClCompile Include="entity.cpp" />
+    <ClCompile Include="freezeBall_item.cpp" />
+    <ClCompile Include="item.cpp" />
+    <ClCompile Include="itemManager.cpp" />
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="movingentity.cpp" />
+    <ClCompile Include="paddle.cpp" />
+    <ClCompile Include="smallball.cpp" />
+    <ClCompile Include="smallpaddle.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ball.h" />
+    <ClInclude Include="bigball.h" />
+    <ClInclude Include="bigpaddle.h" />
+    <ClInclude Include="board.h" />
+    <ClInclude Include="brick.h" />
+    <ClInclude Include="entity.h" />
+    <ClInclude Include="freezeBall_item.h" />
+    <ClInclude Include="item.h" />
+    <ClInclude Include="itemManager.h" />
+    <ClInclude Include="movingentity.h" />
+    <ClInclude Include="paddle.h" />
+    <ClInclude Include="smallball.h" />
+    <ClInclude Include="smallpaddle.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="globals.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Resources\BigBall.PNG" />
+    <Image Include="Resources\bigpaddle.PNG" />
+    <Image Include="Resources\brick.PNG" />
+    <Image Include="Resources\freeze.jpg" />
+    <Image Include="Resources\freeze.PNG" />
+    <Image Include="Resources\smallball.PNG" />
+    <Image Include="Resources\smallpaddle.PNG" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

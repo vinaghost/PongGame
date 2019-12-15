@@ -39,7 +39,7 @@ public:
 	void getStart();
 
 	void speedUp(float percent);
-	
+
 	sides::Side getWallSide();
 
 	const sides::Side getCollisionSide(Entity &other);
@@ -48,4 +48,5 @@ public:
 
 	void unfreeze();
 	void freeze(Time time, Entity* sticker);
+	void setShape(float a);
 };
