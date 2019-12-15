@@ -27,9 +27,9 @@ int main() {
 
 	ItemManager things(&window, &b);
 
-	//Paddle *p1 = new Paddle(&window, &b, winners::LEFT);
-	//p1->setBackgroundColor(255, 0, 0);
-	//others.push_back(p1);
+	Paddle *p1 = new Paddle(&window, &b, winners::LEFT);
+	p1->setBackgroundColor(255, 0, 0);
+	others.push_back(p1);
 	//Paddle *p2 = new Paddle(&window, &b, winners::RIGHT);
 
 	//p2->setBackgroundColor(255, 0, 0);
@@ -66,13 +66,13 @@ int main() {
 		}
 
 		if (Keyboard::isKeyPressed(Keyboard::W)) {
-			//p1->moveUp();
+			p1->moveUp();
 		}
 		if (Keyboard::isKeyPressed(Keyboard::S)) {
-			//p1->moveDown();
+			p1->moveDown();
 		}
 		if (!Keyboard::isKeyPressed(Keyboard::W) && !Keyboard::isKeyPressed(Keyboard::S)) {
-			//p1->stopMoving();
+			p1->stopMoving();
 		}
 
 		if (Keyboard::isKeyPressed(Keyboard::I)) {
@@ -86,7 +86,7 @@ int main() {
 		}
 
 		if (Keyboard::isKeyPressed(Keyboard::R)) {
-			//p1->reset();
+			p1->reset();
 			//p2->reset();
 			ball->reset();
 		}
@@ -111,7 +111,7 @@ int main() {
 				objects.push_back(things1[i]);
 			}
 
-			//p1->update(timeInterval);
+			p1->update(timeInterval);
 			//p2->update(timeInterval);
 			ball->handleCollisions(objects);
 			ball->update(timeInterval);
@@ -119,7 +119,7 @@ int main() {
 
 			b.draw();
 			ball->draw();
-			//p1->draw();
+			p1->draw();
 			//p2->draw();
 			things.draw();
 		}
@@ -127,7 +127,7 @@ int main() {
 	}
 
 	delete ball;
-	//delete p1;
+	delete p1;
 	//delete p2;
 
 	//Code test

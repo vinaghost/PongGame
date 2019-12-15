@@ -48,6 +48,15 @@
     <ClCompile Include="itemManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="smallball.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="bigpaddle.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="smallpaddle.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="entity.h">
@@ -80,6 +89,15 @@
     <ClInclude Include="itemManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="smallball.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="bigpaddle.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="smallpaddle.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="globals.h">
@@ -94,6 +112,18 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="Resources\BigBall.PNG">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\bigpaddle.PNG">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\freeze.PNG">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\smallball.PNG">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\smallpaddle.PNG">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

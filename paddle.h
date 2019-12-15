@@ -15,4 +15,6 @@ public:
 	void moveUp();
 	void moveDown();
 	void stopMoving();
+
+	void setShape(float a);
 };

@@ -5,6 +5,9 @@
 #include "freezeBall_item.h"
 #include "brick.h"
 #include "bigball.h"
+#include "smallball.h"
+#include "bigpaddle.h"
+#include "smallpaddle.h"
 
 ItemManager::ItemManager(RenderWindow* window, Board* b) : window(window)
 {
@@ -59,6 +62,18 @@ void ItemManager::createItem(Board* b)
 		if (i == (sl_cot - 1)*(sl_hang - 1))
 		{
 			object = new freezeBall_item(window);
+		}
+		else if (i == (sl_cot - 1)*(sl_hang - 2) + 4)
+		{
+			object = new smallball(window);
+		}
+		else if (i == (sl_cot - 2)*(sl_hang - 3) + 3)
+		{
+			object = new bigpaddle(window);
+		}
+		else if (i == (sl_cot - 3)*(sl_hang - 4))
+		{
+			object = new smallpaddle(window);
 		}
 		else if (i == (sl_cot - 2)*(sl_hang - 2) + 2)
 		{

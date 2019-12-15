@@ -36,5 +36,5 @@ public:
 
 	void handleCollisions(std::vector<Entity*> others);
 	void update(Int64 elapsedTime);
-	void setShape(int a);
+	void setShape(float a);
 };

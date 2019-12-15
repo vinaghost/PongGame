@@ -113,17 +113,26 @@ void Ball::handleCollisions(std::vector<Entity*> others) {
 				if (others.at(i)->getNameClass() == "freeze")
 				{
 					static_cast<Item*>(others.at(i))->active(this);
-					std::cout << "ALO DMMM: " << static_cast<Item*>(others.at(i))->getActived() << " \n";
 				}
 				if (others.at(i)->getNameClass() == "Brick")
 				{
 					static_cast<Item*>(others.at(i))->active(this);
-					std::cout << "ALO DMMM: " << static_cast<Item*>(others.at(i))->getActived() << " \n";
 				}
 				if (others.at(i)->getNameClass() == "bigball")
 				{
 					static_cast<Item*>(others.at(i))->active(this);
-					std::cout << "ALO DMMM: " << static_cast<Item*>(others.at(i))->getActived() << " \n";
+				}
+				if (others.at(i)->getNameClass() == "smallball")
+				{
+					static_cast<Item*>(others.at(i))->active(this);
+				}
+				if (others.at(i)->getNameClass() == "bigpaddle")
+				{
+					static_cast<Item*>(others.at(i))->active(others[0]);
+				}
+				if (others.at(i)->getNameClass() == "smallpaddle")
+				{
+					static_cast<Item*>(others.at(i))->active(others[0]);
 				}
 				reflect(collisionSide, dWall);
 			}
@@ -135,7 +144,7 @@ void Ball::update(Int64 elapsedTime) {
 	MovingEntity::update(elapsedTime);
 }
 
-void Ball::setShape(int a)
+void Ball::setShape(float a)
 {
 	shape = new CircleShape(radius*a);
 	setBackgroundColor(0, 255, 0);

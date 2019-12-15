@@ -22,3 +22,9 @@ void Paddle::moveDown() {
 void Paddle::stopMoving() {
 	this->v = { 0 , 0 };
 }
+
+void Paddle::setShape(float a)
+{
+	shape = new RectangleShape(Vector2f(default_width, default_height*a));
+	setBackgroundColor(255, 0, 0);
+}
