@@ -97,7 +97,7 @@ void GameScreen::render() {
 void GameScreen::reset() {
 	player->reset();
 	ball->reset(player);
-
+	things->createItem(b);
 	newGame = true;
 }
 
