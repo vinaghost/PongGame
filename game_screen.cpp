@@ -16,10 +16,14 @@ GameScreen::GameScreen(RenderWindow* window, Setting* setting) : Screen(window, 
 
 	ball = new Ball(window, b, 20, player);
 	ball->setBackgroundColor(0, 255, 0);
+	ball->setSetting(setting);
 
 	things = new ItemManager(window, b);
 
 	things->createItem(b);
+
+	score.setRenderWindow(window);
+	score.setPosition(100, 10);
 }
 
 GameScreen::~GameScreen() {
@@ -69,6 +73,10 @@ void GameScreen::processEvents() {
 	}
 }
 void GameScreen::update() {
+	char str[32];
+	sprintf_s(str, "[Score: %d]", setting->getScore());
+	score.setString(str);
+
 	objects.clear();
 	things1.clear();
 	things1 = things->spawnedItem();
@@ -93,11 +101,13 @@ void GameScreen::render() {
 	ball->draw();
 	player->draw();
 	things->draw();
+	score.draw();
 }
 void GameScreen::reset() {
 	player->reset();
 	ball->reset(player);
 	things->createItem(b);
+	score.setString("");
 	newGame = true;
 }
 

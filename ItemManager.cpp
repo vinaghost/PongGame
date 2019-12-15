@@ -12,8 +12,8 @@
 
 ItemManager::ItemManager(RenderWindow* window, Board* b) : window(window)
 {
-	sl_cot = (b->getRight() - b->getLeft() - 50.0f) / 50.0f;
-	sl_hang = ((b->getBottom()  - b->getTop())/2 - 20.0f) / 30.0f;
+	sl_cot = (int)(b->getRight() - b->getLeft() - 50.0f) / 50;
+	sl_hang = (int)((b->getBottom() - b->getTop()) / 2 - 20.0f) / 30;
 }
 
 ItemManager::~ItemManager()
@@ -27,14 +27,13 @@ void ItemManager::setRenderWindow(RenderWindow* window)
 
 void ItemManager::addItem(Item* object)
 {
-	
 	items.push_back(object);
 	spawns.push_back(true);
 }
 
 void ItemManager::processEvents()
 {
-	for (int i = 0; i < items.size(); i++)
+	for (size_t i = 0; i < items.size(); i++)
 	{
 		if (items[i]->getActived() == true)
 		{
@@ -45,7 +44,7 @@ void ItemManager::processEvents()
 
 void ItemManager::draw()
 {
-	for (int i = 0; i < items.size(); i++)
+	for (size_t i = 0; i < items.size(); i++)
 	{
 		if (spawns[i])
 		{
@@ -89,9 +88,9 @@ void ItemManager::createItem(Board* b)
 		}
 		else
 		{
-            object = new Brick(window);
+			object = new Brick(window);
 		}
-		
+
 		if (columnnow == sl_cot - 1)
 		{
 			columnnow = 0;
@@ -102,13 +101,12 @@ void ItemManager::createItem(Board* b)
 		addItem(object);
 		columnnow++;
 	}
-
 }
 
 vector<Item*> ItemManager::spawnedItem()
 {
 	vector<Item*> spawnedItems;
-	for (int i = 0; i < items.size(); i++)
+	for (size_t i = 0; i < items.size(); i++)
 	{
 		if (spawns[i] == true)
 		{

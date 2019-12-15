@@ -164,6 +164,7 @@ void Ball::handleCollisions(std::vector<Entity*> others) {
 				if (others.at(i)->getNameClass() == "Brick")
 				{
 					static_cast<Item*>(others.at(i))->active(this);
+					setScore(getScore() + 1);
 				}
 				if (others.at(i)->getNameClass() == "bigball")
 				{
@@ -216,4 +217,13 @@ void Ball::unfreeze() {
 void Ball::setShape(float a)
 {
 	static_cast<CircleShape*>(shape)->setRadius(radius*a);
+}
+void Ball::setSetting(Setting* setting) {
+	this->setting = setting;
+}
+void Ball::setScore(int score) {
+	setting->setScore(score);
+}
+int Ball::getScore() {
+	return setting->getScore();
 }

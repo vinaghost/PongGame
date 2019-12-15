@@ -1,6 +1,6 @@
 #pragma once
 #include "movingentity.h"
-
+#include "setting.h"
 #include <vector>
 namespace winner {
 	enum side {
@@ -24,6 +24,8 @@ private:
 
 	Clock clocker;
 	Time nextTime;
+
+	Setting* setting;
 
 public:
 	Ball(RenderWindow* window, Board* b, float radius, Paddle* player);
@@ -49,4 +51,8 @@ public:
 	void unfreeze();
 	void freeze(Time time, Entity* sticker);
 	void setShape(float a);
+
+	void setSetting(Setting* setting);
+	void setScore(int score);
+	int getScore();
 };

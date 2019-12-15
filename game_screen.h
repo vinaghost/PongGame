@@ -8,9 +8,11 @@
 #include "ball.h"
 #include "paddle.h"
 #include "ItemManager.h"
+#include "caption.h"
 
 class GameScreen : public Screen {
 private:
+	Caption score;
 	Event event;
 	Clock clock;
 	bool endGame;

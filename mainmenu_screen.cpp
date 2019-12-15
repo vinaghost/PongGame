@@ -8,12 +8,17 @@ MainMenuScreen::MainMenuScreen(RenderWindow* window, Setting* setting) : Screen(
 	mainMenu->addButtons("Stat");
 	mainMenu->addButtons("Exit");
 	mainMenu->initMenu(80);
+
+	error.setRenderWindow(window);
+	error.setPosition(20, 20);
 }
 
 MainMenuScreen::~MainMenuScreen() {
 	delete mainMenu;
 }
-
+void MainMenuScreen::reset() {
+	error.setString("");
+}
 void MainMenuScreen::processEvents() {
 	mainMenu->processEvents();
 
@@ -23,6 +28,9 @@ void MainMenuScreen::processEvents() {
 		if (setting->getLoaded()) {
 			loop = false;
 			nextScreen = IN_GAME;
+		}
+		else {
+			error.setString("Username not loaded");
 		}
 		break;
 	case 1:
@@ -46,4 +54,5 @@ void MainMenuScreen::processEvents() {
 }
 void MainMenuScreen::render() {
 	mainMenu->draw();
+	error.draw();
 }
