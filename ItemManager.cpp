@@ -1,13 +1,14 @@
 #include "itemManager.h"
 
-
-
 #include "freezeBall_item.h"
 #include "brick.h"
 #include "bigball.h"
 #include "smallball.h"
 #include "bigpaddle.h"
 #include "smallpaddle.h"
+
+#include <stdlib.h>
+#include <time.h>
 
 ItemManager::ItemManager(RenderWindow* window, Board* b) : window(window)
 {
@@ -55,27 +56,34 @@ void ItemManager::draw()
 
 void ItemManager::createItem(Board* b)
 {
+	items.clear();
+	int a[5];
 	Item* object;
 	int linenow = 0, columnnow = 0;
+	srand((int)time(0));
+	for (int i = 0; i < 5; i++)
+	{
+		a[i] = rand() % (sl_cot * sl_hang + 2 + 1);
+	}
 	for (int i = 0; i <= sl_cot * sl_hang + 2; i++)
 	{
-		if (i == (sl_cot - 1)*(sl_hang - 1))
+		if (i == a[0])
 		{
 			object = new freezeBall_item(window);
 		}
-		else if (i == (sl_cot - 1)*(sl_hang - 2) + 4)
+		else if (i == a[1])
 		{
 			object = new smallball(window);
 		}
-		else if (i == (sl_cot - 2)*(sl_hang - 3) + 3)
+		else if (i == a[2])
 		{
 			object = new bigpaddle(window);
 		}
-		else if (i == (sl_cot - 3)*(sl_hang - 4))
+		else if (i == a[3])
 		{
 			object = new smallpaddle(window);
 		}
-		else if (i == (sl_cot - 2)*(sl_hang - 2) + 2)
+		else if (i == a[4])
 		{
 			object = new BigBall(window);
 		}
