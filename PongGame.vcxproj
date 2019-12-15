@@ -19,33 +19,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="ball.cpp" />
-    <ClCompile Include="board.cpp" />
-    <ClCompile Include="Brick.cpp" />
-    <ClCompile Include="Caption.cpp" />
-    <ClCompile Include="entity.cpp" />
-    <ClCompile Include="freezeBall_item.cpp" />
-    <ClCompile Include="game_screen.cpp" />
-    <ClCompile Include="Item.cpp" />
-    <ClCompile Include="ItemManager.cpp" />
-    <ClCompile Include="lose_screen.cpp" />
-    <ClCompile Include="Main.cpp" />
-    <ClCompile Include="mainmenu_screen.cpp" />
-    <ClCompile Include="menu.cpp" />
-    <ClCompile Include="movingentity.cpp" />
-    <ClCompile Include="paddle.cpp" />
-    <ClCompile Include="pause_screen.cpp" />
-    <ClCompile Include="screen.cpp" />
-    <ClCompile Include="setting.cpp" />
-    <ClCompile Include="setting_screen.cpp" />
-    <ClCompile Include="stat_screen.cpp" />
-    <ClCompile Include="windows.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="userinfo.dat" />
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="ball.h" />
+    <ClInclude Include="bigball.h" />
+    <ClInclude Include="bigpaddle.h" />
     <ClInclude Include="board.h" />
     <ClInclude Include="Brick.h" />
     <ClInclude Include="Caption.h" />
@@ -64,8 +40,68 @@
     <ClInclude Include="screen.h" />
     <ClInclude Include="setting.h" />
     <ClInclude Include="setting_screen.h" />
+    <ClInclude Include="smallball.h" />
+    <ClInclude Include="smallpaddle.h" />
     <ClInclude Include="stat_screen.h" />
     <ClInclude Include="windows.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="ball.cpp" />
+    <ClCompile Include="bigball.cpp" />
+    <ClCompile Include="bigpaddle.cpp" />
+    <ClCompile Include="board.cpp" />
+    <ClCompile Include="Brick.cpp" />
+    <ClCompile Include="Caption.cpp" />
+    <ClCompile Include="entity.cpp" />
+    <ClCompile Include="freezeBall_item.cpp" />
+    <ClCompile Include="game_screen.cpp" />
+    <ClCompile Include="Item.cpp" />
+    <ClCompile Include="ItemManager.cpp" />
+    <ClCompile Include="lose_screen.cpp" />
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="mainmenu_screen.cpp" />
+    <ClCompile Include="menu.cpp" />
+    <ClCompile Include="movingentity.cpp" />
+    <ClCompile Include="paddle.cpp" />
+    <ClCompile Include="pause_screen.cpp" />
+    <ClCompile Include="screen.cpp" />
+    <ClCompile Include="setting.cpp" />
+    <ClCompile Include="setting_screen.cpp" />
+    <ClCompile Include="smallball.cpp" />
+    <ClCompile Include="smallpaddle.cpp" />
+    <ClCompile Include="stat_screen.cpp" />
+    <ClCompile Include="windows.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Resources\back.png" />
+    <Image Include="Resources\BigBall.PNG" />
+    <Image Include="Resources\bigpaddle.PNG" />
+    <Image Include="Resources\brick.PNG" />
+    <Image Include="Resources\freeze.PNG" />
+    <Image Include="Resources\next.png" />
+    <Image Include="Resources\smallball.PNG" />
+    <Image Include="Resources\smallpaddle.PNG" />
+    <Image Include="Resources\stat.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="Resources\Montserrat-Black.ttf" />
+    <Font Include="Resources\Montserrat-BlackItalic.ttf" />
+    <Font Include="Resources\Montserrat-Bold.ttf" />
+    <Font Include="Resources\Montserrat-BoldItalic.ttf" />
+    <Font Include="Resources\Montserrat-ExtraBold.ttf" />
+    <Font Include="Resources\Montserrat-ExtraBoldItalic.ttf" />
+    <Font Include="Resources\Montserrat-ExtraLight.ttf" />
+    <Font Include="Resources\Montserrat-ExtraLightItalic.ttf" />
+    <Font Include="Resources\Montserrat-Italic.ttf" />
+    <Font Include="Resources\Montserrat-Light.ttf" />
+    <Font Include="Resources\Montserrat-LightItalic.ttf" />
+    <Font Include="Resources\Montserrat-Medium.ttf" />
+    <Font Include="Resources\Montserrat-MediumItalic.ttf" />
+    <Font Include="Resources\Montserrat-Regular.ttf" />
+    <Font Include="Resources\Montserrat-SemiBold.ttf" />
+    <Font Include="Resources\Montserrat-SemiBoldItalic.ttf" />
+    <Font Include="Resources\Montserrat-Thin.ttf" />
+    <Font Include="Resources\Montserrat-ThinItalic.ttf" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
@@ -180,49 +216,6 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="ball.cpp" />
-    <ClCompile Include="bigball.cpp" />
-    <ClCompile Include="bigpaddle.cpp" />
-    <ClCompile Include="board.cpp" />
-    <ClCompile Include="brick.cpp" />
-    <ClCompile Include="entity.cpp" />
-    <ClCompile Include="freezeBall_item.cpp" />
-    <ClCompile Include="item.cpp" />
-    <ClCompile Include="itemManager.cpp" />
-    <ClCompile Include="Main.cpp" />
-    <ClCompile Include="movingentity.cpp" />
-    <ClCompile Include="paddle.cpp" />
-    <ClCompile Include="smallball.cpp" />
-    <ClCompile Include="smallpaddle.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="ball.h" />
-    <ClInclude Include="bigball.h" />
-    <ClInclude Include="bigpaddle.h" />
-    <ClInclude Include="board.h" />
-    <ClInclude Include="brick.h" />
-    <ClInclude Include="entity.h" />
-    <ClInclude Include="freezeBall_item.h" />
-    <ClInclude Include="item.h" />
-    <ClInclude Include="itemManager.h" />
-    <ClInclude Include="movingentity.h" />
-    <ClInclude Include="paddle.h" />
-    <ClInclude Include="smallball.h" />
-    <ClInclude Include="smallpaddle.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="globals.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="Resources\BigBall.PNG" />
-    <Image Include="Resources\bigpaddle.PNG" />
-    <Image Include="Resources\brick.PNG" />
-    <Image Include="Resources\freeze.jpg" />
-    <Image Include="Resources\freeze.PNG" />
-    <Image Include="Resources\smallball.PNG" />
-    <Image Include="Resources\smallpaddle.PNG" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
