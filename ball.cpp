@@ -159,7 +159,7 @@ void Ball::handleCollisions(std::vector<Entity*> others) {
 				}
 				if (others.at(i)->getNameClass() == "freeze")
 				{
-						static_cast<Item*>(others.at(i))->active(this);
+					static_cast<Item*>(others.at(i))->active(this);
 				}
 				if (others.at(i)->getNameClass() == "Brick")
 				{
@@ -198,9 +198,22 @@ void Ball::update(Int64 elapsedTime) {
 	}
 	MovingEntity::update(elapsedTime);
 }
+void Ball::freeze(Time time, Entity* sticker) {
+	idle = true;
+	v_old = v;
+	ingame = true;
+	this->sticker = sticker;
+	clocker.restart();
+	nextTime = clocker.getElapsedTime() + time;
+}
+void Ball::unfreeze() {
+	idle = false;
 
+	ingame = false;
+	sticker = NULL;
+	v = v_old;
+}
 void Ball::setShape(float a)
 {
-	shape = new CircleShape(radius*a);
-	setBackgroundColor(0, 255, 0);
+	static_cast<CircleShape*>(shape)->setRadius(radius*a);
 }
