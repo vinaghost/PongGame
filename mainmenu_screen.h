@@ -8,6 +8,6 @@ protected:
 	void processEvents();
 	void render();
 public:
-	MainMenuScreen(RenderWindow* window);
+	MainMenuScreen(RenderWindow* window, Setting* setting);
 	virtual ~MainMenuScreen();
 };

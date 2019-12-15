@@ -3,7 +3,7 @@
 
 #include <iostream>
 
-PauseScreen::PauseScreen(RenderWindow* window) : Screen(window) {
+PauseScreen::PauseScreen(RenderWindow* window, Setting* setting) : Screen(window, setting) {
 	pauseMenu = new Menu(window, globals::SCREEN_WIDTH / 2 - 100, 300);
 	pauseMenu->addButtons("Continue");
 	pauseMenu->addButtons("Back to Mainmenu");

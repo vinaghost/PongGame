@@ -2,11 +2,12 @@
 #include "screen.h"
 #include "menu.h"
 class LoseScreen : public Screen {
-protected:
+private:
 	Menu* continueMenu;
+protected:
 	void processEvents();
 	void render();
 public:
-	LoseScreen(RenderWindow* window);
+	LoseScreen(RenderWindow* window, Setting* setting);
 	virtual ~LoseScreen();
 };

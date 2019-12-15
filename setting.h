@@ -2,8 +2,10 @@
 #include "menu.h"
 #include <string>
 #include <map>
+#include <utility>
 
 using std::string;
+using std::pair;
 
 class Setting {
 private:
@@ -43,6 +45,7 @@ public:
 	int getScore();
 
 	void checkName();
+	vector<pair<string, int>> getSorted();
 	int load();
 	int save();
 

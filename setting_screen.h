@@ -6,6 +6,6 @@ protected:
 	void processEvents();
 	void render();
 public:
-	SettingScreen(RenderWindow* window);
+	SettingScreen(RenderWindow* window, Setting* setting);
 	virtual ~SettingScreen();
 };

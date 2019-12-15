@@ -3,7 +3,7 @@
 
 using std::vector;
 
-GameScreen::GameScreen(RenderWindow* window) : Screen(window), newGame(true), endGame(false) {
+GameScreen::GameScreen(RenderWindow* window, Setting* setting) : Screen(window, setting), newGame(true), endGame(false) {
 	srand((unsigned int)time(NULL));
 
 	b = new Board(window);

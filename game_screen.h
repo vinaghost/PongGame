@@ -34,7 +34,7 @@ protected:
 	void render();
 	void reset();
 public:
-	GameScreen(RenderWindow* window);
+	GameScreen(RenderWindow* window, Setting* setting);
 	virtual ~GameScreen();
 
 	void setWindow(RenderWindow* window);

@@ -1,7 +1,7 @@
 #include "setting_screen.h"
 #include "globals.h"
 
-SettingScreen::SettingScreen(RenderWindow* window) : Screen(window) {}
+SettingScreen::SettingScreen(RenderWindow* window, Setting* setting) : Screen(window, setting) {}
 
 SettingScreen::~SettingScreen() {}
 

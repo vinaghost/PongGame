@@ -9,13 +9,14 @@ enum {
 	IN_GAME,
 	PAUSE,
 	LOSE,
-	SETTING
+	SETTING,
+	STAT
 };
 class Screen {
 protected:
 	RenderWindow* window;
 	Setting* setting;
-
+	Event event;
 	int nextScreen;
 	bool loop;
 	virtual void processEvents();
@@ -23,7 +24,7 @@ protected:
 	virtual void render();
 	virtual void reset();
 public:
-	Screen(RenderWindow* window);
+	Screen(RenderWindow* window, Setting* setting);
 	virtual void setWindow(RenderWindow* window);
 	int run();
 	virtual ~Screen();

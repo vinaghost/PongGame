@@ -1,8 +1,8 @@
 ﻿#include "setting.h"
 #include "globals.h"
+#include <algorithm>
 #include <fstream>
 #include <sstream>
-#include <utility>
 
 using std::ifstream;
 using std::ofstream;
@@ -75,9 +75,6 @@ void Setting::processEvents() {
 					state = 2;
 					szBack.setFillColor(Color::Green);
 				}
-				else {
-					szBack.setFillColor(Color::White);
-				}
 
 				if (isTextClicked(szLoad)) {
 					checkName();
@@ -144,8 +141,8 @@ int Setting::save() {
 
 	if (f.good()) {
 		for (const auto& i : score) {
-			//if (i.second != 0)
-			f << i.first << "," << i.second << "\n";
+			if (i.second != 0)
+				f << i.first << "," << i.second << "\n";
 		}
 		f.close();
 	}
@@ -194,4 +191,21 @@ void Setting::checkName() {
 
 int Setting::getState() {
 	return this->state;
+}
+
+bool comp(pair<string, int> i1, pair<string, int> i2)
+{
+	return (i1.second > i2.second);
+}
+vector<pair<string, int>> Setting::getSorted() {
+	vector<pair<string, int> > sorted;
+	for (auto &i : score) {
+		if (i.second != 0) {
+			sorted.push_back(i);
+		}
+	}
+
+	std::sort(sorted.begin(), sorted.end(), comp);
+
+	return sorted;
 }

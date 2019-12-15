@@ -3,7 +3,7 @@
 
 #include <iostream>
 
-LoseScreen::LoseScreen(RenderWindow* window) : Screen(window) {
+LoseScreen::LoseScreen(RenderWindow* window, Setting* setting) : Screen(window, setting) {
 	continueMenu = new Menu(window, globals::SCREEN_WIDTH / 2 - 100, 300);
 	continueMenu->addButtons("Play again");
 	continueMenu->addButtons("Back to Mainmenu");

@@ -2,12 +2,10 @@
 
 #include <iostream>
 
-Screen::Screen(RenderWindow* window) : window(window), loop(true) {
-	setting = new Setting(window, 100, 100);
+Screen::Screen(RenderWindow* window, Setting* setting) : window(window), setting(setting), loop(true) {
 }
 
 Screen::~Screen() {
-	delete setting;
 }
 
 int Screen::run() {

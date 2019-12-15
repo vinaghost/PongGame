@@ -10,6 +10,6 @@ protected:
 	void processEvents();
 	void render();
 public:
-	PauseScreen(RenderWindow* window);
+	PauseScreen(RenderWindow* window, Setting* setting);
 	virtual ~PauseScreen();
 };
