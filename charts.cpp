@@ -4,7 +4,7 @@
 #include <sstream>
 #include <fstream>
 
-#include <iostream>
+
 using namespace std;
 
 
@@ -55,11 +55,6 @@ void charts::loadfromFile()
 		users.push_back(user);
 	}
 	f.close();
-	for (int i = 0; i < users.size(); i++)
-	{
-		cout << users[i].first << endl;
-		cout << users[i].second << endl;
-	}
 }
 
 void charts::change_place(pair<string, int>& user1, pair<string, int>& user2)
