@@ -1,0 +1,172 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Ball" Collapsed="true">
+    <Position X="17" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAABAAAECgAAQAAAAEEgIAQAAAAAAgCkAAgAA4BEQIA=</HashCode>
+      <FileName>ball.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BigBall" Collapsed="true">
+    <Position X="5.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAIAgAAAAAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>bigball.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="bigpaddle" Collapsed="true">
+    <Position X="10.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAAAAQAAAAAAIBAAAAA=</HashCode>
+      <FileName>bigpaddle.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Board" Collapsed="true">
+    <Position X="1.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIABAAAEAAAAAAAAAIAIAAAAAAAAAAIAAAAACAAAAg=</HashCode>
+      <FileName>board.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Brick" Collapsed="true">
+    <Position X="14.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAAIAAAAAQ=</HashCode>
+      <FileName>Brick.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Caption" Collapsed="true">
+    <Position X="21.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAAAIIAAABCAAAAAAEICAAAAAAIAAA=</HashCode>
+      <FileName>Caption.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Entity" Collapsed="true">
+    <Position X="10.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAgAAAAAAAABIGIAAgCKAAAAAIAABggOAIBAA=</HashCode>
+      <FileName>entity.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="freezeBall_item" Collapsed="true">
+    <Position X="12.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAgAAIAAAAAAAAAAAAAQAIAAAAAA=</HashCode>
+      <FileName>freezeBall_item.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameScreen" Collapsed="true">
+    <Position X="10" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAgAAEIAAAAAAAAIIAAAAAAQgAAAIBARACAAQUBAA=</HashCode>
+      <FileName>game_screen.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Item" Collapsed="true">
+    <Position X="9.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAACAIIAIAAEEAAEAAAAAAAAIAAAAAg=</HashCode>
+      <FileName>Item.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ItemManager" Collapsed="true">
+    <Position X="23.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAI7AAAIBAQgAACAIAAAIAAAAAAA=</HashCode>
+      <FileName>ItemManager.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LoseScreen" Collapsed="true">
+    <Position X="1" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAAAAAAAAAQAAAAAAQAAAAAAEAAAAAAQAAA=</HashCode>
+      <FileName>lose_screen.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MainMenuScreen" Collapsed="true">
+    <Position X="5.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAQCAEAAAAEAAAAAQAAA=</HashCode>
+      <FileName>mainmenu_screen.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Menu" Collapsed="true">
+    <Position X="25.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAMAAAAIAABAAAAAYAIGAAAIAQAIAAIIAABgAGIMAAA=</HashCode>
+      <FileName>menu.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MovingEntity" Collapsed="true">
+    <Position X="18.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAFAAAAAAAAAAAGAAAAAAAAAAAAARAAAAAUAAA=</HashCode>
+      <FileName>movingentity.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Paddle" Collapsed="true">
+    <Position X="19.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAAAAAAAAAAAAIAAAAAAAAAACAQAACEAAQAA=</HashCode>
+      <FileName>paddle.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PauseScreen" Collapsed="true">
+    <Position X="3.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAADAAAAAAAAAAAAAAAAAAQEAAAAAAAAAAAAQAAA=</HashCode>
+      <FileName>pause_screen.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Screen" Collapsed="true">
+    <Position X="6.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CEAAAgAEAAAAiAAABAAAAAAAAQAAAAYMAAAAAAAUAAA=</HashCode>
+      <FileName>screen.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Setting" Collapsed="true">
+    <Position X="21.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QQIAAAAEgKCAAIAhQAIIAACAAQAgCAKMAABmAEBAAAA=</HashCode>
+      <FileName>setting.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SettingScreen" Collapsed="true">
+    <Position X="12.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAEQAQAAAAAAAAAAAQAAA=</HashCode>
+      <FileName>setting_screen.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="smallball" Collapsed="true">
+    <Position X="3.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAKAAAAAAAAAAACAAAIAAAAAA=</HashCode>
+      <FileName>smallball.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="smallpaddle" Collapsed="true">
+    <Position X="8" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAAAAAABIAAAAAAAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>smallpaddle.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatScreen" Collapsed="true">
+    <Position X="7.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQIAAACEACgAAAAAQAACAAAAAYAAQAAAAAACIAAUAAA=</HashCode>
+      <FileName>stat_screen.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Windows" Collapsed="true">
+    <Position X="23.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAgAAAAAAAAAAAIAAAAQAAAAggAAAABAAAAAAAAA=</HashCode>
+      <FileName>windows.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
