@@ -10,12 +10,12 @@
 
 ## Yêu cầu
 
-- [ ] Hiện màn hình chơi cùng với các vật phẩm của game (vật phẩm được xuất hiện ngẫu nhiên theo những hình học hay hình tự do)
-- [ ] Xuất hiện những vật phẩm thưởng trong game theo dạng random
-- [ ] Save/load game
-- [ ] Bảng thành tích
-- [ ] Xử lí thắng/thua và kết thúc game
-- [ ] Tăng tốc độ khi bóng va chạm vào thanh trượt nguời chơi và đổi hướng bóng
+- [x] Hiện màn hình chơi cùng với các vật phẩm của game (vật phẩm được xuất hiện ngẫu nhiên theo những hình học hay hình tự do)
+- [x] Xuất hiện những vật phẩm thưởng trong game theo dạng random
+- [x] Save/load game
+- [x] Bảng thành tích
+- [x] Xử lí thắng/thua và kết thúc game
+- [x] Tăng tốc độ khi bóng va chạm vào thanh trượt nguời chơi và đổi hướng bóng
 - [ ] Tự đề xuất những ý tưởng để game chơi hấp dẫn hơn
 
 ## Toolsets
