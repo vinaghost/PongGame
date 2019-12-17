@@ -1,47 +1,78 @@
-#include "Entity.h"
+﻿#include "entity.h"
+Entity::Entity(RenderWindow* window, float x, float y) : shape(NULL), window(window), x(x), y(y) {}
 
-
-
-Entity::Entity(int screenX, int screenY): x(screenX / 2), y(screenY / 2)
-{
+Entity::~Entity() {
+	delete shape;
 }
 
-void Entity::setX(float x)
-{
-	this->x = x;
+void Entity::setX(float x) {
+	this->shape->setPosition(x, this->shape->getPosition().y);
+}
+void Entity::setY(float y) {
+	this->shape->setPosition(this->shape->getPosition().x, y);
+}
+void Entity::setColor(int red, int green, int blue, int alpha) {
+	if (red < 0) red = 0;
+	else if (red > 255) red = 255;
+
+	if (green < 0) green = 0;
+	else if (green > 255) green = 255;
+
+	if (blue < 0) blue = 0;
+	else if (blue > 255) blue = 255;
+
+	if (alpha < 0) alpha = 0;
+	else if (alpha > 255) alpha = 255;
+
+	shape->setOutlineColor(Color(green, red, blue, alpha));
+}
+void Entity::setBackgroundColor(int red, int green, int blue, int alpha) {
+	if (red < 0) red = 0;
+	else if (red > 255) red = 255;
+
+	if (green < 0) green = 0;
+	else if (green > 255) green = 255;
+
+	if (blue < 0) blue = 0;
+	else if (blue > 255) blue = 255;
+
+	if (alpha < 0) alpha = 0;
+	else if (alpha > 255) alpha = 255;
+
+	shape->setFillColor(Color(red, green, blue, alpha));
 }
 
-void Entity::setY(float y)
-{
-	this->y = y;
+float Entity::getX() {
+	return this->shape->getPosition().x;
+}
+float Entity::getY() {
+	return this->shape->getPosition().y;
+}
+Color Entity::getColor() {
+	return this->shape->getOutlineColor();
+}
+Color Entity::getBackgroundColor() {
+	return this->shape->getFillColor();
 }
 
-float Entity::getX()
-{
-	return this->x;
+void Entity::draw() {
+	window->draw(*shape);
+}
+bool Entity::isIntersect(Entity &other) {
+	return this->shape->getGlobalBounds().intersects(other.shape->getGlobalBounds());
 }
 
-float Entity::getY()
-{
-	return this->y;
+float Entity::getBottom() {
+	return this->shape->getGlobalBounds().top + this->shape->getGlobalBounds().height;
 }
 
-void Entity::setColor(int color) {
-	if (color >= 0 && color <= 15) {
-		this->color = color;
-	}
+float Entity::getRight() {
+	return this->shape->getGlobalBounds().left + this->shape->getGlobalBounds().width;
+}
+float Entity::getLeft() {
+	return getX();
 }
 
-void Entity::setBackgroundColor(int color_background) {
-	if (color_background >= 0 && color_background <= 15) {
-		this->color_background = color_background;
-	}
-}
-
-int Entity::getColor() {
-	return this->color;
-}
-
-int Entity::getBackgroundColor() {
-	return this->color_background;
+float Entity::getTop() {
+	return getY();
 }
