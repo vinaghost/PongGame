@@ -35,4 +35,5 @@ void LoseScreen::processEvents() {
 }
 void LoseScreen::render() {
 	continueMenu->draw();
+	window->draw(spTitle);
 }

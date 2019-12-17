@@ -1,4 +1,6 @@
 ﻿#pragma once
+#include <SFML/Audio.hpp>
+
 #include "menu.h"
 #include <string>
 #include <map>
@@ -9,6 +11,8 @@ using std::pair;
 
 class Setting {
 private:
+
+	Music music;
 
 	RenderWindow* window;
 	Event event;
@@ -22,6 +26,7 @@ private:
 
 	Text szInput;
 	Text szScore;
+	Text szMusic;
 	Text szLoad, szReset, szBack;
 
 	bool clicked;

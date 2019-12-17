@@ -21,4 +21,5 @@ void SettingScreen::processEvents() {
 }
 void SettingScreen::render() {
 	setting->draw();
+	window->draw(spTitle);
 }

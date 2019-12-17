@@ -14,6 +14,10 @@ enum {
 };
 class Screen {
 protected:
+
+	Texture texTitle;
+	Sprite spTitle;
+
 	RenderWindow* window;
 	Setting* setting;
 	Event event;

@@ -11,10 +11,10 @@
 #include "stat_screen.h"
 
 Windows::Windows() : screen(MAIN_MENU) {
-	renderWindow.create(VideoMode(globals::SCREEN_WIDTH, globals::SCREEN_HEIGHT), "Pong !", Style::Titlebar | Style::Close);
+	renderWindow.create(VideoMode(globals::SCREEN_WIDTH, globals::SCREEN_HEIGHT), "Brick !", Style::Titlebar | Style::Close);
 	renderWindow.setFramerateLimit(60);
 
-	setting = new Setting(&renderWindow, 100, 100);
+	setting = new Setting(&renderWindow, 100, 250);
 	Screen* s;
 
 	s = new MainMenuScreen(&renderWindow, setting);
@@ -34,8 +34,6 @@ Windows::Windows() : screen(MAIN_MENU) {
 
 	s = new StatScreen(&renderWindow, setting);
 	screens.push_back(s);
-
-	music.openFromFile("Resources/background.ogg");
 }
 
 Windows::~Windows() {
@@ -46,11 +44,8 @@ Windows::~Windows() {
 
 void Windows::run() {
 	setting->load();
-	music.play();
-	music.setLoop(true);
 	while (screen != EXIT) {
 		screen = screens[screen]->run();
 	}
-	music.stop();
 	setting->save();
 }

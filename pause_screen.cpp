@@ -36,4 +36,5 @@ void PauseScreen::processEvents() {
 }
 void PauseScreen::render() {
 	pauseMenu->draw();
+	window->draw(spTitle);
 }

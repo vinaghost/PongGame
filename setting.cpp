@@ -21,6 +21,11 @@ Setting::Setting(RenderWindow* window, float x, float y) : state(0), window(wind
 	szScore.setFont(font);
 	szScore.setString("Score: <Not load yet>");
 
+	szMusic.setPosition(x, y + 100);
+	szMusic.setFont(font);
+	szMusic.setFillColor(Color::Green);
+	szMusic.setString("[Music]");
+
 	szLoad.setPosition(x, y + 300);
 	szLoad.setFont(font);
 	szLoad.setString("Load");
@@ -32,6 +37,8 @@ Setting::Setting(RenderWindow* window, float x, float y) : state(0), window(wind
 	szBack.setPosition(x + 600, y + 300);
 	szBack.setFont(font);
 	szBack.setString("Back");
+
+	music.openFromFile("Resources/background.ogg");
 }
 
 Setting::~Setting() {
@@ -42,6 +49,7 @@ void Setting::draw() {
 	window->draw(szScore);
 	window->draw(szLoad);
 	window->draw(szReset);
+	window->draw(szMusic);
 	window->draw(szBack);
 }
 void Setting::reset() {
@@ -71,6 +79,18 @@ void Setting::processEvents() {
 					szInput.setFillColor(Color::White);
 				}
 
+				if (isTextClicked(szMusic)) {
+					if (music.getStatus() == SoundSource::Status::Stopped) {
+						music.play();
+						music.setLoop(true);
+						szMusic.setFillColor(Color::Green);
+					}
+					else {
+						music.stop();
+						szMusic.setFillColor(Color::Red);
+					}
+				}
+
 				if (isTextClicked(szBack)) {
 					state = 2;
 					szBack.setFillColor(Color::Green);
@@ -84,8 +104,13 @@ void Setting::processEvents() {
 					szLoad.setFillColor(Color::White);
 				}
 				if (isTextClicked(szReset)) {
-					if (loaded)
+					if (loaded) {
 						score[szName] = 0;
+						char str[33];
+						sprintf_s(str, "Score: %d", score[szName]);
+
+						szScore.setString(str);
+					}
 					szReset.setFillColor(Color::Green);
 				}
 				else {
@@ -137,6 +162,10 @@ void Setting::setScore(int score) {
 	this->score[szName] = score;
 }
 int Setting::save() {
+	if (music.getStatus() == SoundSource::Status::Playing) {
+		music.stop();
+	}
+
 	ofstream f(filename::scoreFile);
 
 	if (f.good()) {
@@ -150,6 +179,8 @@ int Setting::save() {
 }
 
 int Setting::load() {
+	music.play();
+
 	ifstream f(filename::scoreFile);
 
 	if (f.good()) {

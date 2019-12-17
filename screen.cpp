@@ -3,6 +3,9 @@
 #include <iostream>
 
 Screen::Screen(RenderWindow* window, Setting* setting) : window(window), setting(setting), loop(true) {
+	texTitle.loadFromFile("Resources/Title.png");
+	spTitle.setTexture(texTitle, true);
+	spTitle.setPosition(300, 80);
 }
 
 Screen::~Screen() {

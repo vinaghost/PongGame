@@ -2,12 +2,12 @@
 #include "globals.h"
 
 MainMenuScreen::MainMenuScreen(RenderWindow* window, Setting* setting) : Screen(window, setting) {
-	mainMenu = new Menu(window, globals::SCREEN_WIDTH / 2 - 100, 200);
+	mainMenu = new Menu(window, globals::SCREEN_WIDTH / 2 - 100, 230);
 	mainMenu->addButtons("Play");
-	mainMenu->addButtons("Load");
+	mainMenu->addButtons("Load/Setting");
 	mainMenu->addButtons("Stat");
 	mainMenu->addButtons("Exit");
-	mainMenu->initMenu(80);
+	mainMenu->initMenu(50);
 
 	error.setRenderWindow(window);
 	error.setPosition(20, 20);
@@ -55,4 +55,5 @@ void MainMenuScreen::processEvents() {
 void MainMenuScreen::render() {
 	mainMenu->draw();
 	error.draw();
+	window->draw(spTitle);
 }

@@ -6,6 +6,7 @@ class MainMenuScreen : public Screen {
 private:
 	Menu* mainMenu;
 	Caption error;
+
 protected:
 	void processEvents();
 	void reset();
